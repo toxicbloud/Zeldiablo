@@ -3,8 +3,17 @@ package com;
  * Classe Case, represente une case du labyrinthe
  */
 public abstract class Case {
+
+    /**
+     * ATTRIBUTS
+     */
+
     /** Attribut traversable: La case est traversable ou non */
     private boolean traversable;
+
+    /**
+     * CONSTRUCTEURS
+     */
 
     /** Constructeur vide de Case */
     Case() {
@@ -15,6 +24,10 @@ public abstract class Case {
     Case(boolean traversable) {
         this.traversable = traversable;
     }
+
+    /**
+     * GETTERS /SETTERS
+     */
 
     /**
      * Getter de l'attribut traversable

@@ -4,6 +4,10 @@ package com;
  */
 public class Mur extends Case {
 
+    /**
+     * CONSTRUCTEURS
+     */
+
     /** Constructeur vide de Mur */
     Mur() {
         super(false);
