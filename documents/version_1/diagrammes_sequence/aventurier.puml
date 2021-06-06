@@ -1,0 +1,7 @@
+@startuml
+title création d'un Aventurier
+participant "joueur:Aventurier" as joueur
+[-> joueur: Aventurier("Paul")
+activate joueur
+deactivate joueur
+@enduml
