@@ -1,0 +1,30 @@
+* Fonctionnalités version 1
+
+- fonctionnalité 1 : plusieurs types de cases
+- descriptif texte : plusieurs idées de cases avec des caractéristiques particulières
+- critères de validation :
+	- critère 1 : certaines cases traversables
+    - critère 2 : but différent
+
+
+
+- fonctionnalité 2 : initialiser le labyrinthe
+- descriptif texte : creer un double tableau contenant des cases du jeu
+- critères de validation :
+	- critère 1 : plusieurs cases fonctionnelles
+	- critère 2 : taille personnalisable (de base 10x10)
+    - critère 3 : le labyrinthe a une entrée
+
+
+
+- fonctionnalité 3 : creer un aventurier
+- descriptif texte : initialise un aventurier, ses attributs...
+- critères de validation :
+	- critère 1 : l'aventurier a un nom
+	- critère 2 : l'aventurier a une position
+
+- fonctionnalité 4 : créer un jeu
+- descriptif texte : initialise un jeu avec une carte et un joueur
+- critères de validation :
+    - critère 1 : le jeu a un labyrinthe
+    - critère 2 : le jeu a un joueur

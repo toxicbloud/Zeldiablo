@@ -1,0 +1,48 @@
+@startuml
+title zeldiablo version_1
+
+class Jeu{
+
+    
+}
+
+abstract class Case{
+
+
+}
+
+class Chemin{
+
+
+}
+
+class Mur{
+
+
+}
+
+class Labyrinthe{
+
+
+}
+
+
+
+abstract class Entite{
+
+
+}
+
+class Aventurier{
+
+
+}
+
+Labyrinthe "1" --> "*" Case : - cases
+Chemin -|> Case
+Mur -|> Case
+Aventurier -|> Entite
+Jeu "1" --> "1" Labyrinthe : - carte
+Jeu "1" --> "1" Aventurier : - joueur
+
+@enduml
