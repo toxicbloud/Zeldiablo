@@ -1,0 +1,16 @@
+@startuml
+title création du jeu
+
+participant "jeu: Jeu" as jeu
+participant "carte: Labyrinthe" as carte
+participant "joueur: Aventurier" as joueur
+
+[-> jeu : new
+activate  jeu
+    create carte
+    jeu -> carte : new
+    create joueur
+    jeu -> joueur : new
+deactivate jeu
+
+@enduml
