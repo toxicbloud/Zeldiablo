@@ -5,6 +5,8 @@ package com;
  */
 public class Jeu {
 
+
+
     private Labyrinthe carte;
     private Aventurier joueur;
 
@@ -25,10 +27,14 @@ public class Jeu {
     }
 
     /** 
-     * Methode getAventurier qui return le joueur
+     * Methode getJoueur qui return le joueur
      */
-    public Aventurier getAventurier() {
+    public Aventurier getJoueur() {
         return this.joueur;
     }
     
+    @Override
+    public String toString() {
+        return "Jeu [carte=" + carte + ", joueur=" + joueur + "]";
+    }
 }
