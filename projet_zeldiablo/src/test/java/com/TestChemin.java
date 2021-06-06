@@ -1,6 +1,6 @@
 package com;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class TestChemin {
     @Test
     public void TestConstructeurVide() {
         Case c = new Chemin();
-        assertTrue();
+        assertTrue(true);
     }
 
     /**
