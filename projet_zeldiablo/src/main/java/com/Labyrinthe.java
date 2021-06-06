@@ -19,6 +19,10 @@ public class Labyrinthe {
      */
     private Case[][] cases;
 
+    /**
+     * entrée du labyrinthe
+     */
+    private Case entree;
 
     /**
      * Constructeur de Labyrinthe
@@ -43,7 +47,7 @@ public class Labyrinthe {
     }
 
     /**
-     * Initialise le tableau de cases
+     * Initialise le tableau de cases et l'entrée
      */
     private void createLab() {
         this.cases = new Case[this.size][this.size];
@@ -52,6 +56,7 @@ public class Labyrinthe {
                 this.cases[i][j] = new Chemin();
             }
         }
+        this.entree = this.cases[this.size/2][this.size-1];
     }
 
     /**
@@ -84,5 +89,21 @@ public class Labyrinthe {
      */
     public void setCases(Case[][] cases) {
         this.cases = cases;
+    }
+
+    /**
+     * getter case entrée
+     * @return entree
+     */
+    public Case getEntree() {
+        return entree;
+    }
+
+    /**
+     * setter case entrée
+     * @param entree
+     */
+    public void setEntree(Case entree) {
+        this.entree = entree;
     }
 }
