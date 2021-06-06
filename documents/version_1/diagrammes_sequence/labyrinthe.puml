@@ -1,0 +1,20 @@
+@startuml
+title création du labyrinthe
+
+participant "laby: Labyrinthe" as laby
+participant "cases[][]: Case" as cases
+participant "cases[i][j]: Case" as c
+
+[-> laby : new
+activate  laby
+    create cases
+    laby -> cases : new
+    loop indice i
+        loop indice j
+            create c
+            laby -> c : new
+        end
+    end
+deactivate laby
+
+@enduml
