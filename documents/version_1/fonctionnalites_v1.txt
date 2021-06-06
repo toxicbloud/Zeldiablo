@@ -5,6 +5,7 @@
 - critères de validation :
 	- critère 1 : certaines cases traversables
     - critère 2 : but différent
+- RESPONSABLE : Paul (loisil2u)
 
 
 
@@ -14,7 +15,7 @@
 	- critère 1 : plusieurs cases fonctionnelles
 	- critère 2 : taille personnalisable (de base 10x10)
     - critère 3 : le labyrinthe a une entrée
-
+- RESPONSABLE : Tom et Pham (claude256u / duongdk099)
 
 
 - fonctionnalité 3 : creer un aventurier
@@ -22,9 +23,12 @@
 - critères de validation :
 	- critère 1 : l'aventurier a un nom
 	- critère 2 : l'aventurier a une position
+- RESPONSABLE : Antonin (roussea97u)
+
 
 - fonctionnalité 4 : créer un jeu
 - descriptif texte : initialise un jeu avec une carte et un joueur
 - critères de validation :
     - critère 1 : le jeu a un labyrinthe
     - critère 2 : le jeu a un joueur
+- RESPONSABLE : Celian (bauer129u)
