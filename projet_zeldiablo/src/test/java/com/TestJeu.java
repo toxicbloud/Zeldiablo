@@ -10,10 +10,10 @@ public class TestJeu {
         Jeu j = new Jeu("Talluan");
 
         // vérifie que le labyrinthe a bien été créé
-        assertEquals("pas la bonne taille", new Labyrinthe(), j.getLabyrinthe());
+        assertEquals("le labyrinthe n'a pas bien été créé", new Labyrinthe(), j.getLabyrinthe());
 
         // vérifie que l'Aventurier a bien été créé
-        assertEquals("pas la bonne taille", new Aventurier("Talluan"), j.getAventurier());
+        assertEquals("l'aventurier n'a pas bien été créé", new Aventurier("Talluan"), j.getAventurier());
         
         }
 }
