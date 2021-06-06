@@ -1,3 +1,4 @@
+package com;
 /**
  * Classe Mur, represente un Mur dans le labyrinthe
  */

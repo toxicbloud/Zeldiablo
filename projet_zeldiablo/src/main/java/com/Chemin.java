@@ -1,3 +1,4 @@
+package com;
 /**
  * Classe Chemin, represente un chemin dans le labyrinthe
  */
