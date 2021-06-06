@@ -4,6 +4,10 @@ package com;
  */
 public class Chemin extends Case {
 
+    /**
+     * CONSTRUCTEURS
+     */
+    
     /** Constructeur vide de Chemin */
     Chemin() {
         super(true);
