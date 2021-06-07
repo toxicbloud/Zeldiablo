@@ -5,8 +5,8 @@ public abstract class Monstre extends Entite {
     private int degat;
     private String description;
 
-    public Monstre(String nom) {
-        super(nom);
+    public Monstre(int d) {
+        super("Monstre", d);
     }
 
     public void soigner(int soin, Entite soignee) {

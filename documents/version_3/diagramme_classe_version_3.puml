@@ -84,6 +84,7 @@ abstract Monstre{
     - degat : int
     - description : String
 
+    + Monstre(String, int, int, String)
     + soigner(int, Entite) : void
     + getDegat() : int
     + setDegat(int) : void
@@ -92,7 +93,7 @@ abstract Monstre{
 
 class Gobelin{
 
-    Gobelin(int, int, String)
+    Gobelin(String, int, int, String)
 }
 
 class Aventurier{
