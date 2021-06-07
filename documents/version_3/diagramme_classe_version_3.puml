@@ -46,6 +46,7 @@ abstract class Entite{
     - nom : String
     - x : int
     - y : int
+    - pv : int
 
     + Entite(String)
     + getNom() : String
@@ -61,11 +62,9 @@ abstract class Entite{
 }
 
 abstract Monstre{
-    - pv : int
     - degat : int
     - description : String
 
-    + Soigner(Entite) : void
 }
 
 class Gobelin{

@@ -1,0 +1,18 @@
+@startuml
+title création et action du gobelin
+
+participant "gob: Gobelin" as gob
+participant "joueur: Aventurier" as joueur
+
+[-> gob : new
+activate  gob
+    gob -> joueur : attaquer(5)
+    activate joueur
+        joueur -> joueur : subirDegats(5)
+        joueur -> gob 
+    deactivate joueur
+    gob -> gob : subirDegats(3)
+    gob -> gob : seSoigner(3)
+[<- gob
+deactivate gob
+@enduml
