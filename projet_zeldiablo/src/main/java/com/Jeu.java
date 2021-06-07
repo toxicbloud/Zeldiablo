@@ -1,11 +1,12 @@
 package com;
+
+import moteurJeu.Commande;
+
 /**
  * Classe Jeu, qui va généré un labyrinthe et un joueur
  * @author Celian
  */
-public class Jeu {
-
-
+public class Jeu implements moteurJeu.Jeu {
 
     private Labyrinthe carte;
     private Aventurier joueur;
@@ -17,6 +18,18 @@ public class Jeu {
     public Jeu(String n) {
         this.carte = new Labyrinthe();
         this.joueur = new Aventurier(n);
+    }
+
+    /** Methode evoluer utilisee par le moteur de jeu */
+    @Override
+    public void evoluer(Commande commandeUser) {
+        
+    }
+
+    /** Methode etreFini utilisee par le moteur de jeu */
+    @Override
+    public boolean etreFini() {
+        return false;
     }
 
     /** 
