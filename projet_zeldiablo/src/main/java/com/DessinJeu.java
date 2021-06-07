@@ -26,7 +26,7 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         for (int x = 0; x < cases.length; x++) {
             for (int y = 0; y < cases[x].length; y++) {
                 g.setColor(cases[x][y].getSprite());
-                g.fillRect(x*Labyrinthe.TILE_SIZE, y*Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE);
+                g.fillRect(x*Labyrinthe.TILE_SIZE-jeu.getCam().getPos().x, y*Labyrinthe.TILE_SIZE-jeu.getCam().getPos().y, Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE);
             }
         }
         jeu.getJoueur().dessiner(image);

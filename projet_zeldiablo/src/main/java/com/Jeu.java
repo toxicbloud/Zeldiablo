@@ -19,6 +19,7 @@ public class Jeu implements moteurJeu.Jeu {
     public Jeu(String n) {
         this.carte = new Labyrinthe();
         this.joueur = new Aventurier(n, new Vec2(), 10);
+        this.cam = new Camera(this.joueur);
     }
 
     /** Methode evoluer utilisee par le moteur de jeu */
@@ -45,6 +46,14 @@ public class Jeu implements moteurJeu.Jeu {
      */
     public Aventurier getJoueur() {
         return this.joueur;
+    }
+
+    /** 
+     * Getter de l'attribut cam de Jeu
+     * @return valeur de l'attribut cam
+     */
+    public Camera getCam() {
+        return cam;
     }
     
     @Override
