@@ -1,15 +1,17 @@
 package com;
 
+import java.awt.image.BufferedImage;
+import java.awt.Graphics;
+
 /**
  * Labyrinthe
  */
-public class Labyrinthe {
+public class Labyrinthe implements moteurJeu.DessinJeu {
 
     /**
      * ATTRIBUTS
      */
-
-
+    public static final int TILE_SIZE = 20;
 
     /**
      * taille du tableau
@@ -59,6 +61,18 @@ public class Labyrinthe {
             }
         }
         this.entree = this.cases[this.size/2][this.size-1];
+    }
+
+    
+    @Override
+    public void dessiner(BufferedImage image) {
+        Graphics g = image.getGraphics();
+        for (int x = 0; x < cases.length; x++) {
+            for (int y = 0; y < cases[x].length; y++) {
+                g.setColor(cases[x][y].getSprite());
+                g.fillRect(x*TILE_SIZE, y*TILE_SIZE, TILE_SIZE, TILE_SIZE);
+            }
+        }
     }
 
     /**
