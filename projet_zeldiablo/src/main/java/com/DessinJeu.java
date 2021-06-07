@@ -27,15 +27,23 @@ public class DessinJeu implements moteurJeu.DessinJeu {
     @Override
     public void dessiner(BufferedImage image) {
         Graphics g = image.getGraphics();
+        int w = image.getWidth();
+        int h = image.getHeight();
         Case[][] cases = jeu.getCarte().getCases();
         for (int x = 0; x < cases.length; x++) {
             for (int y = 0; y < cases[x].length; y++) {
                 g.setColor(cases[x][y].getSprite());
-                g.fillRect(x*TILE_SIZE-jeu.getCam().getPos().x, y*TILE_SIZE-jeu.getCam().getPos().y, TILE_SIZE, TILE_SIZE);
+                int posX = x*TILE_SIZE-jeu.getCam().getPos().x + w/2 - TILE_SIZE/2;
+                int posY = y*TILE_SIZE-jeu.getCam().getPos().y + h/2 - TILE_SIZE/2;
+                g.fillRect(posX, posY, TILE_SIZE, TILE_SIZE);
             }
         }
         g.setColor(Color.BLUE);
-        g.fillOval((jeu.getJoueur().getPos().x-jeu.getCam().getPos().x)*TILE_SIZE/Labyrinthe.TILE_SIZE, (jeu.getJoueur().getPos().y-jeu.getCam().getPos().y)*TILE_SIZE/Labyrinthe.TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        int posX = (jeu.getJoueur().getPos().x-jeu.getCam().getPos().x)*TILE_SIZE/Labyrinthe.TILE_SIZE + w/2 - TILE_SIZE/2;
+        int posY = (jeu.getJoueur().getPos().y-jeu.getCam().getPos().y)*TILE_SIZE/Labyrinthe.TILE_SIZE + h/2 - TILE_SIZE/2;
+
+        g.fillOval(posX, posY, TILE_SIZE, TILE_SIZE);
+        // TILE_SIZE++;
     }
 
     /**
