@@ -25,8 +25,14 @@ public abstract class Entite{
     public Entite(String nom,Vec2 newPos, int pointVie,Labyrinthe l){
         this.nom=nom;
         this.pos = newPos;
-        this.pv=pointVie;
-        this.mort = false;
+        if (pointVie<=0) {
+            this.pv=0;
+            this.mort=true;
+        }
+        else{
+            this.pv=pointVie;
+            this.mort = false;
+        }
         this.laby=l;
     }
     /**
@@ -79,6 +85,10 @@ public abstract class Entite{
      * @return boolen a true si il est mort
      */
     public boolean etreMort(){
+        if (pv <= 0) {
+            mort =true;
+            this.pv=0;
+        }
         return this.mort;
     }
     /**
@@ -108,7 +118,7 @@ public abstract class Entite{
      * @param pointAtt point a attaquer
      */
     public void attaquerAutre(Entite e2, int pointAtt){
-        if (e2.etreMort() == false) {
+        if (e2.etreMort() == false && this.etreMort() == false && pointAtt >0 ) {
             e2.perdrePV(pointAtt);   
         }
     }
@@ -118,7 +128,7 @@ public abstract class Entite{
      * @param pointSoigner point a ajouter
      */
     public void soigner(Entite e2, int pointSoigner){
-        if (e2.etreMort() == false) {
+        if (e2.etreMort() == false&& this.etreMort() == false && pointSoigner >0    ) {
             e2.gagnerPV(pointSoigner);   
         }
     }
