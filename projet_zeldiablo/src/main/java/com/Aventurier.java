@@ -13,8 +13,8 @@ public class Aventurier extends Entite{
      * constructeur aventurier avec un nom
      * @param nom nom de l aventurier
      */
-    public Aventurier(String nom){
-        super(nom,new Vec2(0,0),10);
+    public Aventurier(String nom,Vec2 v,int pv){
+        super(nom,v,pv);
     }
 
     @Override
