@@ -94,9 +94,5 @@ public abstract class Entite implements DessinJeu{
         }
     }
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 423884dbbd8f8f2c9c116dc897aeb7db9674d028
 }
