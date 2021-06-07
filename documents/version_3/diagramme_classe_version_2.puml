@@ -1,0 +1,109 @@
+@startuml
+title zeldiablo version_3
+
+class Jeu{
+
+    + Jeu(String)
+    + getCarte() : Labyrinthe
+    + getJoueur() : Aventurier
+}
+
+abstract class Case{
+    - traversable : boolean
+    + Case()
+    + Case(boolean)
+    + isTraversable() : boolean
+}
+
+class Chemin{
+
+    + Chemin()
+}
+
+class Mur{
+
+    + Mur()
+}
+
+class Labyrinthe{
+
+    - size: int
+
+    + Labyrinthe()
+    + Labyrinthe(int)
+    - createLab() : void
+    + getSize() : int
+    + getCases() : Case[][]
+    + setCases(Case[][]) : void
+    + getEntree() : Case
+    + setEntree(Case) : void
+}
+
+
+
+abstract class Entite{
+
+    - nom : String
+    - x : int
+    - y : int
+
+    + Entite(String)
+    + getNom() : String
+    + setNom(String)
+    + getX() : int
+    + setX(int) : void
+    + getY() : int
+    + setY(int) : void
+    + seSoigner(int) : void
+    + attaquer(Entite) : void
+    + subirDegats(int) : void
+
+}
+
+abstract Monstre{
+    - pv : int
+    - degat : int
+    - description : String
+
+    + Soigner(Entite) : void
+}
+
+class Gobelin{
+
+    Gobelin(int, int, String)
+}
+
+class Aventurier{
+    + Aventurier(String)
+}
+
+class DessinJeu{
+    - jeu : Jeu
+}
+
+class Main{
+
+}
+
+interface MoteurJeu.DessinJeu{
+    + dessine(BufferedImage) : void
+}
+
+interface MoteurJeu.Jeu{
+    + evoluer(Commande) : void
+    + etreFini() : boolean
+}
+
+
+Labyrinthe "1" --> "*" Case : - cases
+Chemin -|> Case
+Mur -|> Case
+Jeu -|> MoteurJeu.Jeu
+DessinJeu -|> MoteurJeu.DessinJeu
+Aventurier -|> Entite
+Monstre -|> Entite
+Gobelin -|> Monstre
+Jeu "1" --> "1" Labyrinthe : - carte
+Jeu "1" --> "1" Aventurier : - joueur
+DessinJeu "1" --> "1" Jeu : - jeu
+@enduml
