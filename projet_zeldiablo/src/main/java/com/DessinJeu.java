@@ -35,7 +35,7 @@ public class DessinJeu implements moteurJeu.DessinJeu {
             }
         }
         g.setColor(Color.BLUE);
-        g.fillOval(jeu.getJoueur().getPos().x/Labyrinthe.TILE_SIZE*TILE_SIZE, jeu.getJoueur().getPos().y/Labyrinthe.TILE_SIZE*TILE_SIZE, TILE_SIZE, TILE_SIZE);
+        g.fillOval((jeu.getJoueur().getPos().x-jeu.getCam().getPos().x)*TILE_SIZE/Labyrinthe.TILE_SIZE, (jeu.getJoueur().getPos().y-jeu.getCam().getPos().y)*TILE_SIZE/Labyrinthe.TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
     /**

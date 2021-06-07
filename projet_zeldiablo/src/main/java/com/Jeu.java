@@ -25,6 +25,7 @@ public class Jeu implements moteurJeu.Jeu {
     /** Methode evoluer utilisee par le moteur de jeu */
     @Override
     public void evoluer(Commande commandeUser) {
+        this.joueur.deplacer(commandeUser);
         cam.deplacer(this.joueur);
     }
 
