@@ -1,5 +1,5 @@
 @startuml
-title zeldiablo version_1Fin
+title zeldiablo version_2
 
 class Jeu{
 
@@ -62,9 +62,24 @@ class Aventurier{
     + Aventurier(String)
 }
 
+class DessinJeu{
+    - jeu : Jeu
+}
+
+interface MoteurJeu.DessinJeu{
+    + dessine(BufferedImage) : void
+}
+
+interface MoteurJeu.Jeu{
+    + evoluer(Commande) : void
+    + etreFini() : boolean
+}
+
 Labyrinthe "1" --> "*" Case : - cases
 Chemin -|> Case
 Mur -|> Case
+Jeu -|> MoteurJeu.Jeu
+DessinJeu -|> MoteurJeu.DessinJeu
 Aventurier -|> Entite
 Jeu "1" --> "1" Labyrinthe : - carte
 Jeu "1" --> "1" Aventurier : - joueur
