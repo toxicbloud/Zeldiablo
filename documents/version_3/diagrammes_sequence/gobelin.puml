@@ -9,10 +9,14 @@ activate  gob
     gob -> joueur : attaquer(5)
     activate joueur
         joueur -> joueur : subirDegats(5)
-        joueur -> gob 
+        joueur --> gob 
     deactivate joueur
     gob -> gob : subirDegats(3)
     gob -> gob : seSoigner(3)
+    gob -> gob : etreMort()
+    activate  gob
+        gob --> gob : boolean
+    deactivate gob    
 [<- gob
 deactivate gob
 @enduml
