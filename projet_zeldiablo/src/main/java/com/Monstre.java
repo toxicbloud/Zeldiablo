@@ -7,6 +7,11 @@ public abstract class Monstre extends Entite {
 
     public Monstre(String nom) {
         super(nom);
+    }
 
+    public void soigner(int soin, Entite soignee) {
+        if (!etreMort()) {
+            soignee.soigner(soin);
+        }
     }
 }
