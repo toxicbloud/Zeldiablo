@@ -10,6 +10,7 @@ public class Jeu implements moteurJeu.Jeu {
 
     private Labyrinthe carte;
     private Aventurier joueur;
+    private Camera cam;
 
     /** 
      * Constructeur vide de Jeu 
@@ -17,13 +18,13 @@ public class Jeu implements moteurJeu.Jeu {
      */
     public Jeu(String n) {
         this.carte = new Labyrinthe();
-        this.joueur = new Aventurier(n);
+        this.joueur = new Aventurier(n, new Vec2(), 10);
     }
 
     /** Methode evoluer utilisee par le moteur de jeu */
     @Override
     public void evoluer(Commande commandeUser) {
-        
+        cam.deplacer(this.joueur);
     }
 
     /** Methode etreFini utilisee par le moteur de jeu */

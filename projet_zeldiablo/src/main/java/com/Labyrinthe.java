@@ -1,12 +1,9 @@
 package com;
 
-import java.awt.image.BufferedImage;
-import java.awt.Graphics;
-
 /**
  * Labyrinthe
  */
-public class Labyrinthe implements moteurJeu.DessinJeu {
+public class Labyrinthe {
 
     /**
      * ATTRIBUTS
@@ -57,29 +54,11 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
         this.cases = new Case[this.size][this.size];
         for (int i = 0; i < cases.length; i++) {
             for (int j = 0; j < cases[i].length; j++) {
-                // double r = Math.random();
-                // if (r <0.5) {
-                //     this.cases[i][j] = new Chemin();
-
-                // }
-                // else this.cases[i][j] = new Mur();
-                this.cases[i][j] = new Chemin();
+                this.cases[i][j] = (Math.random() > 0.5)? new Mur(): new Chemin();
 
             }
         }
         this.entree = new Vec2(this.size/2, this.size/2);
-    }
-
-    
-    @Override
-    public void dessiner(BufferedImage image) {
-        Graphics g = image.getGraphics();
-        for (int x = 0; x < cases.length; x++) {
-            for (int y = 0; y < cases[x].length; y++) {
-                g.setColor(cases[x][y].getSprite());
-                g.fillRect(x*TILE_SIZE, y*TILE_SIZE, TILE_SIZE, TILE_SIZE);
-            }
-        }
     }
 
     /**
