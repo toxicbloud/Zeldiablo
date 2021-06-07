@@ -1,12 +1,11 @@
 package com;
 
 import moteurJeu.Commande;
-import moteurJeu.DessinJeu;
 
 /**
  * @author Antonin
  */
-public abstract class Entite implements DessinJeu{
+public abstract class Entite{
 
     private String nom;
     private Vec2 pos;
