@@ -1,0 +1,13 @@
+@startuml
+title Exemple d'appel de la methode getCaseAtVec2
+participant "e: Entite" as entite
+participant "labyrinthe: Labyrinthe" as laby
+
+activate entite
+entite -> laby : getCaseAtVec2(position)
+activate laby
+entite <-- laby : cases[x][y]: Case
+deactivate laby
+deactivate entite
+
+@enduml
