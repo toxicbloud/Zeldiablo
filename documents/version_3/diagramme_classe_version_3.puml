@@ -84,7 +84,10 @@ abstract Monstre{
     - degat : int
     - description : String
 
-    + soigner(int, Entite): void
+    + soigner(int, Entite) : void
+    + getDegat() : int
+    + setDegat(int) : void
+    + getDescription() : String
 }
 
 class Gobelin{

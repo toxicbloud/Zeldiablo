@@ -14,4 +14,16 @@ public abstract class Monstre extends Entite {
             soignee.soigner(soin);
         }
     }
+
+    public int getDegat() {
+        return this.degat;
+    }
+
+    public void setDegat(int d) {
+        this.degat = d;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
 }
