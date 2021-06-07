@@ -66,6 +66,10 @@ class DessinJeu{
     - jeu : Jeu
 }
 
+class Main{
+
+}
+
 interface MoteurJeu.DessinJeu{
     + dessine(BufferedImage) : void
 }
@@ -75,6 +79,7 @@ interface MoteurJeu.Jeu{
     + etreFini() : boolean
 }
 
+
 Labyrinthe "1" --> "*" Case : - cases
 Chemin -|> Case
 Mur -|> Case
@@ -83,5 +88,5 @@ DessinJeu -|> MoteurJeu.DessinJeu
 Aventurier -|> Entite
 Jeu "1" --> "1" Labyrinthe : - carte
 Jeu "1" --> "1" Aventurier : - joueur
-
+DessinJeu "1" --> "1" Jeu : - jeu
 @enduml
