@@ -1,0 +1,47 @@
+* Fonctionnalités version 3
+
+- fonctionnalité 1 : Gestion unités de déplacement
+- descriptif texte : Création d'un système unitaire permettant de se déplacer dans les cases (utilisé par les entités et la caméra)
+- critères de validation :
+    - critère 1 : le joueur peut se déplacer dans une case
+    - critère 2 : le joueur peut changer de case
+- RESPONSABLE : Paul (loisil2u)
+
+
+
+- fonctionnalité 2 : le déplacement
+- descriptif texte : le joueur se déplace où il le veut, la où c'est possible grâce aux actions de l'utilisateur
+- critères de validation :
+    - critère 1 : le joueur se déplace dans toutes les directions
+    - critère 2 : le joueur est bloqué par les murs et les bords de map
+- RESPONSABLE : Antonin (roussea97u)
+
+
+- fonctionnalité 3 : les entités ont des points de vie 
+- descriptif texte : les entités ont de la vie, peuvent mourir, peuvent attaquerm peuvent soigner une autre
+- critères de validation :
+    - critère 1 : une entité peut mourir
+    - critère 2 : une entité peut perdre ou gagner des points de vie.
+    - critère 3 : une entité peut en attaquer une autre
+    - critère 4 : une entité peut en soigner une autre
+- RESPONSABLE : Tuong Duong (duongk099)
+
+
+- fonctionnalité 4 : Création d'une caméra
+- descriptif texte : La caméra suit une cible = entité (principalement le joueur, mais est capable de changer de cible, par exemple boss)
+- critères de validation :
+    - critère 1 : la camera suit sa cible après déplacement
+    - critère 2 : la caméra peut changer de cible.
+- RESPONSABLE : Tom (claude256u)
+
+
+- fonctionnalité 5 : Création de monstres
+- descriptif texte : le monstre est intialisé, se déplace, attaque
+- critères de validation :
+    - critère 1 : le monstre a des pv
+    - critère 2 : le monstre se déplace aléatoirement 
+- RESPONSABLE : Celian (bauer129u)
+
+
+
+
