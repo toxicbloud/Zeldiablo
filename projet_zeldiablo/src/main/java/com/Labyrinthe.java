@@ -26,7 +26,7 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
     /**
      * entrée du labyrinthe
      */
-    private Case entree;
+    private Vec2 entree;
 
     /**
      * Constructeur de Labyrinthe
@@ -67,7 +67,7 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
 
             }
         }
-        this.entree = this.cases[this.size/2][this.size-1];
+        this.entree = new Vec2(this.size/2, this.size/2);
     }
 
     
@@ -83,19 +83,20 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
     }
 
     /**
+     * Renvoie la case a la position donnee
+     * @param pos position dans la carte
+     * @return la case a la position donnee
+     */
+    public Case getCaseAtVec2(Vec2 pos) {
+        return null;
+    }
+
+    /**
      * getter size
      * @return size du tableau
      */
     public int getSize() {
         return size;
-    }
-
-    /**
-     * setter size
-     * @param size
-     */
-    public void setSize(int size) {
-        this.size = size;
     }
 
     /**
@@ -118,7 +119,7 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
      * getter case entrée
      * @return entree
      */
-    public Case getEntree() {
+    public Vec2 getEntree() {
         return entree;
     }
 
@@ -126,7 +127,7 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
      * setter case entrée
      * @param entree
      */
-    public void setEntree(Case entree) {
+    public void setEntree(Vec2 entree) {
         this.entree = entree;
     }
 }

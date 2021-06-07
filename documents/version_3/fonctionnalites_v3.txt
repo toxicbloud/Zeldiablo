@@ -3,8 +3,8 @@
 - fonctionnalité 1 : Gestion unités de déplacement
 - descriptif texte : Création d'un système unitaire permettant de se déplacer dans les cases (utilisé par les entités et la caméra)
 - critères de validation :
-    - critère 1 : le joueur peut se déplacer dans une case
-    - critère 2 : le joueur peut changer de case
+    - critère 1 : les entités peuvent savoir leur position dans la carte
+    - critère 2 : les entités peuvent se déplacer dans la carte
 - RESPONSABLE : Paul (loisil2u)
 
 
