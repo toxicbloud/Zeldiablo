@@ -35,5 +35,20 @@ public class Camera {
         this.pos = e.getPos();
     }
 
+    public Vec2 getPos() {
+        return pos;
+    }
+
+    public void setPos(Vec2 pos) {
+        this.pos = pos;
+    }
+
+    public Entite getTarget() {
+        return target;
+    }
+
+    public void setTarget(Entite target) {
+        this.target = target;
+    }
 
 }

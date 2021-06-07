@@ -81,5 +81,4 @@ public abstract class Entite implements DessinJeu{
 
     }
 
-    public void 
 }
