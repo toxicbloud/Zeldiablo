@@ -8,13 +8,15 @@ import org.junit.*;
 
 public class TestAventurier {
     private Aventurier j;
+    private Labyrinthe l;
     @Before
     public void init(){
-        j=new Aventurier("Tom",new Vec2(0,0),10);
+        l= new Labyrinthe();
+        j=new Aventurier("Tom",new Vec2(0,0),10,l);
     }
     @Test
     public void constructeurNom(){
-        Aventurier joueur=new Aventurier("Paul",new Vec2(0,0),10);
+        Aventurier joueur=new Aventurier("Paul",new Vec2(0,0),10,l);
         assertEquals("Paul", joueur.getNom());
     }
     @Test
