@@ -11,6 +11,7 @@ public abstract class Entite implements DessinJeu{
     private Vec2 pos;
     // new Attributs point de vie (PV)
     private int pv;
+    private boolean mort;
 
     /**
      * constructeur d' Entite
@@ -21,6 +22,7 @@ public abstract class Entite implements DessinJeu{
         this.nom=nom;
         this.pos = newPos;
         this.pv=pointVie;
+        this.mort = false;
     }
 
     public Vec2 getPos() {
@@ -62,7 +64,7 @@ public abstract class Entite implements DessinJeu{
     }
 
     public boolean etreMort(){
-        return this.pv<=0;
+        return this.mort;
     }
 
     public void gagnerPV(int gagnePv){
@@ -75,10 +77,26 @@ public abstract class Entite implements DessinJeu{
         if (this.etreMort() == false) {
             this.pv -= perdrePv;        
         }
+        if (this.pv <= 0) {
+            this.mort = true;
+        }
     }
 
-    public void attaquerAutre(Entite e2){
-
+    public void attaquerAutre(Entite e2, int pointAtt){
+        if (e2.etreMort() == false) {
+            e2.perdrePV(pointAtt);   
+        }
     }
 
+    public void soigner(Entite e2, int pointSoigner){
+        if (e2.etreMort() == false) {
+            e2.gagnerPV(pointSoigner);   
+        }
+    }
+
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 423884dbbd8f8f2c9c116dc897aeb7db9674d028
 }
