@@ -3,16 +3,22 @@ title création et action du gobelin
 
 participant "gob: Gobelin" as gob
 participant "joueur: Aventurier" as joueur
+participant "m: Monstre" as m
 
 [-> gob : new
 activate  gob
-    gob -> joueur : attaquer(5)
+    gob -> joueur : attaquer(int x)
     activate joueur
-        joueur -> joueur : subirDegats(5)
+        joueur -> joueur : subirDegats(x)
         joueur --> gob 
     deactivate joueur
-    gob -> gob : subirDegats(3)
-    gob -> gob : seSoigner(3)
+    gob -> m : soigner(int s, m)
+    activate m
+        m -> m : seSoigner(s)
+        m --> gob
+    deactivate m
+    gob -> gob : subirDegats(int z)
+    gob -> gob : seSoigner(int y)
     gob -> gob : etreMort()
     activate  gob
         gob --> gob : boolean

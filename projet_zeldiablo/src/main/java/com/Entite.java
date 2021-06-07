@@ -6,19 +6,31 @@ import moteurJeu.DessinJeu;
  * @author Antonin
  */
 public abstract class Entite implements DessinJeu{
+
     private String nom;
-    private int x;
-    private int y;
+    private Vec2 pos;
+    // new Attributs point de vie (PV)
+    private int pv;
 
     /**
      * constructeur d' Entite
      * @param nom nom de l'entite
+     * @param pointVie point de Vie de l'entité
      */
-    public Entite(String nom){
+    public Entite(String nom,Vec2 newPos, int pointVie){
         this.nom=nom;
-        this.x=0;
-        this.y=0;
+        this.pos = newPos;
+        this.pv=pointVie;
     }
+
+    public Vec2 getPos() {
+        return pos;
+    }
+    public void setPos(Vec2 pos) {
+        this.pos = pos;
+    }
+
+
     /**
      * 
      * @return nom de l'entite
@@ -33,35 +45,41 @@ public abstract class Entite implements DessinJeu{
     public void setNom(String nom) {
         this.nom = nom;
     }
+
     /**
-     * 
-     * @return position en X de l'entite
+     * get Point de Vie de l'entité
+     * @return point de vie de l'entité
      */
-    public int getX() {
-        return this.x;
+    public int getPV(){
+        return this.pv;
     }
     /**
-     * 
-     * @param x position en X de l'entite
+     * set Point de vie de l'entité
+     * @param newPV : new Point de vie de l'entité
      */
-    public void setX(int x) {
-        this.x = x;
-    }
-    /**
-     * 
-     * @return position en Y de l'entite
-     */
-    public int getY() {
-        return this.y;
-    }
-    /**
-     * 
-     * @param y position en Y de l'entite
-     */
-    public void setY(int y) {
-        this.y = y;
+    public void setPV(int newPV){
+        this.pv=newPV;
     }
 
-    
+    public boolean etreMort(){
+        return this.pv<=0;
+    }
 
+    public void gagnerPV(int gagnePv){
+        if (this.etreMort() == false){
+            this.pv += gagnePv;
+        }
+    }
+
+    public void perdrePV(int perdrePv){
+        if (this.etreMort() == false) {
+            this.pv -= perdrePv;        
+        }
+    }
+
+    public void attaquerAutre(Entite e2){
+
+    }
+
+    public void 
 }

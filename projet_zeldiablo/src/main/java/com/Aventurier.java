@@ -14,13 +14,13 @@ public class Aventurier extends Entite{
      * @param nom nom de l aventurier
      */
     public Aventurier(String nom){
-        super(nom);
+        super(nom,new Vec2(0,0),10);
     }
 
     @Override
     public void dessiner(BufferedImage image){
         Graphics g = image.getGraphics();
-        g.fillOval(this.getX(), this.getY(), 10, 10);
+        g.fillOval(this.getPos().x, this.getPos().y, 10, 10);
 
     }
 

@@ -62,17 +62,14 @@ class Vec2 {
 abstract class Entite{
 
     - nom : String
-    - x : int
-    - y : int
+    - pos : Vec2
     - pv : int
 
     + Entite(String)
     + getNom() : String
     + setNom(String)
-    + getX() : int
-    + setX(int) : void
-    + getY() : int
-    + setY(int) : void
+    + getPos() : Vec2
+    + setPos(Vec2) : void
     + etreMort(): boolean
     + seSoigner(int) : void
     + attaquer(Entite) : void
@@ -84,16 +81,21 @@ abstract Monstre{
     - degat : int
     - description : String
 
-    + soigner(int, Entite): void
+    + Monstre(String, int, int, String)
+    + soigner(int, Entite) : void
+    + getDegat() : int
+    + setDegat(int) : void
+    + getDescription() : String
 }
 
 class Gobelin{
 
-    Gobelin(int, int, String)
+    Gobelin(String, int, int, String)
 }
 
 class Aventurier{
     + Aventurier(String)
+    + deplacer(Commande)
 }
 
 class DessinJeu{
@@ -115,6 +117,12 @@ interface MoteurJeu.Jeu{
 }
 
 
+class Camera {
+    + Camera(Entite)
+    + deplacer(Entite)
+}
+
+
 Labyrinthe "1" --> "*" Case : - cases
 Chemin -|> Case
 Mur -|> Case
@@ -126,4 +134,6 @@ Gobelin -|> Monstre
 Jeu "1" --> "1" Labyrinthe : - carte
 Jeu "1" --> "1" Aventurier : - joueur
 DessinJeu "1" --> "1" Jeu : - jeu
+Camera "1" --> "1" Entite : - target
+Camera "1" --> "1" Vec2 : - pos
 @enduml
