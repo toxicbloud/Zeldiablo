@@ -22,31 +22,37 @@ public class Gobelin extends Monstre {
      * methode qui permet à un gobelin de se déplacer
      */
     public void deplacer() {
+        Case cs;
         int rand = (int)(Math.random() * 4);
         switch(rand) {
             case 0:
-                if(getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0))).isTraversable()){
-                   this.getPos().x--;
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0)));
+                if(cs!=null && cs.isTraversable()){
+                    setPos(new Vec2(getPos().x--, getPos().y));
                 }
                 break;
             case 1:
-                if(getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(1,0))).isTraversable()){
-                    this.getPos().x++;
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0)));
+                if(cs!=null && cs.isTraversable()){
+                    setPos(new Vec2(getPos().x++, getPos().y));
                 }
                 break;
             case 2:
-                if(getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,-1))).isTraversable()){
-                    this.getPos().y--;
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0)));
+                if(cs!=null && cs.isTraversable()){
+                    setPos(new Vec2(getPos().x, getPos().y--));
                 }
                 break;
             case 3: 
-                if(getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,1))).isTraversable()){
-                    this.getPos().y++;
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0)));
+                if(cs!=null && cs.isTraversable()){
+                    setPos(new Vec2(getPos().x, getPos().y++));
                 }
                 break;
             default:
-                if(getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,1))).isTraversable()){
-                    this.getPos().y++;
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0)));
+                if(cs!=null && cs.isTraversable()){
+                    setPos(new Vec2(getPos().x, getPos().y++));
                 }
         }
     }
