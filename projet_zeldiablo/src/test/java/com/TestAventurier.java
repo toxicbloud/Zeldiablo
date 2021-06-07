@@ -10,29 +10,29 @@ public class TestAventurier {
     private Aventurier j;
     @Before
     public void init(){
-        j=new Aventurier("Tom");
+        j=new Aventurier("Tom",new Vec2(0,0),10);
     }
     @Test
     public void constructeurNom(){
-        Aventurier joueur=new Aventurier("Paul");
+        Aventurier joueur=new Aventurier("Paul",new Vec2(0,0),10);
         assertEquals("Paul", joueur.getNom());
     }
     @Test
     public void testPositionXDeBase(){
-        assertEquals(0, j.getX());
+        assertEquals(0, j.getPos().x);
     }
     @Test
     public void testPositionYDeBase(){
-        assertEquals(0, j.getY());
+        assertEquals(0, j.getPos().y);
     }
     @Test
     public void testPositionX(){
-        j.setX(10);
-        assertEquals(10, j.getX());
+        j.setPos(new Vec2(10, j.getPos().y));
+        assertEquals(10, j.getPos().x);
     }
     @Test
     public void testPositionY(){
-        j.setY(12);
-        assertEquals(12, j.getY());
+        j.setPos(new Vec2(0,12));
+        assertEquals(12, j.getPos().y);
     }
 }
