@@ -95,25 +95,33 @@ public abstract class Entite{
             e2.gagnerPV(pointSoigner);   
         }
     }
+    public Labyrinthe getLabyrinthe(){
+        return this.laby;
+    }
     /**
      * deplace l'entite en prenant en compte les collisions
      * @param c commande direction a aller
      */
     public void deplacer(Commande c){
+        Case cs;
         if(c.gauche){
-            if(laby.getCaseAtVec2(this.pos.plus(new Vec2(-1,0))).isTraversable()){
+            cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(-1,0)));
+            if(cs!=null && cs.isTraversable()){
                 this.pos.x--;
             }
         }else if(c.droite){
-            if(laby.getCaseAtVec2(this.pos.plus(new Vec2(1,0))).isTraversable()){
+            cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(1,0)));
+            if(cs!=null && cs.isTraversable()){
                 this.pos.x++;
             }
         }else if(c.haut){
-            if(laby.getCaseAtVec2(this.pos.plus(new Vec2(0,-1))).isTraversable()){
+            cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,-1)));
+            if(cs!=null && cs.isTraversable()){
                 this.pos.y--;
             }
         }else if(c.bas){
-            if(laby.getCaseAtVec2(this.pos.plus(new Vec2(0,1))).isTraversable()){
+            cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,1)));
+            if(cs!=null && cs.isTraversable()){
                 this.pos.y++;
             }
         }
