@@ -5,10 +5,16 @@ import org.junit.*;
 
 public class TestEntite {
     
-    @Test
-    public void TestEntiteDeplacer() {
-        assertTrue(true);
-    }
+    // @Test
+    // public void TestEntiteDeplacer() {
+
+    //     Labyrinthe l = new Labyrinthe();
+    //     Vec2 v = new Vec2(50, 100);
+    //     Entite e1 = new Aventurier("Hallo",v,100, l);
+
+    //     Commande
+
+    // }
 
     /**
      * Test Constructor avec case normal de point de vie
@@ -249,4 +255,6 @@ public class TestEntite {
         e1.soigner(e2, 0);
         assertEquals(0, e2.getPV());
     }
+
+
 }
