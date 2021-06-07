@@ -1,0 +1,35 @@
+@startuml
+
+class Labyrinthe {
+    + TILE_SIZE
+    - size
+    - cases
+    - entree
+    --
+    + Labyrinthe()
+    + Labyrinthe(s: int)
+    - createLab()
+    + dessiner(image: BufferedImage)
+    + getSize(): int
+    + getCases(): Case[][]
+    + getEntree(): Vec2
+    + setEntree(entree: Vec2)
+    + getCaseAtVec2(pos: Vec2)
+}
+
+class Vec2 {
+    + x
+    + y
+    --
+    + Vec2()
+    + Vec2(: int, y: int)
+    + plus(v: Vec2): Vec2
+    + minus(v: Vec2): Vec2
+    + times(v: Vec2): Vec2
+    + div(v: Vec2): Vec2
+    + equals(v: Vec2): boolean
+    + isZero() : boolean
+    + toString(): String
+}
+
+@enduml

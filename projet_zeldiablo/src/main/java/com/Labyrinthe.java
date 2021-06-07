@@ -26,7 +26,7 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
     /**
      * entrée du labyrinthe
      */
-    private Case entree;
+    private Vec2 entree;
 
     /**
      * Constructeur de Labyrinthe
@@ -91,14 +91,6 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
     }
 
     /**
-     * setter size
-     * @param size
-     */
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    /**
      * getter tableau de cases
      * @return tableau de cases
      */
@@ -118,7 +110,7 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
      * getter case entrée
      * @return entree
      */
-    public Case getEntree() {
+    public Vec2 getEntree() {
         return entree;
     }
 
@@ -126,7 +118,7 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
      * setter case entrée
      * @param entree
      */
-    public void setEntree(Case entree) {
+    public void setEntree(Vec2 entree) {
         this.entree = entree;
     }
 }
