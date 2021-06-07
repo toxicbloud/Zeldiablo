@@ -18,7 +18,7 @@ public class Jeu implements moteurJeu.Jeu {
      */
     public Jeu(String n) {
         this.carte = new Labyrinthe();
-        this.joueur = new Aventurier(n, new Vec2(), 10);
+        this.joueur = new Aventurier(n, new Vec2(), 10, this.carte);
         this.cam = new Camera(this.joueur);
     }
 
