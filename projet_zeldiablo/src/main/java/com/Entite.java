@@ -1,5 +1,6 @@
 package com;
 
+import moteurJeu.Commande;
 import moteurJeu.DessinJeu;
 
 /**
@@ -12,17 +13,19 @@ public abstract class Entite implements DessinJeu{
     // new Attributs point de vie (PV)
     private int pv;
     private boolean mort;
+    private Labyrinthe laby;
 
     /**
      * constructeur d' Entite
      * @param nom nom de l'entite
      * @param pointVie point de Vie de l'entité
      */
-    public Entite(String nom,Vec2 newPos, int pointVie){
+    public Entite(String nom,Vec2 newPos, int pointVie,Labyrinthe l){
         this.nom=nom;
         this.pos = newPos;
         this.pv=pointVie;
         this.mort = false;
+        this.laby=l;
     }
 
     public Vec2 getPos() {
@@ -93,5 +96,9 @@ public abstract class Entite implements DessinJeu{
             e2.gagnerPV(pointSoigner);   
         }
     }
-
+    // public void deplacer(Commande c){
+    //     if(c.gauche){
+            
+    //     }
+    // }
 }
