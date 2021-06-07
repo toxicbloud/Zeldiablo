@@ -5,8 +5,8 @@ public abstract class Monstre extends Entite {
     private int degat;
     private String description;
 
-    public Monstre(String n, Vec2 v, int vie, int d, String desc) {
-        super(n, v, vie);
+    public Monstre(String n, Vec2 v, int vie, int d, String desc, Labyrinthe l) {
+        super(n, v, vie, l);
         this.degat = d;
         this.description = desc;
 
