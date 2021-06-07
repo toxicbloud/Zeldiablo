@@ -1,0 +1,20 @@
+@startuml
+title Création et action du entite
+
+participant "m: Main" as main
+participant "e1:Entite" as e1
+participant "e2:Entite" as e2
+
+activate main
+activate e1
+    main -> e1 : soigner(e2,10)
+    activate e2
+		e1 -> e2 : gagnerPV(10)
+	main -> e1 : attaquer(e2,50)
+		e1 -> e2 : perdrePV(50)
+		e2 -> e2 : mort()
+	deactivate e2
+[<- e1
+deactivate e1
+deactivate main
+@enduml
