@@ -1,5 +1,7 @@
 package com;
 
+import java.util.ArrayList;
+
 import moteurJeu.Commande;
 
 /**
@@ -11,6 +13,7 @@ public class Jeu implements moteurJeu.Jeu {
     private Labyrinthe carte;
     private Aventurier joueur;
     private Camera cam;
+    private ArrayList<Entite> ennemis;
 
     /** 
      * Constructeur vide de Jeu 
@@ -20,6 +23,7 @@ public class Jeu implements moteurJeu.Jeu {
         this.carte = new Labyrinthe();
         this.joueur = new Aventurier(n, new Vec2(), 10, this.carte);
         this.cam = new Camera(this.joueur);
+        this.ennemis.add(new Gobelin(5, 20, new Vec2(2, 2), this.carte));
     }
 
     /** Methode evoluer utilisee par le moteur de jeu */
