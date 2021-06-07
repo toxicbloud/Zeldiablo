@@ -59,6 +59,10 @@ public class Labyrinthe {
             }
         }
         this.entree = new Vec2(this.size/2, this.size/2);
+        cases[0][0] = new Chemin();
+        cases[1][0] = new Chemin();
+        cases[0][1] = new Chemin();
+        cases[1][1] = new Chemin();
     }
 
     /**
