@@ -60,6 +60,14 @@ public class Jeu implements moteurJeu.Jeu {
     public Camera getCam() {
         return cam;
     }
+
+    /**
+     * Getter de l'attribut ennemis de Jeu
+     * @return valeur de l'attribut ennemis
+     */
+    public ArrayList<Entite> getEnnemis() {
+        return ennemis;
+    }
     
     @Override
     public String toString() {
