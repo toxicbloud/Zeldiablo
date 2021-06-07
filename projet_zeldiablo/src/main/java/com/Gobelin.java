@@ -7,7 +7,7 @@ public class Gobelin extends Monstre {
     }
 
     public void deplacer() {
-        int rand = (int)(Math.random() * 3);
+        int rand = (int)(Math.random() * 4);
         switch(rand) {
             case 0:
                 if(getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0))).isTraversable()){
