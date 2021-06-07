@@ -11,7 +11,7 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
     /**
      * ATTRIBUTS
      */
-    public static final int TILE_SIZE = 20;
+    public static final int TILE_SIZE = 30;
 
     /**
      * taille du tableau
@@ -57,7 +57,14 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
         this.cases = new Case[this.size][this.size];
         for (int i = 0; i < cases.length; i++) {
             for (int j = 0; j < cases[i].length; j++) {
+                // double r = Math.random();
+                // if (r <0.5) {
+                //     this.cases[i][j] = new Chemin();
+
+                // }
+                // else this.cases[i][j] = new Mur();
                 this.cases[i][j] = new Chemin();
+
             }
         }
         this.entree = this.cases[this.size/2][this.size-1];
