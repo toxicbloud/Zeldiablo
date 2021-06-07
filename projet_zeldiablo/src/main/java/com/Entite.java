@@ -95,14 +95,9 @@ public abstract class Entite{
             e2.gagnerPV(pointSoigner);   
         }
     }
-<<<<<<< HEAD
-
-
-=======
     // public void deplacer(Commande c){
     //     if(c.gauche){
             
     //     }
     // }
->>>>>>> dbb95ebd6f45a7b7aa014f582b901033ab529fbc
 }
