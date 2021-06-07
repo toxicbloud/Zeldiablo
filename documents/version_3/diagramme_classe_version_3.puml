@@ -62,17 +62,14 @@ class Vec2 {
 abstract class Entite{
 
     - nom : String
-    - x : int
-    - y : int
+    - pos : Vec2
     - pv : int
 
     + Entite(String)
     + getNom() : String
     + setNom(String)
-    + getX() : int
-    + setX(int) : void
-    + getY() : int
-    + setY(int) : void
+    + getPos() : Vec2
+    + setPos(Vec2) : void
     + etreMort(): boolean
     + seSoigner(int) : void
     + attaquer(Entite) : void
@@ -98,6 +95,7 @@ class Gobelin{
 
 class Aventurier{
     + Aventurier(String)
+    + deplacer(Commande)
 }
 
 class DessinJeu{

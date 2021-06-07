@@ -88,7 +88,10 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
      * @return la case a la position donnee
      */
     public Case getCaseAtVec2(Vec2 pos) {
-        return null;
+        if (pos.x > this.size*TILE_SIZE || pos.x < 0 || pos.y > this.size*TILE_SIZE || pos.y < 0) return null;
+        int iX = pos.x / TILE_SIZE;
+        int iY = pos.y / TILE_SIZE;
+        return cases[iX][iY];
     }
 
     /**
