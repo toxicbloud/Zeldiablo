@@ -1,0 +1,41 @@
+@startuml
+title implementation moteur de jeu
+participant "Main" as main
+participant "mg: MoteurGraphique" as moteurJeu
+participant "dj: DessinJeu" as dessinJeu
+participant "j: Jeu" as jeu
+participant "carte: Labyrinthe" as carte
+participant "joueur: Aventurier" as joueur
+
+activate main
+    create jeu
+    main -> jeu : create
+    activate  jeu
+        create carte
+        jeu -> carte : create
+        create joueur
+        jeu -> joueur : create
+        deactivate jeu
+    activate joueur
+    deactivate joueur
+    create dessinJeu
+    main -> dessinJeu: create(j)
+    create moteurJeu
+    main -> moteurJeu: create(j, dj)
+    loop [non etreFini]
+        moteurJeu -> jeu : etreFini
+        activate jeu
+        moteurJeu <-- jeu
+        deactivate jeu
+        moteurJeu -> jeu : evoluer
+        activate jeu
+        moteurJeu <-- jeu
+        deactivate jeu
+        moteurJeu -> dessinJeu : dessiner
+        activate dessinJeu
+        moteurJeu <-- dessinJeu
+        deactivate dessinJeu
+    end
+deactivate main
+
+@enduml
