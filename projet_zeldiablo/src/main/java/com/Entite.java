@@ -95,9 +95,27 @@ public abstract class Entite{
             e2.gagnerPV(pointSoigner);   
         }
     }
-    // public void deplacer(Commande c){
-    //     if(c.gauche){
-            
-    //     }
-    // }
+    /**
+     * deplace l'entite en prenant en compte les collisions
+     * @param c commande direction a aller
+     */
+    public void deplacer(Commande c){
+        if(c.gauche){
+            if(laby.getCaseAtVec2(this.pos.plus(new Vec2(-1,0))).isTraversable()){
+                this.pos.x--;
+            }
+        }else if(c.droite){
+            if(laby.getCaseAtVec2(this.pos.plus(new Vec2(1,0))).isTraversable()){
+                this.pos.x++;
+            }
+        }else if(c.haut){
+            if(laby.getCaseAtVec2(this.pos.plus(new Vec2(0,-1))).isTraversable()){
+                this.pos.y--;
+            }
+        }else if(c.bas){
+            if(laby.getCaseAtVec2(this.pos.plus(new Vec2(0,1))).isTraversable()){
+                this.pos.y++;
+            }
+        }
+    }
 }
