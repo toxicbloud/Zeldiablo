@@ -5,13 +5,16 @@ public abstract class Monstre extends Entite {
     private int degat;
     private String description;
 
-    public Monstre(int d) {
-        super("Monstre", d);
+    public Monstre(String n, Vec2 v, int vie, int d, String desc, Labyrinthe l) {
+        super(n, v, vie, l);
+        this.degat = d;
+        this.description = desc;
+
     }
 
     public void soigner(int soin, Entite soignee) {
         if (!etreMort()) {
-            soignee.seSoigner(soin);
+            soignee.gagnerPV(soin);
         }
     }
 
