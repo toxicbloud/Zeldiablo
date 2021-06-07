@@ -46,8 +46,8 @@ public class DessinJeu implements moteurJeu.DessinJeu {
 
         for(Entite e: jeu.getEnnemis()) {
             g.setColor(Color.RED);
-            posX = (jeu.getJoueur().getPos().x-jeu.getCam().getPos().x)*TILE_SIZE/Labyrinthe.TILE_SIZE + w/2 - TILE_SIZE/2;
-            posY = (jeu.getJoueur().getPos().y-jeu.getCam().getPos().y)*TILE_SIZE/Labyrinthe.TILE_SIZE + h/2 - TILE_SIZE/2;
+            posX = (e.getPos().x-jeu.getCam().getPos().x)*TILE_SIZE/Labyrinthe.TILE_SIZE + w/2 - TILE_SIZE/2;
+            posY = (e.getPos().y-jeu.getCam().getPos().y)*TILE_SIZE/Labyrinthe.TILE_SIZE + h/2 - TILE_SIZE/2;
             g.fillOval(posX, posY, TILE_SIZE, TILE_SIZE);
         }
     }
