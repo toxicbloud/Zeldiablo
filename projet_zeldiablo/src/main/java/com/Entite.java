@@ -1,8 +1,11 @@
 package com;
+
+import moteurJeu.DessinJeu;
+
 /**
  * @author Antonin
  */
-public abstract class Entite {
+public abstract class Entite implements DessinJeu{
     private String nom;
     private int x;
     private int y;

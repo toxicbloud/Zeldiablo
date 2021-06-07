@@ -1,7 +1,12 @@
 package com;
+import java.awt.Graphics;
 /**
  * @author Antonin
  */
+import java.awt.image.BufferedImage;
+
+import moteurJeu.DessinJeu;
+
 public class Aventurier extends Entite{
 
     /**
@@ -11,4 +16,12 @@ public class Aventurier extends Entite{
     public Aventurier(String nom){
         super(nom);
     }
+
+    @Override
+    public void dessiner(BufferedImage image){
+        Graphics g = image.getGraphics();
+        g.fillOval(this.getX(), this.getY(), 10, 10);
+
+    }
+
 }
