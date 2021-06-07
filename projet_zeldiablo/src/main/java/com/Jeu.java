@@ -1,7 +1,6 @@
 package com;
 
 import java.util.ArrayList;
-
 import moteurJeu.Commande;
 
 /**
@@ -20,6 +19,7 @@ public class Jeu implements moteurJeu.Jeu {
      * @param n nom de l aventurier
      */
     public Jeu(String n) {
+        this.ennemis = new ArrayList<Entite>();
         this.carte = new Labyrinthe();
         this.joueur = new Aventurier(n, new Vec2(), 10, this.carte);
         this.cam = new Camera(this.joueur);
