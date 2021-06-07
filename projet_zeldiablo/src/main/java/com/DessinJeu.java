@@ -33,8 +33,8 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         for (int x = 0; x < cases.length; x++) {
             for (int y = 0; y < cases[x].length; y++) {
                 g.setColor(cases[x][y].getSprite());
-                int posX = x*TILE_SIZE-jeu.getCam().getPos().x + w/2 - TILE_SIZE/2;
-                int posY = y*TILE_SIZE-jeu.getCam().getPos().y + h/2 - TILE_SIZE/2;
+                int posX = (x-jeu.getCam().getPos().x)*TILE_SIZE + w/2 - TILE_SIZE/2;
+                int posY = (y-jeu.getCam().getPos().y)*TILE_SIZE + h/2 - TILE_SIZE/2;
                 g.fillRect(posX, posY, TILE_SIZE, TILE_SIZE);
             }
         }
