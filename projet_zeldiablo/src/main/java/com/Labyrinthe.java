@@ -67,7 +67,7 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
 
             }
         }
-        this.entree = this.cases[this.size/2][this.size-1];
+        this.entree = new Vec2(this.size/2, this.size/2);
     }
 
     
@@ -80,6 +80,15 @@ public class Labyrinthe implements moteurJeu.DessinJeu {
                 g.fillRect(x*TILE_SIZE, y*TILE_SIZE, TILE_SIZE, TILE_SIZE);
             }
         }
+    }
+
+    /**
+     * Renvoie la case a la position donnee
+     * @param pos position dans la carte
+     * @return la case a la position donnee
+     */
+    public Case getCaseAtVec2(Vec2 pos) {
+        return null;
     }
 
     /**
