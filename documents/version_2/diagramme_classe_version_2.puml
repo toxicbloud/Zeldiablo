@@ -1,0 +1,72 @@
+@startuml
+title zeldiablo version_1Fin
+
+class Jeu{
+
+    + Jeu(String)
+    + getCarte() : Labyrinthe
+    + getJoueur() : Aventurier
+}
+
+abstract class Case{
+    - traversable : boolean
+    + Case()
+    + Case(boolean)
+    + isTraversable() : boolean
+}
+
+class Chemin{
+
+    + Chemin()
+}
+
+class Mur{
+
+    + Mur()
+}
+
+class Labyrinthe{
+
+    - size: int
+
+    + Labyrinthe()
+    + Labyrinthe(int)
+    - createLab() : void
+    + getSize() : int
+    + getCases() : Case[][]
+    + setCases(Case[][]) : void
+    + getEntree() : Case
+    + setEntree(Case) : void
+}
+
+
+
+abstract class Entite{
+
+    - nom : String
+    - x : int
+    - y : int
+
+    + Entite(String)
+    + getNom() : String
+    + setNom(String)
+    + getX() : int
+    + setX(int) : void
+    + getY() : int
+    + setY(int) : void
+
+}
+
+class Aventurier{
+
+    + Aventurier(String)
+}
+
+Labyrinthe "1" --> "*" Case : - cases
+Chemin -|> Case
+Mur -|> Case
+Aventurier -|> Entite
+Jeu "1" --> "1" Labyrinthe : - carte
+Jeu "1" --> "1" Aventurier : - joueur
+
+@enduml

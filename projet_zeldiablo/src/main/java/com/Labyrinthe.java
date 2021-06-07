@@ -9,6 +9,8 @@ public class Labyrinthe {
      * ATTRIBUTS
      */
 
+
+
     /**
      * taille du tableau
      */
