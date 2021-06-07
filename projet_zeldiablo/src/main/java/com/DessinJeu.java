@@ -1,9 +1,14 @@
 package com;
 
 import java.awt.image.BufferedImage;
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class DessinJeu implements moteurJeu.DessinJeu {
+
+    /** Taille graphique d'une case */
+    public static final int TILE_SIZE = 50;
+
     /** Attribut jeu de DessinJeu, le jeu a dessiner */
     private Jeu jeu;
 
@@ -26,10 +31,11 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         for (int x = 0; x < cases.length; x++) {
             for (int y = 0; y < cases[x].length; y++) {
                 g.setColor(cases[x][y].getSprite());
-                g.fillRect(x*Labyrinthe.TILE_SIZE-jeu.getCam().getPos().x, y*Labyrinthe.TILE_SIZE-jeu.getCam().getPos().y, Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE);
+                g.fillRect(x*TILE_SIZE-jeu.getCam().getPos().x, y*TILE_SIZE-jeu.getCam().getPos().y, TILE_SIZE, TILE_SIZE);
             }
         }
-        jeu.getJoueur().dessiner(image);
+        g.setColor(Color.BLUE);
+        g.fillOval(jeu.getJoueur().getPos().x/Labyrinthe.TILE_SIZE*TILE_SIZE, jeu.getJoueur().getPos().y/Labyrinthe.TILE_SIZE*TILE_SIZE, TILE_SIZE, TILE_SIZE);
     }
 
     /**
