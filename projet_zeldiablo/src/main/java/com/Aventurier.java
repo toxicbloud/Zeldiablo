@@ -12,9 +12,12 @@ public class Aventurier extends Entite{
 
     private int energie;
     private Arme arme;
+
     /**
-     * constructeur aventurier avec un nom
-     * @param nom nom de l aventurier
+     * constructeur aventurier
+     * @param nom
+     * @param v position
+     * @param l labyrinthe
      */
     public Aventurier(String nom,Vec2 v,Labyrinthe l){
         super(nom,v,100,l);
@@ -22,27 +25,55 @@ public class Aventurier extends Entite{
         this.arme=new Couteau(5, 1);
     }
 
+    /**
+     * constructeur aventurier
+     * @param nom
+     * @param v position
+     * @param l labyrinthe
+     * @param j jeu
+     */
     public Aventurier(String nom,Vec2 v,Labyrinthe l, Jeu j){
         super(nom,v,100,l,j);
         this.energie = 100;
         this.arme=new Couteau(5, 1);
     }
 
+    /**
+     * equipe une arme à l'aventurier
+     * @param a1
+     */
     public void equiper_Arme(Arme a1){
         this.arme=a1;
     }
 
+    /**
+     * jette l'arme de l'aventurier
+     */
     public void jeter_Arme(){
         this.arme = null;
     }
     
+    /**
+     * donne l'arme de l'aventurier
+     * @return arme
+     */
     public Arme getArme(){
         return this.arme;
     }
+
+    /**
+     * donne l'energie
+     * @return energie
+     */
     public int getEnergie(){
         return this.energie;
     }
+    
     @Override
+    /**
+     * deplace l'aventurier
+     * @param c Commande
+     */
     public void deplacer(Commande c){
         super.deplacer(c);
 
@@ -61,11 +92,19 @@ public class Aventurier extends Entite{
         }
     }
 
+    /**
+     * retourne la range de l'arme
+     * @return
+     */
     public int zone() {
         return this.arme.getRange();
 
     }
 
+    /**
+     * attaque dans la zone adéquate
+     * @param r range de l'arme
+     */
     public void attaqueZone(int r) {
         Vec2 dir = this.getDerniereDir();
         System.out.println(dir);
@@ -107,6 +146,10 @@ public class Aventurier extends Entite{
         }
     }
 
+    /**
+     * attaque une entité
+     * @param e2 entite à attaquer
+     */
     @Override
     public void attaquerAutre(Entite e2){
         
