@@ -36,6 +36,7 @@ class Labyrinthe {
     + Labyrinthe()
     + Labyrinthe(s: int)
     - createLab()
+    - generateLab()
     + dessiner(image: BufferedImage)
     + getSize(): int
     + getCases(): Case[][]
