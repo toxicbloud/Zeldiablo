@@ -10,12 +10,17 @@ public abstract class Arme {
     private int range ; 
 
 
-    public Arme(int de){
+    public Arme(int de, int range){
         if (de<=0) {
             this.degats=1;
         }
         else{
             this.degats=de;
+        }
+        if (range<=0) {
+            this.range=5;
+        } else {
+            this.range=range;
         }
     }
     public void attaquer(Entite e1){

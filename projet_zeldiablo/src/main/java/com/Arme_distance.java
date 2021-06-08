@@ -11,12 +11,8 @@ public class Arme_distance extends Arme {
      * @param munitions munitions de Arme
      */
     public Arme_distance(int de, int range, int munitions){
-        super(de);
-        if (range<=0) {
-            this.range=5;
-        } else {
-            this.range=range;
-        }
+        super(de,range);
+        
         if (munitions<=0) {
             this.munitions=5;
         } else {
@@ -24,20 +20,7 @@ public class Arme_distance extends Arme {
         }
     }
 
-    /**
-     * 
-     * @return int range
-     */
-    public int getRange() {
-		return this.range;
-	}
-    /**
-     * set range
-     * @param range 
-     */
-	public void setRange(int range) {
-		this.range = range;
-	}
+    
 
     /**
      * 
