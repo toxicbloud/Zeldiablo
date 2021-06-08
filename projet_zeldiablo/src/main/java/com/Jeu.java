@@ -33,9 +33,6 @@ public class Jeu implements moteurJeu.Jeu {
     public void evoluer(Commande commandeUser) {
         this.joueur.deplacer(commandeUser);
         cam.deplacer(this.joueur);
-        for(Entite e: this.ennemis) {
-            ((Monstre)e).deplacer();
-        }
     }
 
     /** Methode etreFini utilisee par le moteur de jeu */

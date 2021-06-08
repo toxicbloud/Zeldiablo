@@ -1,5 +1,7 @@
 package com;
 
+import java.util.ArrayList;
+
 import moteurJeu.Commande;
 
 /**
@@ -36,7 +38,7 @@ public class Aventurier extends Entite{
         super.deplacer(c);
 
         if (c.espace) {
-            System.out.println("yop");
+
         }
         Labyrinthe laby=getLabyrinthe();
         Case proch=laby.getCaseAtVec2(getPos());
@@ -44,8 +46,52 @@ public class Aventurier extends Entite{
         if(proch instanceof Amulette){
             //temporaire
             System.out.println("Le jeu est fini");
+            this.getJeu().setFini(true);
         }
     }
+
+    public void attaque() {
+        int r = this.arme.getRange();
+
+    }
+
+    public void attaqueZone(int r) {
+        Vec2 dir = this.getDerniereDir();
+        Vec2 max = dir.times(r);
+        Jeu j = this.getJeu();
+        ArrayList<Entite> ar = j.getEnnemis();
+        for (Entite entite : ar) {
+            if (dir.equals(new Vec2(1,0))) {
+                if(entite.getPos().x <= max.x + this.getPos().x && entite.getPos().x >= this.getPos().x){
+                    if (entite.getPos().y <= this.getPos().y + 2 && entite.getPos().y >= this.getPos().y - 2) {
+                        this.attaquerAutre(entite);
+                    }
+                }
+            }
+            else if(dir.equals(new Vec2(0,1))){
+                if(entite.getPos().y <= max.y + this.getPos().y && entite.getPos().y >= this.getPos().y){
+                    if (entite.getPos().x <= this.getPos().x + 2 && entite.getPos().x >= this.getPos().x - 2) {
+                        this.attaquerAutre(entite);
+                    }
+                }
+            }
+            else if(dir.equals(new Vec2(-1,0))){
+                if(entite.getPos().x >= max.x + this.getPos().x && entite.getPos().x <= this.getPos().x){
+                    if (entite.getPos().y <= this.getPos().y + 2 && entite.getPos().y >= this.getPos().y - 2) {
+                        this.attaquerAutre(entite);
+                    }
+                }
+            }
+            else if(dir.equals(new Vec2(0,-1))){
+                if(entite.getPos().y >= max.y + this.getPos().y && entite.getPos().y >= this.getPos().y){
+                    if (entite.getPos().x <= this.getPos().x + 2 && entite.getPos().x >= this.getPos().x - 2) {
+                        this.attaquerAutre(entite);
+                    }
+                }
+            }
+        }
+    }
+
     @Override
     public void attaquerAutre(Entite e2){
         
