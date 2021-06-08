@@ -13,6 +13,7 @@ public class Jeu implements moteurJeu.Jeu {
     private Aventurier joueur;
     private Camera cam;
     private ArrayList<Entite> ennemis;
+    private boolean fini = false;
 
     /** 
      * Constructeur vide de Jeu 
@@ -40,7 +41,7 @@ public class Jeu implements moteurJeu.Jeu {
     /** Methode etreFini utilisee par le moteur de jeu */
     @Override
     public boolean etreFini() {
-        return false;
+        return this.fini;
     }
 
     /** 
@@ -71,6 +72,14 @@ public class Jeu implements moteurJeu.Jeu {
      */
     public ArrayList<Entite> getEnnemis() {
         return ennemis;
+    }
+
+    /**
+     * Getter de l'attribut fini
+     * @param fini nouvelle valeur de fini
+     */
+    public void setFini(boolean fini) {
+        this.fini = fini;
     }
     
     @Override
