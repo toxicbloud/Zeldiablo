@@ -45,7 +45,6 @@ public class Labyrinthe {
             this.size = s;
         }
         else this.size = 20;
-
         this.createLab();
     }
 
@@ -59,58 +58,102 @@ public class Labyrinthe {
                 this.cases[i][j] = new Mur();
             }
         }
-        this.entree = new Vec2(this.size/2, this.size/2);
-        this.cases[0][0] = new Chemin();
-        this.cases[1][0] = new Chemin();
-        this.cases[0][1] = new Chemin();
-        this.cases[1][1] = new Chemin();
-        //this.generateLab();
+        this.entree = new Vec2(10, 10);
+        this.generateLab();
     }
-
 
     public void generateLab() {
 
+<<<<<<< HEAD
+=======
+        // Liste ou sont stockes des deplacements
+>>>>>>> 69b021e6c64d65c2435048dfcf3a0aba568c36ac
         ArrayList<Vec2> deplacement = new ArrayList<Vec2>();
         deplacement.add(entree);
         while (deplacement.size() > 0) {
-            Vec2 direction = randomDirection();
-            for (int nbDeplacements = (int)(Math.random() * 3) + 1; nbDeplacements > 0; nbDeplacements--) {
-                Vec2 position = lastElement(deplacement);
+            Vec2 direction = randomDirection(entree);
+            if (!direction.isZero()) { // continue le chemin
+                for (int nbDeplacements = (int)(Math.random() * 3) + 2; nbDeplacements > 0; nbDeplacements--) {
+                    Vec2 position = lastElement(deplacement);
 
-                Vec2 target = position.plus(direction).plus(direction);
-                if ( cases[target.x][target.y].isTraversable() ) break;
-                target = position.plus(direction);
-                if ( cases[target.x][target.y].isTraversable() ) break;
-
-                cases[position.x][position.y] = new Chemin();
-                deplacement.add(entree.plus(direction));
+                    Vec2 target = position.plus(direction).plus(direction);
+                    boolean outOfBounds = (target.x < 0 || target.y < 0 || target.x >= this.size || target.y >= this.size);
+                    if ( outOfBounds || cases[target.x][target.y].isTraversable() ) break;
+                    System.out.println(position);
+                    cases[position.x][position.y] = new Chemin();
+                    Vec2 newPos = position.plus(direction);
+                    deplacement.add(newPos);
+                }
+            } else { // bloqué, donc retourne en arriere
+                deplacement.remove(deplacement.size()-1);
             }
         }
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         
         
 
 =======
+=======
+    /**
+     * Renvoie la position actuelle dans la liste de deplacements (dernier index)
+     * @param ar liste de deplacements
+     * @return position actuelle sur la carte
+     */
+>>>>>>> 69b021e6c64d65c2435048dfcf3a0aba568c36ac
     public Vec2 lastElement(ArrayList<Vec2> ar) {
         return ar.get(ar.size()-1);
     }
 
-    public Vec2 randomDirection() {
-        int nb = (int) Math.random() * 4;
-        switch (nb) {
-            case 0:
-                return new Vec2(1, 0);
-            case 1:
-                return new Vec2(0, 1);
-            case 2:
-                return new Vec2(-1, 0);
-            case 3:
-                return new Vec2(0, -1);
+    /**
+     * Choisi une direction valide en fonction de la position dans la carte, renvoie un Vec2(0, 0) si aucune direction n'est possible
+     * @param pos position sur la carte
+     * @return vecteur de deplacement
+     */
+    public Vec2 randomDirection(Vec2 pos) {
+        boolean[] faits = {false, false, false, false};
+        boolean valide = false;
+        Vec2 direction = new Vec2(0, 0);
+        while (!(faits[0]||faits[1]||faits[2]||faits[3]) && !valide) {
+            int nb = (int) (Math.random() * 4);
+            switch (nb) {
+                case 0:
+                    direction = new Vec2(1, 0);
+                    faits[0] = true;
+                    valide = true;
+                    break;
+                case 1:
+                    direction = new Vec2(0, 1);
+                    faits[1] = true;
+                    valide = true;
+                    break;
+                case 2:
+                    direction = new Vec2(-1, 0);
+                    faits[2] = true;
+                    valide = true;
+                    break;
+                case 3:
+                    direction = new Vec2(0, -1);
+                    faits[3] = true;
+                    valide = true;
+                    break;
+            }
+            Vec2 target = pos.plus(direction).plus(direction);
+            boolean outOfBounds = (target.x < 0 || target.y < 0 || target.x >= this.size || target.y >= this.size);
+            if (outOfBounds || cases[target.x][target.y].isTraversable()) {
+                valide = false;
+                direction = new Vec2(0, 0);
+            }
         }
+<<<<<<< HEAD
         return new Vec2(0, 0);
 >>>>>>> eaf5083e78f2ed9b11ffcfd2775bd0a8875f07e6
+=======
+
+        return direction;
+>>>>>>> 69b021e6c64d65c2435048dfcf3a0aba568c36ac
     }
 
 
