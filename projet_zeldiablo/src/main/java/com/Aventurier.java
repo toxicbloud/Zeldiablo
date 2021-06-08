@@ -41,5 +41,16 @@ public class Aventurier extends Entite{
             System.out.println("Le jeu est fini");
         }
     }
+    @Override
+    public void attaquerAutre(Entite e2){
+        
+            if (e2.etreMort() == false && this.etreMort() == false   ) {
+                this.arme.attaquer(e2);
+                if(this.arme instanceof Arme_COC){
+                    this.energie -= ((Arme_COC)this.arme).getEnergie();
+                }
+            }
+        
+    }
     
 }
