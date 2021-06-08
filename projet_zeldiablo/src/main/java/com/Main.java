@@ -12,7 +12,7 @@ public class Main {
         MoteurGraphique mg = new MoteurGraphique(j, dj);
 
         try {
-            mg.lancerJeu(400, 400);
+            mg.lancerJeu(900, 600);
 
         } catch (Exception e) {
             
