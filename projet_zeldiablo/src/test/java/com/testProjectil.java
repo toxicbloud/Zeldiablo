@@ -9,6 +9,11 @@ import org.junit.Test;
 import moteurJeu.Commande;
 
 public class testProjectil {
+    /**
+     * testProjectil
+     * On a Arme à Distance AK 
+     * On teste cet AK avec range est 2 et direction à bas
+     */
     @Test 
     public void TestParcours(){
         Vec2 posAct = new Vec2(3, 3);
