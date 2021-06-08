@@ -32,25 +32,25 @@ public class Gobelin extends Monstre {
                 }
                 break;
             case 1:
-                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0)));
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(1,0)));
                 if(cs!=null && cs.isTraversable()){
                     setPos(new Vec2(getPos().x++, getPos().y));
                 }
                 break;
             case 2:
-                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0)));
-                if(cs!=null && cs.isTraversable()){
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,-1)));
+                if(cs!=null && cs.isTraversable()) {
                     setPos(new Vec2(getPos().x, getPos().y--));
                 }
                 break;
             case 3: 
-                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0)));
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,1)));
                 if(cs!=null && cs.isTraversable()){
                     setPos(new Vec2(getPos().x, getPos().y++));
                 }
                 break;
             default:
-                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0)));
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,1)));
                 if(cs!=null && cs.isTraversable()){
                     setPos(new Vec2(getPos().x, getPos().y++));
                 }

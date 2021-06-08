@@ -58,4 +58,42 @@ public abstract class Monstre extends Entite {
     public String getDescription() {
         return this.description;
     }
+
+    public void deplacer() {
+        Case cs;
+        int rand = (int)(Math.random() * 4);
+        switch(rand) {
+            case 0:
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0)));
+                if(cs!=null && cs.isTraversable()){
+                    setPos(new Vec2(getPos().x--, getPos().y));
+                }
+                break;
+            case 1:
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(1,0)));
+                if(cs!=null && cs.isTraversable()){
+                    System.out.println("Etape 4");
+                    setPos(new Vec2(getPos().x++, getPos().y));
+                    System.out.println("Etape 5");
+                }
+                break;
+            case 2:
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,-1)));
+                if(cs!=null && cs.isTraversable()){
+                    setPos(new Vec2(getPos().x, getPos().y--));
+                }
+                break;
+            case 3: 
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,1)));
+                if(cs!=null && cs.isTraversable()){
+                    setPos(new Vec2(getPos().x, getPos().y++));
+                }
+                break;
+            default:
+                cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,1)));
+                if(cs!=null && cs.isTraversable()){
+                    setPos(new Vec2(getPos().x, getPos().y++));
+                }
+        }
+    }
 }
