@@ -14,7 +14,7 @@ public class Aventurier extends Entite{
     public Aventurier(String nom,Vec2 v,int pv,Labyrinthe l){
         super(nom,v,pv,l);
         this.energie = 100;
-
+        this.arme=null;
     }
 
     public void equiper_Arme(Arme a1){

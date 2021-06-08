@@ -1,0 +1,23 @@
+@startuml
+title Arme_distance
+participant "m:Main " as main
+    participant "a1 : Aventurier " as a1
+    participant "AK47 : Knife" as ar1
+participant "a2 : Aventurier " as a2
+
+
+
+activate main
+activate a1
+    a1 -> ar1 : equiper(k1)
+    main -> a1 : attaquer(a2)
+    activate a2
+        a1 -> a2 : perdrePV(10)
+    deactivate a2
+    main -> a1 : chargerArme(30)
+    main -> a1 : jeter_Arme()
+
+deactivate a1
+deactivate main
+@enduml
+
