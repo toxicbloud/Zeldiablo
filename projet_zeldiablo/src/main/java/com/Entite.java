@@ -46,8 +46,8 @@ public abstract class Entite{
      * 
      * @param pos position de l entite
      */
-    public void setPos(Vec2 pos) {
-        this.pos = pos;
+    public void setPos(Vec2 newPos) {
+        this.pos = newPos;
     }
 
 
