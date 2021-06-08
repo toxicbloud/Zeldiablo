@@ -6,7 +6,7 @@ package com;
 public abstract class Arme {
     private int degats;
     private int vitesse;
-
+    
 
 
 

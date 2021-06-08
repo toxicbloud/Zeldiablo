@@ -9,11 +9,12 @@ public abstract class Entite{
 
     private String nom;
     private Vec2 pos;
-    // new Attributs point de vie (PV)
+    
     private Vec2 taille=new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE);
     private int pv;
     private boolean mort;
     private Labyrinthe laby;
+
 
     /**
      * constructeur d' Entite
@@ -139,13 +140,9 @@ public abstract class Entite{
     /**
      * 
      * @param e2 entite a attaquer
-     * @param pointAtt point a attaquer
      */
-    public void attaquerAutre(Entite e2, int pointAtt){
-        if (e2.etreMort() == false && this.etreMort() == false && pointAtt >0 ) {
-            e2.perdrePV(pointAtt);   
-        }
-    }
+    public abstract void attaquerAutre(Entite e2);
+    
     /**
      * 
      * @param e2 entite a soigner
