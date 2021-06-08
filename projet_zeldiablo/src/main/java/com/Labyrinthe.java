@@ -64,10 +64,7 @@ public class Labyrinthe {
 
     public void generateLab() {
 
-<<<<<<< HEAD
-=======
         // Liste ou sont stockes des deplacements
->>>>>>> 69b021e6c64d65c2435048dfcf3a0aba568c36ac
         ArrayList<Vec2> deplacement = new ArrayList<Vec2>();
         deplacement.add(entree);
         while (deplacement.size() > 0) {
@@ -89,19 +86,11 @@ public class Labyrinthe {
         }
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        
-        
-
-=======
-=======
     /**
      * Renvoie la position actuelle dans la liste de deplacements (dernier index)
      * @param ar liste de deplacements
      * @return position actuelle sur la carte
      */
->>>>>>> 69b021e6c64d65c2435048dfcf3a0aba568c36ac
     public Vec2 lastElement(ArrayList<Vec2> ar) {
         return ar.get(ar.size()-1);
     }
@@ -146,13 +135,8 @@ public class Labyrinthe {
                 direction = new Vec2(0, 0);
             }
         }
-<<<<<<< HEAD
-        return new Vec2(0, 0);
->>>>>>> eaf5083e78f2ed9b11ffcfd2775bd0a8875f07e6
-=======
 
         return direction;
->>>>>>> 69b021e6c64d65c2435048dfcf3a0aba568c36ac
     }
 
 
