@@ -10,7 +10,13 @@ public class PlanteC extends Monstre{
      * @param d dégât de la plante
      * @param desc description de la plante
      */
-    public PlanteC(int d, int vie, Vec2 v, Labyrinthe l) {
-        super("Plante Carnivore", v, vie, d, "La Plante Carnivore est un monstre plutôt puissant mais qui ne peut pas se déplacer", l, 100, 0);
+    public PlanteC(int d, Vec2 v, Labyrinthe l) {
+        super("Plante Carnivore", v, 50, d, "La Plante Carnivore est un monstre plutôt puissant mais qui ne peut pas se déplacer", l, 100, 0);
+    }
+
+    @Override
+    public void attaquerAutre(Entite e2) {
+        // TODO Auto-generated method stub
+        
     }
 }

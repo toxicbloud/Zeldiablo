@@ -60,17 +60,57 @@ public class Labyrinthe {
             }
         }
         this.entree = new Vec2(this.size/2, this.size/2);
-        this.generateLab();
+        this.cases[0][0] = new Chemin();
+        this.cases[1][0] = new Chemin();
+        this.cases[0][1] = new Chemin();
+        this.cases[1][1] = new Chemin();
+        //this.generateLab();
     }
 
 
     public void generateLab() {
 
         ArrayList<Vec2> deplacement = new ArrayList<Vec2>();
+        deplacement.add(entree);
+        while (deplacement.size() > 0) {
+            Vec2 direction = randomDirection();
+            for (int nbDeplacements = (int)(Math.random() * 3) + 1; nbDeplacements > 0; nbDeplacements--) {
+                Vec2 position = lastElement(deplacement);
 
+                Vec2 target = position.plus(direction).plus(direction);
+                if ( cases[target.x][target.y].isTraversable() ) break;
+                target = position.plus(direction);
+                if ( cases[target.x][target.y].isTraversable() ) break;
+
+                cases[position.x][position.y] = new Chemin();
+                deplacement.add(entree.plus(direction));
+            }
+        }
+    }
+
+<<<<<<< HEAD
         
         
 
+=======
+    public Vec2 lastElement(ArrayList<Vec2> ar) {
+        return ar.get(ar.size()-1);
+    }
+
+    public Vec2 randomDirection() {
+        int nb = (int) Math.random() * 4;
+        switch (nb) {
+            case 0:
+                return new Vec2(1, 0);
+            case 1:
+                return new Vec2(0, 1);
+            case 2:
+                return new Vec2(-1, 0);
+            case 3:
+                return new Vec2(0, -1);
+        }
+        return new Vec2(0, 0);
+>>>>>>> eaf5083e78f2ed9b11ffcfd2775bd0a8875f07e6
     }
 
 

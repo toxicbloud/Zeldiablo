@@ -111,27 +111,27 @@ abstract Monstre{
 }
 
 class Gobelin{
-    + Gobelin(int, int, Vec2, Labyrinthe)
+    + Gobelin(int, Vec2, Labyrinthe)
 }
 
 class Fantome{
-    + Fantome(int, int, Vec2, Labyrinthe)
+    + Fantome(int, Vec2, Labyrinthe)
 }
 
 class Orc{
-    + Orc(int, int, Vec2, Labyrinthe)
+    + Orc(int, Vec2, Labyrinthe)
 }
 
 class Murloc{
-    + Murloc(int, int, Vec2, Labyrinthe)
+    + Murloc(int, Vec2, Labyrinthe)
 }
 
 class PlanteC{
-    + PlanteC(int, int, Vec2, Labyrinthe)
+    + PlanteC(int, Vec2, Labyrinthe)
 }
 
 class Aventurier{
-    + Aventurier(String, Vec2, int, Labyrinthe)
+    + Aventurier(String, Vec2, Labyrinthe)
     + equiper_Arme(Arme)
     + jeter_Arme()
     + getArme() : Arme

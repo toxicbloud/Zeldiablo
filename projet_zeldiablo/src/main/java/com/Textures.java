@@ -6,9 +6,7 @@ import java.io.File;
 
 public class Textures {
     public static String absolutePath;
-    public static Image tex_mur;
-    public static Image tex_chemin;
-    public static Image tex_perso;
+    public static Image tex_mur,tex_chemin,tex_perso,tex_amulette,tex_uhd;
     public static void chargerTextures() {
         try {
             // on recupere le chemin asbolut pour les textures
@@ -19,6 +17,8 @@ public class Textures {
             tex_mur = (Image) ImageIO.read(new File(absolutePath+"resources/textures/Mur.png"));
             tex_chemin = (Image) ImageIO.read(new File(absolutePath+"resources/textures/Chemin.png"));
             tex_perso = (Image) ImageIO.read(new File(absolutePath+"resources/textures/Perso.png"));
+            tex_amulette = (Image) ImageIO.read(new File(absolutePath+"resources/textures/Amulette.png"));
+            tex_uhd = (Image) ImageIO.read(new File(absolutePath+"resources/textures/hpUHD.png"));
         } catch (Exception e) {}
     }
 }

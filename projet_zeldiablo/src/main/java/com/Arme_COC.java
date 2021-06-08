@@ -3,9 +3,6 @@ package com;
 public  class Arme_COC extends Arme {
     private int energie;
 
-	
-
-
     /**
      * 
      * @param de dégats

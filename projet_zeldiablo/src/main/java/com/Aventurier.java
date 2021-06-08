@@ -14,8 +14,8 @@ public class Aventurier extends Entite{
      * constructeur aventurier avec un nom
      * @param nom nom de l aventurier
      */
-    public Aventurier(String nom,Vec2 v,int pv,Labyrinthe l){
-        super(nom,v,pv,l);
+    public Aventurier(String nom,Vec2 v,Labyrinthe l){
+        super(nom,v,100,l);
         this.energie = 100;
         this.arme=null;
     }
@@ -45,6 +45,17 @@ public class Aventurier extends Entite{
             //temporaire
             System.out.println("Le jeu est fini");
         }
+    }
+    @Override
+    public void attaquerAutre(Entite e2){
+        
+            if (e2.etreMort() == false && this.etreMort() == false   ) {
+                this.arme.attaquer(e2);
+                if(this.arme instanceof Arme_COC){
+                    this.energie -= ((Arme_COC)this.arme).getEnergie();
+                }
+            }
+        
     }
     
 }
