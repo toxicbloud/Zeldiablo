@@ -12,11 +12,11 @@ public class TestAventurier {
     @Before
     public void init(){
         l= new Labyrinthe();
-        j=new Aventurier("Tom",new Vec2(0,0),10,l);
+        j=new Aventurier("Tom",new Vec2(0,0),l);
     }
     @Test
     public void constructeurNom(){
-        Aventurier joueur=new Aventurier("Paul",new Vec2(0,0),10,l);
+        Aventurier joueur=new Aventurier("Paul",new Vec2(0,0),l);
         assertEquals("Paul", joueur.getNom());
     }
     @Test
