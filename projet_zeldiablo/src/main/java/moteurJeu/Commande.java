@@ -17,6 +17,7 @@ public class Commande {
 	public boolean bas;
 	public boolean espace;
 
+
 	public Commande()
 	{
 		
@@ -35,5 +36,39 @@ public class Commande {
 		this.droite=commandeACopier.droite;	
 		this.espace=commandeACopier.espace;	
 	}
+
+	// Getter and setter
+	public boolean isGauche() {
+		return this.gauche;
+	}
+
+	public void setGauche(boolean gauche) {
+		this.gauche = gauche;
+	}
+
+	public boolean isDroite() {
+		return this.droite;
+	}
+
+	public void setDroite(boolean droite) {
+		this.droite = droite;
+	}
+
+	public boolean isHaut() {
+		return this.haut;
+	}
+
+	public void setHaut(boolean haut) {
+		this.haut = haut;
+	}
+
+	public boolean isBas() {
+		return this.bas;
+	}
+
+	public void setBas(boolean bas) {
+		this.bas = bas;
+	}
+
 	
 }

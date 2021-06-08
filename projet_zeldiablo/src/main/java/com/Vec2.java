@@ -48,6 +48,15 @@ public class Vec2{
         return r;
     }
     /**
+     * Multiplication de Vec2 et de int
+     * @param i int a multiplier
+     * @return un Vec2 correpondant a la multiplication
+     */
+    public Vec2 times(int i) {
+        Vec2 r = new Vec2(this.x * i, this.y * i);
+        return r;
+    }
+    /**
      * Division de Vec2
      * @param v Vec2 a division
      * @return un Vec2 correpondant a la division
@@ -70,6 +79,15 @@ public class Vec2{
      */
     public boolean isZero() {
         return this.x == 0 && this.y == 0;
+    }
+    /**
+     * Retourne la distance absolue entre les deux Vec2
+     * @param v Vecteur a comparer
+     * @return distance entre les Vec2
+     */
+    public int dist(Vec2 v) {
+        Vec2 sum = this.minus(v);
+        return (int) Math.sqrt( sum.x*sum.x + sum.y*sum.y );
     }
     
     /**
