@@ -159,7 +159,6 @@ public abstract class Entite{
      * @param c commande direction a aller
      */
     public void deplacer(Commande c){
-        Case cs;
         Case ul=laby.getCaseAtVec2(this.pos.plus(new Vec2((int)(taille.x*0.2),0)));
         Case ur=laby.getCaseAtVec2(this.pos.plus(new Vec2((int)(taille.x*0.8),0)));
         Case lu=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,(int)(taille.y*0.2))));
@@ -169,22 +168,18 @@ public abstract class Entite{
         Case ru=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,(int)(taille.y*0.2))));
         Case rd=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,(int)(taille.y*0.8))));
         if(c.gauche){
-            // cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(-1,0)));
             if(lu!=null && ld!=null && lu.isTraversable() && ld.isTraversable()){
                 this.pos.x--;
             }
         }else if(c.droite){
-            // cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(1,0)));
             if(ru!=null && rd!=null && ru.isTraversable() && rd.isTraversable()){
                 this.pos.x++;
             }
         }else if(c.haut){
-            // cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,-1)));
             if(ul!=null && ur!=null && ul.isTraversable()&& ur.isTraversable()){
                 this.pos.y--;
             }
         }else if(c.bas){
-            // cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,1)));
             if(dl!=null && dr!=null && dl.isTraversable() &&  dr.isTraversable()){
                 this.pos.y++;
             }
