@@ -1,8 +1,10 @@
 package com;
 
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.*;
 
 public class DessinJeu implements moteurJeu.DessinJeu {
 
@@ -41,15 +43,39 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         int posX = (jeu.getJoueur().getPos().x-jeu.getCam().getPos().x)*TILE_SIZE + w/2 - TILE_SIZE/2;
         int posY = (jeu.getJoueur().getPos().y-jeu.getCam().getPos().y)*TILE_SIZE + h/2 - TILE_SIZE/2;
         //g.fillOval(posX, posY, TILE_SIZE, TILE_SIZE);
+        /**
+         * Affichage du joueur
+         */
         g.drawImage(Textures.tex_perso, posX, posY, (int) (TILE_SIZE*0.8), TILE_SIZE, null);
         // TILE_SIZE++;
 
         for(Entite e: jeu.getEnnemis()) {
-            g.setColor(Color.RED);
             posX = (e.getPos().x-(jeu.getCam().getPos().x*TILE_SIZE/Labyrinthe.TILE_SIZE)) + w/2 - TILE_SIZE/2;
             posY = (e.getPos().y-(jeu.getCam().getPos().y*TILE_SIZE/Labyrinthe.TILE_SIZE)) + h/2 - TILE_SIZE/2;
+            /** Barre de vie  */
+            int pv=e.getPV();
+            if(pv>=10){ g.setColor(Color.green);}
+            if(pv<=6){g.setColor(Color.orange);}
+            g.fillRect(posX, posY-10, e.getPV()*4, 5);
+            g.setColor(Color.black);
+            g.setStroke(new BasicStroke((float) 1.5));
+            g.drawRect(posX-1, posY-11, 50, 6);;
+            g.setColor(Color.red);
+            /** Dessin du monstre */
             g.fillOval(posX, posY, TILE_SIZE, TILE_SIZE);
         }
+        /** Affichage ATH */
+        BufferedImage ath = new BufferedImage(150,100,BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = (Graphics2D) ath.getGraphics();
+        g2.setColor(Color.red);
+        g2.fillArc(30, 2, 80, 80, 0, 360);
+        int[] pixels = new int[ath.getWidth()*ath.getHeight()];
+        Arrays.fill(pixels, 0); 
+        ath.setRGB(0, 0, ath.getWidth(), ath.getHeight()-jeu.getJoueur().getPV(), pixels, 0, ath.getWidth());
+        // g2.clearRect(0, 0, 100, 20);
+        g2.drawImage(Textures.tex_uhd,0,0, Textures.tex_uhd.getWidth(null),Textures.tex_uhd.getHeight(null),null);
+        g.drawImage(ath, 0, image.getHeight()-90, ath.getWidth(), ath.getHeight(),null);
+        // g.drawImage(img, op, x, y);
     }
 
     /**
