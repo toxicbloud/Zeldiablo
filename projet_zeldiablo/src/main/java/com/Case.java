@@ -1,5 +1,5 @@
 package com;
-import java.awt.Color;
+import java.awt.Image;
 /**
  * Classe Case, represente une case du labyrinthe
  */
@@ -13,7 +13,7 @@ public abstract class Case {
     private boolean traversable;
 
     /** Attribut sprite: le sprite de la case (temporairement une couleur) */
-    private Color sprite;
+    private Image sprite;
 
     /**
      * CONSTRUCTEURS
@@ -25,9 +25,9 @@ public abstract class Case {
     }
 
     /** Constructeur complet de Case */
-    Case(boolean traversable, Color c) {
+    Case(boolean traversable, Image i) {
         this.traversable = traversable;
-        this.sprite = c;
+        this.sprite = i;
     }
 
     /**
@@ -46,7 +46,7 @@ public abstract class Case {
      * Getter de l'attribut sprite
      * @return le sprite de la case (temporairement une couleur)
      */
-    public Color getSprite() {
+    public Image getSprite() {
         return sprite;
     }
 }
