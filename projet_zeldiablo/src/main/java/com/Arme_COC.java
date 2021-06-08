@@ -17,10 +17,18 @@ public  abstract class Arme_COC extends Arme {
         }
     }
 
+    /**
+     * donne l'énergie que coute cette arme
+     * @return
+     */
     public int getEnergie() {
 		return this.energie;
 	}
 
+    /**
+     * initialise l'energie de l'arme
+     * @param energie
+     */
 	public void setEnergie(int energie) {
 		this.energie = energie;
 	}
