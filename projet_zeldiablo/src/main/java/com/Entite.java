@@ -155,23 +155,23 @@ public abstract class Entite{
         Case ru=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,(int)(taille.y*0.2))));
         Case rd=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,(int)(taille.y*0.8))));
         if(c.gauche){
-            cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(-1,0)));
-            if(cs!=null && cs.isTraversable()){
+            // cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(-1,0)));
+            if(lu!=null && ld!=null && lu.isTraversable() && ld.isTraversable()){
                 this.pos.x--;
             }
         }else if(c.droite){
-            cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(1,0)));
-            if(cs!=null && cs.isTraversable()){
+            // cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(1,0)));
+            if(ru!=null && rd!=null && ru.isTraversable() && rd.isTraversable()){
                 this.pos.x++;
             }
         }else if(c.haut){
-            cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,-1)));
-            if(cs!=null && cs.isTraversable()){
+            // cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,-1)));
+            if(ul!=null && ur!=null && ul.isTraversable()&& ur.isTraversable()){
                 this.pos.y--;
             }
         }else if(c.bas){
-            cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,1)));
-            if(cs!=null && cs.isTraversable()){
+            // cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,1)));
+            if(dl!=null && dr!=null && dl.isTraversable() &&  dr.isTraversable()){
                 this.pos.y++;
             }
         }
