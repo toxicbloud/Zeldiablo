@@ -36,6 +36,20 @@ public abstract class Entite{
         }
         this.laby=l;
     }
+    public Entite(String nom,Vec2 newPos, int pointVie,Labyrinthe l,Vec2 t){
+        this.nom=nom;
+        this.pos = newPos;
+        if (pointVie<=0) {
+            this.pv=0;
+            this.mort=true;
+        }
+        else{
+            this.pv=pointVie;
+            this.mort = false;
+        }
+        this.laby=l;
+        this.taille=t;
+    }
     /**
      * 
      * @return Vec2 Position Entite
