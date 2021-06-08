@@ -35,7 +35,6 @@ public class Camera {
      */
     public void deplacer(Entite e) {
         this.target = e;
-        Vec2 newPos = (e.getPos().minus(this.pos));
         this.pos = e.getPos();
 
         //DessinJeu.TILE_SIZE = (int) (Math.cos((i++/10.0)) * 4 + 60);

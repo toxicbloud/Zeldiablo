@@ -19,6 +19,12 @@ public abstract class Arme {
             this.degats=de;
         }
     }
+
+    public Arme(int de, int r) {
+        this.degats = de;
+        this.range = r;
+    }
+
     public void attaquer(Entite e1){
         e1.perdrePV(degats);
     }
