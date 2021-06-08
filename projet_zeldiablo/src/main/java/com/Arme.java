@@ -11,9 +11,4 @@ public abstract class Arme {
         e1.perdrePV(degats);
     }
 
-    // faut ajouter Arme pour Entite
-    public void jeter(){}
-
-    // meme pour equiper
-    public void equiper(Arme a1){}
 }
