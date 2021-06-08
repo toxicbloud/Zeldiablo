@@ -55,6 +55,5 @@ public class Gobelin extends Monstre {
                     setPos(new Vec2(getPos().x, (getPos().y)+1));
                 }
         }
-        System.out.println(getPos().x + " " + getPos().y);
     }
 }
