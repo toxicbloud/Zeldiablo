@@ -13,4 +13,10 @@ public class Orc extends Monstre {
     public Orc(int d, Vec2 v, Labyrinthe l) {
         super("Orc", v, 60, d, "L'Orc est un monstre lent mais résistant", l, 75, 1);
     }
+
+    @Override
+    public void attaquerAutre(Entite e2) {
+        // TODO Auto-generated method stub
+        
+    }
 }
