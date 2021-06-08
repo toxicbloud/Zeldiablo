@@ -4,6 +4,7 @@ package com;
  * Arme
  */
 public abstract class Arme {
+    
     private Entite possesseur;
     private int degats;
     private int vitesse;
@@ -23,6 +24,12 @@ public abstract class Arme {
             this.range=range;
         }
     }
+
+    public Arme(int de, int r) {
+        this.degats = de;
+        this.range = r;
+    }
+
     public void attaquer(Entite e1){
         e1.perdrePV(degats);
     }
@@ -43,13 +50,16 @@ public abstract class Arme {
 		this.vitesse = vitesse;
 	}
 
-    
-	public int getRange() {
-		return this.range;
-	}
-
-	public void setRange(int range) {
-		this.range = range;
-	}
-
+    public Entite getPossesseur() {
+        return possesseur;
+    }
+    public void setPossesseur(Entite possesseur) {
+        this.possesseur = possesseur;
+    }
+    public int getRange() {
+        return range;
+    }
+    public void setRange(int range) {
+        this.range = range;
+    }
 }

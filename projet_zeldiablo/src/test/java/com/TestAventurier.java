@@ -37,4 +37,9 @@ public class TestAventurier {
         j.setPos(new Vec2(0,12));
         assertEquals(12, j.getPos().y);
     }
+
+    @Test
+    public void testAttaquer(){
+        
+    }
 }

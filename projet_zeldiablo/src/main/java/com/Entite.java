@@ -9,7 +9,7 @@ public abstract class Entite{
 
     private String nom;
     private Vec2 pos;
-    
+    private Jeu jeu;
     private Vec2 taille=new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE);
     private int pv;
     private boolean mort;
@@ -37,6 +37,24 @@ public abstract class Entite{
             this.mort = false;
         }
         this.laby=l;
+        this.derniereDir = new Vec2(0,1);
+    }
+
+
+    public Entite(String nom,Vec2 newPos, int pointVie,Labyrinthe l, Jeu j){
+        this.nom=nom;
+        this.pos = newPos;
+        if (pointVie<=0) {
+            this.pv=0;
+            this.mort=true;
+        }
+        else{
+            this.pv=pointVie;
+            this.mort = false;
+        }
+        this.laby=l;
+        this.derniereDir = new Vec2(0,1);
+        this.jeu = j;
     }
     /**
      * 
@@ -205,5 +223,36 @@ public abstract class Entite{
                 this.pos.y++;
             }
         }
+    }
+
+    public int getPv() {
+        return pv;
+    }
+    public void setPv(int pv) {
+        this.pv = pv;
+    }
+    public boolean isMort() {
+        return mort;
+    }
+    public void setMort(boolean mort) {
+        this.mort = mort;
+    }
+    public Labyrinthe getLaby() {
+        return laby;
+    }
+    public void setLaby(Labyrinthe laby) {
+        this.laby = laby;
+    }
+    public Vec2 getDerniereDir() {
+        return derniereDir;
+    }
+    public void setDerniereDir(Vec2 derniereDir) {
+        this.derniereDir = derniereDir;
+    }
+        public Jeu getJeu() {
+        return jeu;
+    }
+    public void setJeu(Jeu jeu) {
+        this.jeu = jeu;
     }
 }
