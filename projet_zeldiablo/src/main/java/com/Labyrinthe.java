@@ -66,6 +66,8 @@ public class Labyrinthe {
 
         // Liste ou sont stockes des deplacements
         ArrayList<Vec2> deplacement = new ArrayList<Vec2>();
+        Vec2 placeFin = new Vec2();
+        int placeDistance = 0;
         deplacement.add(entree);
         while (deplacement.size() > 0) {
             Vec2 direction = randomDirection(entree);
@@ -81,9 +83,15 @@ public class Labyrinthe {
                     deplacement.add(newPos);
                 }
             } else { // bloqué, donc retourne en arriere
+                if (placeDistance < deplacement.size()) {
+                    placeFin = lastElement(deplacement);
+                    placeDistance = deplacement.size();
+                }
                 deplacement.remove(deplacement.size()-1);
             }
         }
+
+        cases[placeFin.x][placeFin.y] = new Amulette();
     }
 
     /**
