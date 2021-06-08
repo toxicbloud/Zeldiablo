@@ -18,11 +18,11 @@ descriptif texte : les cases ont des textures
 
 
 - fonctionnalité 3 : gestion hitbox des entités (
-- descriptif texte : La caméra suit une cible = entité (principalement le joueur, mais est capable de changer de cible, par exemple boss)
+- descriptif texte : Les entites ne doivent pas traverser les murs
 - critères de validation :
-    - critère 1 : la camera suit sa cible après déplacement
-    - critère 2 : la caméra peut changer de cible.
-
+    - critère 1 : le personnage se deplace
+    - critère 2 : le personnage ne traverse pas un mur
+- RESPONSABLE : Antonin Rousseau (roussea97u)
 
 
 - fonctionnalité 4 : mise à jour des monstres
