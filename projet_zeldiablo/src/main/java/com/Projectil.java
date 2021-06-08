@@ -15,37 +15,42 @@ public class Projectil {
         this.origine = possedeur;
     }
 
-    public Vec2[] parcours(){
+    public ArrayList<Vec2>  parcours(){
         int lim = this.origine.getRange();
         ArrayList<Vec2> parcours = new ArrayList<Vec2>();
+
+        
         if (this.direction.isBas() == true) {
             for (int i = 0; i < lim; i++) {
-                parcours.get(i).x = ((this.posAct.x));
-                parcours.get(i).y = ((this.posAct.y) -1 -i);
+                Vec2 res = new Vec2(this.posAct.x, (this.posAct.y) -1 -i);
+                    parcours.add(res);
+                
+                
             }
         }
 
         if (this.direction.isHaut() == true) {
             for (int i = 0; i < lim; i++) {
-                parcours.get(i).x = ((this.posAct.x));
-                parcours.get(i).y = ((this.posAct.y) +1 +i);
+                
+                Vec2 res = new Vec2(this.posAct.x, (this.posAct.y) +1 +i);
+                parcours.add(res);
             }
         }
 
         if (this.direction.isDroite() == true) {
             for (int i = 0; i < lim; i++) {
-                parcours.get(i).x = ((this.posAct.x) +1 +i);
-                parcours.get(i).y = ((this.posAct.y) );
+                Vec2 res = new Vec2(this.posAct.x  +1 +i, (this.posAct.y));
+                parcours.add(res);
             }
         }
 
         if (this.direction.isGauche() == true) {
             for (int i = 0; i < lim; i++) {
-                parcours.get(i).x = ((this.posAct.x)  -1 -i);
-                parcours.get(i).y = ((this.posAct.y) );
+                Vec2 res = new Vec2(this.posAct.x  -1 -i, (this.posAct.y));
+                parcours.add(res);
             }
         }
 
-        return parcours();
+        return parcours;
     }
 }
