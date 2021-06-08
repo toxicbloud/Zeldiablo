@@ -1,4 +1,7 @@
 package com;
+
+import moteurJeu.Commande;
+
 /**
  * @author Antonin
  */
@@ -28,4 +31,15 @@ public class Aventurier extends Entite{
     public Arme getArme(){
         return this.arme;
     }
+    @Override
+    public void deplacer(Commande c){
+        super.deplacer(c);
+        Labyrinthe laby=getLabyrinthe();
+        Case proch=laby.getCaseAtVec2(getPos());
+        if(proch instanceof Amulette){
+            //temporaire
+            System.out.println("Le jeu est fini");
+        }
+    }
+    
 }
