@@ -22,7 +22,7 @@ public class Jeu implements moteurJeu.Jeu {
         Textures.chargerTextures();
         this.ennemis = new ArrayList<Entite>();
         this.carte = new Labyrinthe();
-        this.joueur = new Aventurier(n, new Vec2(), this.carte);
+        this.joueur = new Aventurier(n, this.carte.getEntree().times(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE)), this.carte);
         this.cam = new Camera(this.joueur);
         this.ennemis.add(new Gobelin(5, new Vec2(2, 2), this.carte));
     }
