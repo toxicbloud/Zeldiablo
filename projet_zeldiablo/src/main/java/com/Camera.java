@@ -38,7 +38,7 @@ public class Camera {
         Vec2 newPos = (e.getPos().minus(this.pos));
         this.pos = e.getPos();
 
-        DessinJeu.TILE_SIZE = (int) (Math.cos((i++/10.0)) * 4 + 60);
+        //DessinJeu.TILE_SIZE = (int) (Math.cos((i++/10.0)) * 4 + 60);
     }
 
     public Vec2 getPos() {
