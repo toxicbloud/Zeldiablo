@@ -146,14 +146,14 @@ public abstract class Entite{
      */
     public void deplacer(Commande c){
         Case cs;
-        Case ul=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,0)));
-        Case u=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x/2,0)));
-        Case ur=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,taille.y)));
-        Case dl=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,taille.y)));
-        Case d=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x/2,taille.y)));
-        Case dr=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,taille.y)));
-        Case l=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,taille.y/2)));
-        Case r=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,taille.y/2)));
+        Case ul=laby.getCaseAtVec2(this.pos.plus(new Vec2((int)(taille.x*0.2),0)));
+        Case ur=laby.getCaseAtVec2(this.pos.plus(new Vec2((int)(taille.x*0.8),0)));
+        Case lu=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,(int)(taille.y*0.2))));
+        Case ld=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,(int)(taille.y*0.8))));
+        Case dl=laby.getCaseAtVec2(this.pos.plus(new Vec2((int)(taille.x*0.2),taille.y)));
+        Case dr=laby.getCaseAtVec2(this.pos.plus(new Vec2((int)(taille.x*0.8),taille.y)));
+        Case ru=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,(int)(taille.y*0.2))));
+        Case rd=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,(int)(taille.y*0.8))));
         if(c.gauche){
             cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(-1,0)));
             if(cs!=null && cs.isTraversable()){
