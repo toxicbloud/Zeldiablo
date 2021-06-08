@@ -7,12 +7,7 @@ public abstract class Arme {
     private Entite possesseur;
     private int degats;
     private int vitesse;
-<<<<<<< HEAD
     private int range ; 
-=======
-    
-
->>>>>>> eaf5083e78f2ed9b11ffcfd2775bd0a8875f07e6
 
 
     public Arme(int de){
@@ -42,4 +37,14 @@ public abstract class Arme {
 	public void setVitesse(int vitesse) {
 		this.vitesse = vitesse;
 	}
+
+    
+	public int getRange() {
+		return this.range;
+	}
+
+	public void setRange(int range) {
+		this.range = range;
+	}
+
 }

@@ -207,6 +207,13 @@ class Arme_COC {
     + getEnergie() : int
     + setEnergie(int)
 }
+class Projectil{
+    - origine : Arme
+    - vitesse : int
+    - direction : Commande
+
+    + Vec2[] parcours_Bullet()
+}
 
 
 Labyrinthe "1" --> "*" Case : - cases
