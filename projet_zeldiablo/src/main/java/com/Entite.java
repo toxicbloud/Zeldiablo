@@ -10,6 +10,7 @@ public abstract class Entite{
     private String nom;
     private Vec2 pos;
     // new Attributs point de vie (PV)
+    private Vec2 taille=new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE);
     private int pv;
     private boolean mort;
     private Labyrinthe laby;
@@ -145,6 +146,14 @@ public abstract class Entite{
      */
     public void deplacer(Commande c){
         Case cs;
+        Case ul=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,0)));
+        Case u=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x/2,0)));
+        Case ur=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,taille.y)));
+        Case dl=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,taille.y)));
+        Case d=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x/2,taille.y)));
+        Case dr=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,taille.y)));
+        Case l=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,taille.y/2)));
+        Case r=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,taille.y/2)));
         if(c.gauche){
             cs=laby.getCaseAtVec2(this.pos.plus(new Vec2(-1,0)));
             if(cs!=null && cs.isTraversable()){
