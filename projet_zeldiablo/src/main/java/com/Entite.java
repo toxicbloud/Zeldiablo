@@ -36,6 +36,14 @@ public abstract class Entite{
         }
         this.laby=l;
     }
+    /**
+     * 
+     * @param nom nom de l'entite
+     * @param newPos position de l'entite
+     * @param pointVie point de vie de l'entite
+     * @param l labyrinthe de l'entite
+     * @param t taille de l'entite
+     */
     public Entite(String nom,Vec2 newPos, int pointVie,Labyrinthe l,Vec2 t){
         this.nom=nom;
         this.pos = newPos;
