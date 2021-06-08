@@ -67,17 +67,19 @@ public class DessinJeu implements moteurJeu.DessinJeu {
             g.fillOval(posX, posY, TILE_SIZE, TILE_SIZE);
         }
         /** Affichage ATH */
-        BufferedImage ath = new BufferedImage(150,100,BufferedImage.TYPE_INT_ARGB);
+        BufferedImage ath = new BufferedImage(image.getWidth(),100,BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = (Graphics2D) ath.getGraphics();
+        /** Affichage PV */
         g2.setColor(Color.red);
         g2.fillArc(30, 2, 80, 80, 0, 360);
         int[] pixels = new int[ath.getWidth()*ath.getHeight()];
         Arrays.fill(pixels, 0); 
         ath.setRGB(0, 0, ath.getWidth(), ath.getHeight()-jeu.getJoueur().getPV(), pixels, 0, ath.getWidth());
-        // g2.clearRect(0, 0, 100, 20);
         g2.drawImage(Textures.tex_uhd,0,0, Textures.tex_uhd.getWidth(null),Textures.tex_uhd.getHeight(null),null);
+        /** Affichage energie */
+        g2.setColor(Color.orange);
+        g2.fillRect(120, 50, jeu.getJoueur().getEnergie(), 10);
         g.drawImage(ath, 0, image.getHeight()-90, ath.getWidth(), ath.getHeight(),null);
-        // g.drawImage(img, op, x, y);
     }
 
     /**
