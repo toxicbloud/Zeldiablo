@@ -6,7 +6,7 @@ descriptif texte : le labyrinthe se génère seul et de manière aléatoire
 	- critère 1 : le labyrinthe se crée
 	- critère 2 : le labyrinthe ne bloque personne
 	- critère 3 : le labyrinthe possède une sortie accessible 
-- RESPONSABLE : Paul (loisil2u) et Tom (claude256u)
+- RESPONSABLE : Paul (loisil2u) 
 
 - fonctionnalité 2 : IA des monstres
 - descriptif texte : permet à un monstre de sa ballader d'un point A à un point B 
@@ -16,20 +16,21 @@ descriptif texte : le labyrinthe se génère seul et de manière aléatoire
 - RESPONSABLE : Celian (bauer129u)
 
 
-- fonctionnalité 3 : gestion hitbox des entités (
-- descriptif texte : Les entites ne doivent pas traverser les murs
+- fonctionnalité 3 : Amélioration interface graphique
+- descriptif texte : ajout d'une interface graphique montrant la vie du joueur par exemple
 - critères de validation :
-    - critère 1 : le personnage se deplace
-    - critère 2 : le personnage ne traverse pas un mur
+    - critère 1 : ajout d'une barre de vie
+    - critère 2 : ajout d'une barre de vie pour les monstres
 - RESPONSABLE : Antonin Rousseau (roussea97u)
 
 
-- fonctionnalité 4 : mise à jour des monstres
-- descriptif texte : le monstre est intialisé, se déplacer, attaque
+- fonctionnalité 4 : Système d'attaque et de projectile
+- descriptif texte : pouvoir attaquer et se faire attaquer
 - critères de validation :
-    - critère 1 : le monstre a des pv
-    - critère 2 : le monstre se déplace aléatoirement 
-- RESPONSABLE : Tuong Duong (duongk099)
+    - critère 1 : Pouvoir tuer une monstre
+    - critère 2 : Pouvoir se faire tuer
+    - critère 3 : Gérer les projectiles
+- RESPONSABLE : Tuong Duong (duongk099) et Tom (claude256u)
 
 RESPONSABLES DE CLASSES :
 
@@ -37,13 +38,13 @@ Tuong Duong :
 Arme / Munitions 
 
 Paul :
-Case
+Labyrinthe / Case
 
 Celian : 
 Monstre 
 
 Tom :
-Labyrinthe / Mur
+Projectile / Arme
 
 Anto :
-Jeu 
+Jeu / DessinJeu 
