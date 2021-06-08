@@ -7,6 +7,6 @@ public class Amulette extends Case{
      * constructeur
      */
     Amulette(){
-        super(true,Textures.tex_chemin);
+        super(true,Textures.tex_amulette);
     }
 }

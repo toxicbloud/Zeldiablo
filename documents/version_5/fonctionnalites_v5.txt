@@ -1,0 +1,50 @@
+* Fonctionnalités version 5
+
+- fonctionnalité 1 : génération aléatoire labyrinthe
+descriptif texte : le labyrinthe se génère seul et de manière aléatoire
+- critères de valiation :
+	- critère 1 : le labyrinthe se crée
+	- critère 2 : le labyrinthe ne bloque personne
+	- critère 3 : le labyrinthe possède une sortie accessible 
+- RESPONSABLE : Paul (loisil2u) 
+
+- fonctionnalité 2 : IA des monstres
+- descriptif texte : permet à un monstre de sa ballader d'un point A à un point B 
+- critères de validation :
+    - critère 1 : le monstre choisit le chemin le plus cours
+    - critère 2 : le monstre se déplace bien du point A au point B
+- RESPONSABLE : Celian (bauer129u)
+
+
+- fonctionnalité 3 : Amélioration interface graphique
+- descriptif texte : ajout d'une interface graphique montrant la vie du joueur par exemple
+- critères de validation :
+    - critère 1 : ajout d'une barre de vie
+    - critère 2 : ajout d'une barre de vie pour les monstres
+- RESPONSABLE : Antonin Rousseau (roussea97u)
+
+
+- fonctionnalité 4 : Système d'attaque et de projectile
+- descriptif texte : pouvoir attaquer et se faire attaquer
+- critères de validation :
+    - critère 1 : Pouvoir tuer une monstre
+    - critère 2 : Pouvoir se faire tuer
+    - critère 3 : Gérer les projectiles
+- RESPONSABLE : Tuong Duong (duongk099) et Tom (claude256u)
+
+RESPONSABLES DE CLASSES :
+
+Tuong Duong :
+Arme / Munitions 
+
+Paul :
+Labyrinthe / Case
+
+Celian : 
+Monstre 
+
+Tom :
+Projectile / Arme
+
+Anto :
+Jeu / DessinJeu 
