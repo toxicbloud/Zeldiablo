@@ -66,33 +66,31 @@ public abstract class Monstre extends Entite {
             case 0:
                 cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0)));
                 if(cs!=null && cs.isTraversable()){
-                    setPos(new Vec2(getPos().x--, getPos().y));
+                    setPos(new Vec2((getPos().x)-1, getPos().y));
                 }
                 break;
             case 1:
                 cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(1,0)));
                 if(cs!=null && cs.isTraversable()){
-                    System.out.println("Etape 4");
-                    setPos(new Vec2(getPos().x++, getPos().y));
-                    System.out.println("Etape 5");
+                    setPos(new Vec2((getPos().x)+1, getPos().y));
                 }
                 break;
             case 2:
                 cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,-1)));
                 if(cs!=null && cs.isTraversable()){
-                    setPos(new Vec2(getPos().x, getPos().y--));
+                    setPos(new Vec2(getPos().x, (getPos().y)-1));
                 }
                 break;
             case 3: 
                 cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,1)));
                 if(cs!=null && cs.isTraversable()){
-                    setPos(new Vec2(getPos().x, getPos().y++));
+                    setPos(new Vec2(getPos().x, (getPos().y)+1));
                 }
                 break;
             default:
                 cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,1)));
                 if(cs!=null && cs.isTraversable()){
-                    setPos(new Vec2(getPos().x, getPos().y++));
+                    setPos(new Vec2(getPos().x, (getPos().y)+1));
                 }
         }
     }
