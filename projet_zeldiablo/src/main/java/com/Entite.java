@@ -141,6 +141,20 @@ public abstract class Entite{
         return this.laby;
     }
     /**
+     * getter de l'attribut taille
+     * @return taille de l entite
+     */
+    public Vec2 getTaille(){
+        return this.taille;
+    }
+    /**
+     * setter de l'attribut taille
+     * @param v taille Vec2
+     */
+    public void setTaille(Vec2 v){
+        this.pos=v;
+    }
+    /**
      * deplace l'entite en prenant en compte les collisions
      * @param c commande direction a aller
      */
