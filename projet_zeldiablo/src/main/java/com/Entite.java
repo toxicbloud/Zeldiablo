@@ -37,6 +37,24 @@ public abstract class Entite{
             this.mort = false;
         }
         this.laby=l;
+        this.derniereDir = new Vec2(0,1);
+    }
+
+
+    public Entite(String nom,Vec2 newPos, int pointVie,Labyrinthe l, Jeu j){
+        this.nom=nom;
+        this.pos = newPos;
+        if (pointVie<=0) {
+            this.pv=0;
+            this.mort=true;
+        }
+        else{
+            this.pv=pointVie;
+            this.mort = false;
+        }
+        this.laby=l;
+        this.derniereDir = new Vec2(0,1);
+        this.jeu = j;
     }
     /**
      * 
@@ -231,7 +249,7 @@ public abstract class Entite{
     public void setDerniereDir(Vec2 derniereDir) {
         this.derniereDir = derniereDir;
     }
-    public Jeu getJeu() {
+        public Jeu getJeu() {
         return jeu;
     }
     public void setJeu(Jeu jeu) {

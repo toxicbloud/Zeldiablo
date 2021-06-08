@@ -1,6 +1,6 @@
 package com;
 
-public  class Arme_COC extends Arme {
+public  abstract class Arme_COC extends Arme {
     private int energie;
 
     /**
@@ -9,7 +9,7 @@ public  class Arme_COC extends Arme {
      * @param energie energies qui prends pour l'utiliser
      */
     public Arme_COC(int de,int energie){
-        super(de);
+        super(de, 5);
         if (energie<=0) {
             this.energie=1;
         } else {
