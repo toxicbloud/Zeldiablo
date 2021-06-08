@@ -111,6 +111,7 @@ public abstract class Entite{
         }
         if (this.pv <= 0) {
             this.mort = true;
+            this.pv=0;
         }
     }
     /**
