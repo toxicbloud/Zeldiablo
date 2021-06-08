@@ -66,6 +66,7 @@ public abstract class Monstre extends Entite {
      * methode qui permet à un monstre de se déplacer de manière aléatoire
      */
     public void deplacer() {
+        int att = (int)(Math.random() * 101);
         Case ul=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2((int)(getTaille().x*0.2),0)));
         Case ur=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2((int)(getTaille().x*0.8),0)));
         Case lu=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,(int)(getTaille().y*0.2))));
@@ -75,31 +76,33 @@ public abstract class Monstre extends Entite {
         Case ru=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(getTaille().x,(int)(getTaille().y*0.2))));
         Case rd=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(getTaille().x,(int)(getTaille().y*0.8))));
         int rand = (int)(Math.random() * 4);
-        switch(rand) {
-            case 0:
-                if(lu!=null && ld!=null && lu.isTraversable() && ld.isTraversable()) {
-                    setPos(new Vec2((getPos().x)-(this.vitesse), getPos().y));
-                }
-                break;
-            case 1:
-                if(ru!=null && rd!=null && ru.isTraversable() && rd.isTraversable()) {
-                    setPos(new Vec2((getPos().x)+(this.vitesse), getPos().y));
-                }
-                break;
-            case 2:
-                if(ul!=null && ur!=null && ul.isTraversable()&& ur.isTraversable()) {
-                    setPos(new Vec2(getPos().x, (getPos().y)-(this.vitesse)));
-                }
-                break;
-            case 3: 
-                if(dl!=null && dr!=null && dl.isTraversable() &&  dr.isTraversable()){
-                    setPos(new Vec2(getPos().x, (getPos().y)+(this.vitesse)));
-                }
-                break;
-            default:
-                if(dl!=null && dr!=null && dl.isTraversable() &&  dr.isTraversable()){
-                    setPos(new Vec2(getPos().x, (getPos().y)+(this.vitesse)));
-                }
+        if (att >= this.attente) {
+            switch(rand) {
+                case 0:
+                    if(lu!=null && ld!=null && lu.isTraversable() && ld.isTraversable()) {
+                        setPos(new Vec2((getPos().x)-(this.vitesse), getPos().y));
+                    }
+                    break;
+                case 1:
+                    if(ru!=null && rd!=null && ru.isTraversable() && rd.isTraversable()) {
+                        setPos(new Vec2((getPos().x)+(this.vitesse), getPos().y));
+                    }
+                    break;
+                case 2:
+                    if(ul!=null && ur!=null && ul.isTraversable()&& ur.isTraversable()) {
+                        setPos(new Vec2(getPos().x, (getPos().y)-(this.vitesse)));
+                    }
+                    break;
+                case 3: 
+                    if(dl!=null && dr!=null && dl.isTraversable() &&  dr.isTraversable()){
+                        setPos(new Vec2(getPos().x, (getPos().y)+(this.vitesse)));
+                    }
+                    break;
+                default:
+                    if(dl!=null && dr!=null && dl.isTraversable() &&  dr.isTraversable()){
+                        setPos(new Vec2(getPos().x, (getPos().y)+(this.vitesse)));
+                    }
+            }
         }
-    }
+    } 
 }
