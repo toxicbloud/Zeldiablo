@@ -1,5 +1,7 @@
 package com;
 
+import java.util.ArrayList;
+
 /**
  * Labyrinthe
  */
@@ -30,7 +32,7 @@ public class Labyrinthe {
      */
     public Labyrinthe() {
 
-        this.size = 10;
+        this.size = 20;
         this.createLab();
     }
 
@@ -42,7 +44,7 @@ public class Labyrinthe {
         if (s > 5) {
             this.size = s;
         }
-        else this.size = 5;
+        else this.size = 20;
 
         this.createLab();
     }
@@ -52,18 +54,26 @@ public class Labyrinthe {
      */
     private void createLab() {
         this.cases = new Case[this.size][this.size];
-        for (int i = 0; i < cases.length; i++) {
-            for (int j = 0; j < cases[i].length; j++) {
-                this.cases[i][j] = (Math.random() > 0.5)? new Mur(): new Chemin();
-
+        for (int i = 0; i < this.cases.length; i++) {
+            for (int j = 0; j < this.cases[i].length; j++) {
+                this.cases[i][j] = new Mur();
             }
         }
         this.entree = new Vec2(this.size/2, this.size/2);
-        cases[0][0] = new Chemin();
-        cases[1][0] = new Chemin();
-        cases[0][1] = new Chemin();
-        cases[1][1] = new Chemin();
+        this.generateLab();
     }
+
+
+    public void generateLab() {
+
+        // Liste où sont stockées des déplacements
+        ArrayList<Vec2> deplacement = new ArrayList<Vec2>();
+
+
+        
+
+    }
+
 
     /**
      * Renvoie la case a la position donnee
