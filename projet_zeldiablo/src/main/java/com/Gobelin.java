@@ -19,7 +19,7 @@ public class Gobelin extends Monstre {
     }
 
     /**
-     * methode qui permet à un gobelin de se déplacer
+     * methode qui permet à un gobelin de se déplacer de manière aléatoire
      */
     public void deplacer() {
         Case cs;
@@ -27,13 +27,13 @@ public class Gobelin extends Monstre {
         switch(rand) {
             case 0:
                 cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(-1,0)));
-                if(cs!=null && cs.isTraversable()){
+                if(cs!=null && cs.isTraversable()) {
                     setPos(new Vec2((getPos().x)-1, getPos().y));
                 }
                 break;
             case 1:
                 cs=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(1,0)));
-                if(cs!=null && cs.isTraversable()){
+                if(cs!=null && cs.isTraversable()) {
                     setPos(new Vec2((getPos().x)+1, getPos().y));
                 }
                 break;
