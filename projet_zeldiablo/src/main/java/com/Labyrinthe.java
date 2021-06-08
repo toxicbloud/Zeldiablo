@@ -66,10 +66,9 @@ public class Labyrinthe {
 
     public void generateLab() {
 
-        // Liste où sont stockées des déplacements
         ArrayList<Vec2> deplacement = new ArrayList<Vec2>();
 
-
+        
         
 
     }

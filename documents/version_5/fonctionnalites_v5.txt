@@ -1,0 +1,56 @@
+* Fonctionnalités version 5
+
+- fonctionnalité 1 : ajout des textures
+descriptif texte : les cases ont des textures
+- critères de valiation :
+	- critère 1 : les textures s'affichent correctement
+	- critère 2 : il y a différents types de textures
+- RESPONSABLE : Paul (loisil2u)
+
+- fonctionnalité 2 : initialiser des munitions (début de la classe attaque à distance)
+- descriptif texte : leur hitbox, les munitions etc
+- critères de validation :
+    - critère 1 : nombre de munitions
+    - critère 2 : une arme ne peut pas attaquer si elle n'a pas de munitions
+- RESPONSABLE : Tuong Duong (duongk099)
+
+
+- fonctionnalité 3 : attaquer pour Entités (pour le corp à corp pour l'instant)
+- descriptif texte : Les entités subissent des dégats dans un rayon de l'attaque
+- critères de validation :
+    - critère 1 : une entité peut attaquer
+    - critère 2 : l'entité ciblé perd des pv
+- RESPONSABLE : Tom (claude256u)
+
+
+- fonctionnalité 4 : mise à jour des monstres
+- descriptif texte : le monstre est intialisé, se déplacer, attaque
+- critères de validation :
+    - critère 1 : le monstre a des pv
+    - critère 2 : le monstre se déplace aléatoirement 
+- RESPONSABLE : Celian (bauer129u)
+
+- fonctionnalité 5 : génération d'un labyrinthe aléatoire (suite)
+- descriptif texte : l'aventurier spawn au centre du labyrinthe
+- critères de validation :
+	- critère 1 : le labyrinthe a une sortie
+	- critère 2 : quand l'aventurier sort, le jeu se termine
+	- critère 3 : les entités ne peuvent pas apparaître sur des cases mur.
+- RESPONSABLE : Paul (loisil2u)
+
+RESPONSABLES DE CLASSES :
+
+Tuong Duong :
+Arme / Munitions 
+
+Paul :
+DessinJeu / Case / Vec2
+
+Celian : 
+Monstre 
+
+Tom :
+Camera / Labyrinthe
+
+Anto :
+Entite / Jeu
