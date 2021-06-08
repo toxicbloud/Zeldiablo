@@ -7,7 +7,6 @@ public abstract class Arme {
     private Entite possesseur;
     private int degats;
     private int vitesse;
-
     private int range ; 
 
 
