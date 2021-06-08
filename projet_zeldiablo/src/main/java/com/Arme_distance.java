@@ -1,7 +1,6 @@
 package com;
 
 public class Arme_distance extends Arme {
-    private int range ; 
     private int munitions;
     private Projectil[] projectil;
     // Mettre projectile apres

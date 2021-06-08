@@ -1,23 +1,16 @@
 @startuml
-title zeldiablo version 4
+title zeldiablo version 5
 
 class Jeu{
-    - carte : Labyrinthe
-    - joueur : Aventurier
-    - cam : Camera
-    - ennemis : ArrayList<Entite>
 
     + Jeu(String)
     + getCarte() : Labyrinthe
     + getJoueur() : Aventurier
-    + getCam() : Camera
-    + getEnnemis() : ArrayList<Entite>
 }
 
 abstract class Case{
     - traversable : boolean
     - sprite: Image
-
     + Case()
     + Case(boolean, Image)
     + isTraversable() : boolean
@@ -37,116 +30,103 @@ class Amulette{
 }
 
 class Labyrinthe {
-    + TILE_SIZE : int
-    - size : int
-    - cases : Case[][]
-    - entree : Vec2
-
+    + TILE_SIZE
+    - size
+    - cases
+    - entree
+    --
     + Labyrinthe()
     + Labyrinthe(s: int)
     - createLab()
     - generateLab()
-    + getCaseAtVec2(pos: Vec2): Case
+    + dessiner(image: BufferedImage)
     + getSize(): int
     + getCases(): Case[][]
-    + setCases(Case[][])
     + getEntree(): Vec2
     + setEntree(entree: Vec2)
+    + getCaseAtVec2(pos: Vec2)
 }
 
 class Vec2 {
-    + x : int
-    + y : int
-
+    + x
+    + y
+    --
     + Vec2()
-    + Vec2(int, int)
-    + plus(Vec2): Vec2
-    + minus(Vec2): Vec2
-    + times(Vec2): Vec2
-    + div(Vec2): Vec2
-    + equals(Vec2): boolean
+    + Vec2(: int, y: int)
+    + plus(v: Vec2): Vec2
+    + minus(v: Vec2): Vec2
+    + times(v: Vec2): Vec2
+    + div(v: Vec2): Vec2
+    + equals(v: Vec2): boolean
     + isZero() : boolean
     + toString(): String
 }
 
 abstract class Entite{
+    - arme: Arme
     - nom : String
-    - pos : Vec2
-    - taille : Vec2
     - pv : int
     - mort: boolean
     - laby: Labyrinthe
 
-    + Entite(String, Vec2, int, Labyrinthe)
-    + Entite(String, Vec2, int, Labyrinthe, Vec2)
-    + getPos() : Vec2
-    + setPos(Vec2)
+    + Entite(String)
     + getNom() : String
     + setNom(String)
-    + getPV() : int
-    + setPV(int)
+    + getPos() : Vec2
+    + setPos(Vec2) : void
     + etreMort(): boolean
-    + gagnerPV(int) 
-    + perdrePV(int)
-    + attaquerAutre(Entite, int)
-    + soigner(Entite, int)
-    + getLabyrinthe() : Labyrinthe
-    + getTaille() : Vec2
-    + setTaille(Vec2)
-    + deplacer(Commande)
+    + gagnerPV(int) : void
+    + deplacer(Commande) : void
+    + soigner(Entite, int) : void
+    + attaquerAutre(Entite) : void
+    + perdrePV(int) : void
+    + zoneAttaque() : ArrayList<Entite>
+    + attaquer() : void
+
 }
 
 abstract Monstre{
     - degat : int
-    - vitesse : int
     - description : String
-    - attente : int
 
-    + Monstre(String, Vec2, int, int, String, Labyrinthe, int, int)
+    + Monstre(String, int, int, String)
     + soigner(int, Entite) : void
     + getDegat() : int
-    + setDegat(int)
+    + setDegat(int) : void
     + getDescription() : String
-    + deplacer()
 }
 
 class Gobelin{
-    + Gobelin(int, Vec2, Labyrinthe)
+    + Gobelin(int, int, Vec2, Labyrinthe)
 }
 
 class Fantome{
-    + Fantome(int, Vec2, Labyrinthe)
+    + Fantome(int, int, Vec2, Labyrinthe)
 }
 
 class Orc{
-    + Orc(int, Vec2, Labyrinthe)
+    + Orc(int, int, Vec2, Labyrinthe)
 }
 
 class Murloc{
-    + Murloc(int, Vec2, Labyrinthe)
+    + Murloc(int, int, Vec2, Labyrinthe)
 }
 
 class PlanteC{
-    + PlanteC(int, Vec2, Labyrinthe)
+    + PlanteC(int, int, Vec2, Labyrinthe)
 }
 
 class Aventurier{
-    + Aventurier(String, Vec2, Labyrinthe)
-    + equiper_Arme(Arme)
-    + jeter_Arme()
-    + getArme() : Arme
+    + Aventurier(String)
+    + deplacer(Commande)
 }
 
 class DessinJeu{
-    - TITLE_SIZE : int
     - jeu : Jeu
-
-    + DessinJeu()
-    + getJeu() : Jeu
-    + setJeu(Jeu)
 }
 
 class Main{
+    --
     + main(args: String[])
 }
 
@@ -161,16 +141,8 @@ interface MoteurJeu.Jeu{
 
 
 class Camera {
-    - pos : Vec2
-    - i : int
-    - target : Entite
-
     + Camera(Entite)
     + deplacer(Entite)
-    + getPos : Vec2
-    + setPos(Vec2)
-    + getTarget() : Entite
-    + setTarget(Entite)
 }
 
 class Textures {
@@ -181,41 +153,25 @@ class Textures {
 }
 
 abstract class Arme{
-    - degats : int
-    - vitesse : int
+    - degats :int
+    - vitesse :int
 
-    + Arme(Entite)
-    + attaquer(Entite)
-    + getDegats() : int
-    + setDegats(int)
-    + getVitesse() : int
-    + setVitesse(int)
+    + attaquer(Entite e1) : void
+    + jeter() : void 
+    + equiper(Arme a1) : void 
 }
 
 class Arme_distance{
     - range : int
     - munitions : int
-
-    + Arme_distance(int, int, int)
-    + chargerArme()
+    - projectil : Projectil 
 }
 
 class Arme_COC {
     - energie : int
-
-    + Arme_COC(int, int)
-    + getEnergie() : int
-    + setEnergie(int)
-}
-class Projectil{
-    - origine : Arme
-    - vitesse : int
-    - direction : Commande
-
-    + Vec2[] parcours_Bullet()
 }
 
-
+Entite "1" -> "1" Vec2 : -derniereDir
 Labyrinthe "1" --> "*" Case : - cases
 Chemin -|> Case
 Mur -|> Case

@@ -1,0 +1,21 @@
+@startuml
+title fonctionnement de l'attaque
+
+participant main
+participant "e: Entite" as entite
+participant "a: Arme" as arme
+participant "e2: Entite" as entite2
+
+activate main
+    main -> entite : attaque()
+    activate entite
+    entite -> arme : getRange()
+    entite <-- arme : r
+    entite -> entite : attaqueZone(r)
+
+    entite ->  entite2 : attaqueAutre(e2)
+    entite <-- entite2
+    main <-- entite
+    deactivate entite
+deactivate main
+@enduml

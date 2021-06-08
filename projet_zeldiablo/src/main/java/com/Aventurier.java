@@ -14,8 +14,8 @@ public class Aventurier extends Entite{
      * constructeur aventurier avec un nom
      * @param nom nom de l aventurier
      */
-    public Aventurier(String nom,Vec2 v,int pv,Labyrinthe l){
-        super(nom,v,pv,l);
+    public Aventurier(String nom,Vec2 v,Labyrinthe l){
+        super(nom,v,100,l);
         this.energie = 100;
         this.arme=null;
     }
@@ -34,8 +34,13 @@ public class Aventurier extends Entite{
     @Override
     public void deplacer(Commande c){
         super.deplacer(c);
+
+        if (c.espace) {
+            System.out.println("yop");
+        }
         Labyrinthe laby=getLabyrinthe();
         Case proch=laby.getCaseAtVec2(getPos());
+
         if(proch instanceof Amulette){
             //temporaire
             System.out.println("Le jeu est fini");

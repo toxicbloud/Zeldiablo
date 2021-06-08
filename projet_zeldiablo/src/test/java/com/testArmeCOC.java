@@ -10,7 +10,7 @@ public class testArmeCOC {
     @Test
     public void TestEquiper(){
         Labyrinthe l= new Labyrinthe();
-        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),10,l);
+        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
         Arme_COC knife = new Arme_COC(10, 1);
 
         a1.equiper_Arme(knife);
@@ -23,7 +23,7 @@ public class testArmeCOC {
     @Test
     public void TestEquiper_v1(){
         Labyrinthe l= new Labyrinthe();
-        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),10,l);
+        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
         Arme_COC knife = new Arme_COC(10, -100);
 
         a1.equiper_Arme(knife);
@@ -37,7 +37,7 @@ public class testArmeCOC {
     @Test
     public void TestEquiper_v2(){
         Labyrinthe l= new Labyrinthe();
-        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),10,l);
+        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
         Arme_COC knife = new Arme_COC(-100, 10);
 
         a1.equiper_Arme(knife);
@@ -51,7 +51,7 @@ public class testArmeCOC {
     @Test
     public void TestEquiper_v3(){
         Labyrinthe l= new Labyrinthe();
-        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),10,l);
+        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
         Arme_COC knife = new Arme_COC(-100, -100);
 
         a1.equiper_Arme(knife);
@@ -67,14 +67,14 @@ public class testArmeCOC {
     @Test
     public void TestAttaquer(){
         Labyrinthe l= new Labyrinthe();
-        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),10,l);
-        Aventurier a2=new Aventurier("Paul",new Vec2(0,0),10,l);
+        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
+        Aventurier a2=new Aventurier("Paul",new Vec2(0,0),l);
 
         Arme_COC knife = new Arme_COC(2, 1);
         a1.equiper_Arme(knife);
         a1.attaquerAutre(a2);
 
-        assertEquals("a2 must have 8 point de vies", 8 ,a2.getPV());
+        assertEquals("a2 must have 98 point de vies", 98 ,a2.getPV());
     }
 
     /**
@@ -83,14 +83,14 @@ public class testArmeCOC {
     @Test
     public void TestAttaquer_v1(){
         Labyrinthe l= new Labyrinthe();
-        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),10,l);
-        Aventurier a2=new Aventurier("Paul",new Vec2(0,0),10,l);
+        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
+        Aventurier a2=new Aventurier("Paul",new Vec2(0,0),l);
 
         Arme_COC knife = new Arme_COC(-100, 1);
         a1.equiper_Arme(knife);
         a1.attaquerAutre(a2);
 
-        assertEquals("a2 must have 9 point de vies", 9 ,a2.getPV());
+        assertEquals("a2 must have 99 point de vies", 99 ,a2.getPV());
     }
 
     /**
@@ -99,7 +99,7 @@ public class testArmeCOC {
     @Test
     public void TestJeter(){
         Labyrinthe l= new Labyrinthe();
-        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),10,l);
+        Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
         Arme_COC knife = new Arme_COC(10, 1);
 
         a1.equiper_Arme(knife);

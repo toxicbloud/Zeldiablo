@@ -4,11 +4,20 @@ package com;
  * Arme
  */
 public abstract class Arme {
+    private Entite possesseur;
     private int degats;
     private int vitesse;
+<<<<<<< HEAD
     private int range;
 
+=======
+<<<<<<< HEAD
+    private int range ; 
+=======
+    
+>>>>>>> 940e16ef46974ffcc59f5e6dbb0c4062c1b059fa
 
+>>>>>>> eaf5083e78f2ed9b11ffcfd2775bd0a8875f07e6
 
 
     public Arme(int de){

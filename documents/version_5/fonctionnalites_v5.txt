@@ -38,13 +38,24 @@ Tuong Duong :
 Arme / Munitions 
 
 Paul :
+<<<<<<< HEAD
+DessinJeu / Case / Vec2
+=======
 Labyrinthe / Case
+>>>>>>> eaf5083e78f2ed9b11ffcfd2775bd0a8875f07e6
 
 Celian : 
 Monstre 
 
 Tom :
+<<<<<<< HEAD
+Camera / Labyrinthe
+
+Anto :
+Entite / Jeu
+=======
 Projectile / Arme
 
 Anto :
 Jeu / DessinJeu 
+>>>>>>> eaf5083e78f2ed9b11ffcfd2775bd0a8875f07e6
