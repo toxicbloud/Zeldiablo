@@ -59,6 +59,9 @@ public abstract class Monstre extends Entite {
         return this.description;
     }
 
+    /**
+     * methode qui permet à un monstre de se déplacer de manière aléatoire
+     */
     public void deplacer() {
         Case cs;
         int rand = (int)(Math.random() * 4);
