@@ -18,13 +18,15 @@ abstract class Case{
 }
 
 class Chemin{
-
     + Chemin()
 }
 
 class Mur{
-
     + Mur()
+}
+
+class Amulette{
+    + Amulette()
 }
 
 class Labyrinthe {
@@ -93,8 +95,23 @@ abstract Monstre{
 }
 
 class Gobelin{
+    + Gobelin(int, int, Vec2, Labyrinthe)
+}
 
-    Gobelin(String, int, int, String)
+class Fantome{
+    + Fantome(int, int, Vec2, Labyrinthe)
+}
+
+class Orc{
+    + Orc(int, int, Vec2, Labyrinthe)
+}
+
+class Murloc{
+    + Murloc(int, int, Vec2, Labyrinthe)
+}
+
+class PlanteC{
+    + PlanteC(int, int, Vec2, Labyrinthe)
 }
 
 class Aventurier{
@@ -156,11 +173,16 @@ class Arme_COC {
 Labyrinthe "1" --> "*" Case : - cases
 Chemin -|> Case
 Mur -|> Case
+Amulette -|> Case
 Jeu -|> MoteurJeu.Jeu
 DessinJeu -|> MoteurJeu.DessinJeu
 Aventurier -|> Entite
 Monstre -|> Entite
 Gobelin -|> Monstre
+Fantome -|> Monstre
+Orc -|> Monstre
+Murloc -|> Monstre
+PlanteC -|> Monstre
 Arme_distance -|> Arme
 Arme_COC -|> Arme
 Jeu "1" --> "1" Labyrinthe : - carte
