@@ -138,7 +138,7 @@ abstract class Arme{
     - vitesse :int
 
     + attaquer(Entite e1) : void
-    + jeter : void 
+    + jeter() : void 
     + equiper(Arme a1) : void 
 }
 
