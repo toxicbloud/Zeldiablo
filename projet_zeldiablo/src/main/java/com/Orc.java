@@ -10,7 +10,7 @@ public class Orc extends Monstre {
      * @param d dégât de l'orc
      * @param desc description de l'orc
      */
-    public Orc(int d, int vie, Vec2 v, Labyrinthe l) {
-        super("Orc", v, vie, d, "L'Orc est un monstre lent mais résistant", l, 75, 1);
+    public Orc(int d, Vec2 v, Labyrinthe l) {
+        super("Orc", v, 60, d, "L'Orc est un monstre lent mais résistant", l, 75, 1);
     }
 }

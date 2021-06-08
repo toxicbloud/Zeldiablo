@@ -10,7 +10,7 @@ public class Murloc extends Monstre {
      * @param d dégât du Murloc
      * @param desc description du Murloc
      */
-    public Murloc(int d, int vie, Vec2 v, Labyrinthe l) {
-        super("Murloc", v, vie, d, "Le Murloc est un monstre normal mais qui devient très rapide quand il voit le joueur", l, 50, 1);
+    public Murloc(int d, Vec2 v, Labyrinthe l) {
+        super("Murloc", v, 25, d, "Le Murloc est un monstre normal mais qui devient très rapide quand il voit le joueur", l, 50, 1);
     }
 }
