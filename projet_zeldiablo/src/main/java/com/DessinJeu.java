@@ -31,6 +31,8 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         Graphics2D g = (Graphics2D) image.getGraphics();
         int w = image.getWidth();
         int h = image.getHeight();
+        g.setColor(Color.black);
+        g.fillRect(0, 0, image.getWidth(), image.getHeight());
         Case[][] cases = jeu.getCarte().getCases();
         for (int x = 0; x < cases.length; x++) {
             for (int y = 0; y < cases[x].length; y++) {
