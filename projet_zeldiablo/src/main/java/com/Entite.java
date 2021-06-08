@@ -14,6 +14,7 @@ public abstract class Entite{
     private int pv;
     private boolean mort;
     private Labyrinthe laby;
+    private Vec2 derniereDir;
 
 
     /**

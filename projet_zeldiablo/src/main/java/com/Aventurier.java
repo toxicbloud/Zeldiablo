@@ -34,8 +34,13 @@ public class Aventurier extends Entite{
     @Override
     public void deplacer(Commande c){
         super.deplacer(c);
+
+        if (c.espace) {
+            System.out.println("yop");
+        }
         Labyrinthe laby=getLabyrinthe();
         Case proch=laby.getCaseAtVec2(getPos());
+
         if(proch instanceof Amulette){
             //temporaire
             System.out.println("Le jeu est fini");

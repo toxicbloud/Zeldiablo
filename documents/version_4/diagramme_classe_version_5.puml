@@ -1,0 +1,197 @@
+@startuml
+title zeldiablo version 5
+
+class Jeu{
+
+    + Jeu(String)
+    + getCarte() : Labyrinthe
+    + getJoueur() : Aventurier
+}
+
+abstract class Case{
+    - traversable : boolean
+    - sprite: Image
+    + Case()
+    + Case(boolean, Image)
+    + isTraversable() : boolean
+    + getSprite(): Image
+}
+
+class Chemin{
+    + Chemin()
+}
+
+class Mur{
+    + Mur()
+}
+
+class Amulette{
+    + Amulette()
+}
+
+class Labyrinthe {
+    + TILE_SIZE
+    - size
+    - cases
+    - entree
+    --
+    + Labyrinthe()
+    + Labyrinthe(s: int)
+    - createLab()
+    - generateLab()
+    + dessiner(image: BufferedImage)
+    + getSize(): int
+    + getCases(): Case[][]
+    + getEntree(): Vec2
+    + setEntree(entree: Vec2)
+    + getCaseAtVec2(pos: Vec2)
+}
+
+class Vec2 {
+    + x
+    + y
+    --
+    + Vec2()
+    + Vec2(: int, y: int)
+    + plus(v: Vec2): Vec2
+    + minus(v: Vec2): Vec2
+    + times(v: Vec2): Vec2
+    + div(v: Vec2): Vec2
+    + equals(v: Vec2): boolean
+    + isZero() : boolean
+    + toString(): String
+}
+
+abstract class Entite{
+    - arme: Arme
+    - nom : String
+    - pv : int
+    - mort: boolean
+    - laby: Labyrinthe
+
+    + Entite(String)
+    + getNom() : String
+    + setNom(String)
+    + getPos() : Vec2
+    + setPos(Vec2) : void
+    + etreMort(): boolean
+    + gagnerPV(int) : void
+    + deplacer(Commande) : void
+    + soigner(Entite, int) : void
+    + attaquerAutre(Entite) : void
+    + perdrePV(int) : void
+    + zoneAttaque() : ArrayList<Entite>
+    + attaquer() : void
+
+}
+
+abstract Monstre{
+    - degat : int
+    - description : String
+
+    + Monstre(String, int, int, String)
+    + soigner(int, Entite) : void
+    + getDegat() : int
+    + setDegat(int) : void
+    + getDescription() : String
+}
+
+class Gobelin{
+    + Gobelin(int, int, Vec2, Labyrinthe)
+}
+
+class Fantome{
+    + Fantome(int, int, Vec2, Labyrinthe)
+}
+
+class Orc{
+    + Orc(int, int, Vec2, Labyrinthe)
+}
+
+class Murloc{
+    + Murloc(int, int, Vec2, Labyrinthe)
+}
+
+class PlanteC{
+    + PlanteC(int, int, Vec2, Labyrinthe)
+}
+
+class Aventurier{
+    + Aventurier(String)
+    + deplacer(Commande)
+}
+
+class DessinJeu{
+    - jeu : Jeu
+}
+
+class Main{
+    --
+    + main(args: String[])
+}
+
+interface MoteurJeu.DessinJeu{
+    + dessine(BufferedImage) : void
+}
+
+interface MoteurJeu.Jeu{
+    + evoluer(Commande) : void
+    + etreFini() : boolean
+}
+
+
+class Camera {
+    + Camera(Entite)
+    + deplacer(Entite)
+}
+
+class Textures {
+    + carte_mur: Image
+    + carte_chemin: Image
+    + entite_aventurier: Image
+    + entite_gobelin: Image
+}
+
+abstract class Arme{
+    - degats :int
+    - vitesse :int
+
+    + attaquer(Entite e1) : void
+    + jeter() : void 
+    + equiper(Arme a1) : void 
+}
+
+class Arme_distance{
+    - range : int
+    - munitions : int
+    - projectil : Projectil 
+}
+
+class Arme_COC {
+    - energie : int
+}
+
+Entite "1" -> "1" Vec2 : -derniereDir
+Labyrinthe "1" --> "*" Case : - cases
+Chemin -|> Case
+Mur -|> Case
+Amulette -|> Case
+Jeu -|> MoteurJeu.Jeu
+DessinJeu -|> MoteurJeu.DessinJeu
+Aventurier -|> Entite
+Monstre -|> Entite
+Gobelin -|> Monstre
+Fantome -|> Monstre
+Orc -|> Monstre
+Murloc -|> Monstre
+PlanteC -|> Monstre
+Arme_distance -|> Arme
+Arme_COC -|> Arme
+Jeu "1" --> "1" Labyrinthe : - carte
+Jeu "1" --> "1" Aventurier : - joueur
+DessinJeu "1" --> "1" Jeu : - jeu
+Camera "1" --> "1" Entite : - target
+Camera "1" --> "1" Vec2 : - pos
+Entite "1" --> "1" Vec2 : - pos
+Entite "1" --> "1" Vec2 : - taille
+@enduml
