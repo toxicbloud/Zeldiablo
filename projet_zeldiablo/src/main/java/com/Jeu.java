@@ -24,6 +24,7 @@ public class Jeu implements moteurJeu.Jeu {
         this.joueur = new Aventurier(n, new Vec2(), 10, this.carte);
         this.cam = new Camera(this.joueur);
         this.ennemis.add(new Gobelin(5, 20, new Vec2(2, 2), this.carte));
+        Textures.chargerTextures();
     }
 
     /** Methode evoluer utilisee par le moteur de jeu */

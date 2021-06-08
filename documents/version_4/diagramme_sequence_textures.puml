@@ -1,0 +1,23 @@
+@startuml
+title Utilisation de la classe Textures
+participant "main"
+participant "m: Mur" as mur
+participant "Textures" as tex
+
+activate main
+    main -> tex : ChargerTextures()
+    activate tex
+    main <-- tex
+    deactivate tex
+    create mur
+    main -> mur : create()
+    activate mur
+        mur -> tex: getTexture()
+        activate tex
+        mur <-- tex: texture: Image
+        deactivate tex
+        main <-- mur
+    deactivate mur
+deactivate main
+
+@enduml
