@@ -6,7 +6,8 @@ package com;
 public abstract class Arme {
     private int degats;
     private int vitesse;
-    
+    private int range;
+
 
 
 
@@ -37,4 +38,14 @@ public abstract class Arme {
 	public void setVitesse(int vitesse) {
 		this.vitesse = vitesse;
 	}
+
+    
+	public int getRange() {
+		return this.range;
+	}
+
+	public void setRange(int range) {
+		this.range = range;
+	}
+
 }

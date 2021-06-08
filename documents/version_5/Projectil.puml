@@ -1,0 +1,15 @@
+@startuml
+title Projectil
+participant "m:Main" as main
+participant "p1:Projectil" as p1
+participant "vec:Vec2" as v
+
+activate main
+activate p1
+    p1 -> v : parcours_Bullet()
+    activate v
+    main <-v : parcours   
+    deactivate p1
+deactivate main
+
+@enduml
