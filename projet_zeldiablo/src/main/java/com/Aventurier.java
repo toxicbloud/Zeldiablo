@@ -33,6 +33,9 @@ public class Aventurier extends Entite{
     public Arme getArme(){
         return this.arme;
     }
+    public int getEnergie(){
+        return this.energie;
+    }
     @Override
     public void deplacer(Commande c){
         super.deplacer(c);
