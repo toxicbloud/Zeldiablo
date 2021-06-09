@@ -30,6 +30,7 @@ public class Jeu implements moteurJeu.Jeu {
         this.ennemis = new ArrayList<Entite>();
         this.ennemis.add(new Gobelin(1, this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), getCurrentLabyrinthe()));
         this.joueur = new Aventurier(n, this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this);
+        this.genererEnnemis();
         this.cam = new Camera(this.joueur);
     }
 
@@ -67,6 +68,14 @@ public class Jeu implements moteurJeu.Jeu {
 
     public void genererEnnemis() {
         this.ennemis.clear();
+        Case[][] cases = getCurrentLabyrinthe().getCases();
+        for (int x = 0; x < cases.length; x++) {
+            for (int y = 0; y < cases[x].length; y++) {
+                if (cases[x][y].isTraversable() && Math.random() > 0.9) {
+                    this.ennemis.add(new Gobelin(5, new Vec2(x, y).times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe()));
+                }
+            }
+        }
     }
 
     /** Methode evoluer utilisee par le moteur de jeu */
