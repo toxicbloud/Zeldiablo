@@ -21,12 +21,12 @@ public class Jeu implements moteurJeu.Jeu {
      * @param n nom de l aventurier
      */
     public Jeu(String n) {
+        Textures.chargerTextures();
         this.currentLabyrinthe = 0;
         labyrinthes = new Labyrinthe[3];
         for (int i = 0; i < labyrinthes.length; i++)
             labyrinthes[i] = new Labyrinthe();
         
-        Textures.chargerTextures();
         this.ennemis = new ArrayList<Entite>();
         this.joueur = new Aventurier(n, this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this);
         this.cam = new Camera(this.joueur);
