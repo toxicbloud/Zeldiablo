@@ -1,6 +1,7 @@
 package com;
 
 import moteurJeu.Commande;
+import java.awt.Image;
 
 /**
  * @author Antonin
@@ -15,7 +16,7 @@ public abstract class Entite{
     private boolean mort;
     private Labyrinthe laby;
     private Vec2 derniereDir;
-
+    private Image texture=Textures.noTexture;
 
     /**
      * constructeur d' Entite
@@ -122,6 +123,20 @@ public abstract class Entite{
      */
     public void setPV(int newPV){
         this.pv=newPV;
+    }
+    /**
+     * 
+     * @param t Image de Texture
+     */
+    public void setTexture(Image t){
+        this.texture=t;
+    }
+    /**
+     * 
+     * @return Texture
+     */
+    public Image getTexture(){
+        return this.texture;
     }
     /**
      * 
