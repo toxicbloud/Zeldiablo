@@ -110,8 +110,24 @@ public class Aventurier extends Entite{
         }else if(proch instanceof Eau){
             setVitesse(1);
         }
+        animer(c);
     }
-
+    /**
+     * 
+     * @param c Direction
+     */
+    public void animer(Commande c){
+        if(c.gauche){
+            setTexture(Textures.guerrier[11]);
+        }else if(c.droite){
+            setTexture(Textures.guerrier[7]);
+        }else if(c.bas){
+            setTexture(Textures.guerrier[2]);
+        }else if(c.haut){
+            setTexture(Textures.guerrier[17]);
+        }
+    }
+    
     /**
      * retourne la range de l'arme
      * @return
