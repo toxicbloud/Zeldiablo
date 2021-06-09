@@ -1,0 +1,57 @@
+* Fonctionnalités version 6
+
+- fonctionnalité 1 : réalisation de plusieurs niveaux de labyrinthe
+descriptif texte : le labyrinthe a plusieurs étages
+- critères de valiation :
+	- critère 1 : plusieurs étages de labyrinthe sont créés
+	- critère 2 : des escaliers permettent de monter dans l'étage suivant
+	- critère 3 : un labyrinthe de fin avec une amulette (pour sortir)
+- RESPONSABLE : Paul (loisil2u) 
+
+- fonctionnalité 2 : IA des monstres (suite)
+- descriptif texte : permet à un monstre de sa ballader d'un point A à un point B 
+- critères de validation :
+    - critère 1 : le monstre choisit le chemin le plus cours
+    - critère 2 : le monstre se déplace bien du point A au point B
+- RESPONSABLE : Celian (bauer129u)
+
+
+
+-fonctionnalité 3 : Test du système d'attaque et optimisation (suite)
+- descriptif texte : tester les attaques dans les différentes positions
+- critères de validation :
+	- critère 1 : attaque vers le haut, bas, côté
+- RESPONSABLE : Tom (claude256u)
+	
+
+- fonctionnalité 4 : ajout de l'attaque pour les monstres
+- descriptif texte : les monstres peuvent attaquer 
+- critères de validation :
+	- critère 1 : le monstre peut attaquer quand un aventurier est proche
+- RESPONSABLE : Tom (claude256u)
+
+- fonctionnalité 5 : BOSS d'étage initialisé
+- descriptif texte : un boss est généré avant la fin de chaque étage
+- critères de validation :
+	- critère 1 : Le boss a 100 * (number étage + 1) points de vie
+	- critère 2 : le boss pourra attaquer le joueur (vers la fin de l'heure j'espère)
+- RESPONSABLE : Duong (duongk99)
+
+RESPONSABLES DE CLASSES :
+
+Tuong Duong :
+Arme / Munitions / Projectiles
+
+Paul :
+DessinJeu / Case / Vec2
+
+
+Celian : 
+Monstre 
+
+Tom :
+Camera / Labyrinthe / Aventurier
+
+Anto :
+Entite / Jeu
+
