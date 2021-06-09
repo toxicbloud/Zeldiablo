@@ -34,8 +34,8 @@ public class Camera {
      * @param e nouvelle cible
      */
     public void deplacer(Entite e) {
-        if (reculer) targetTileSize = 70;
-        else targetTileSize = 75;
+        if (reculer) targetTileSize = 75;
+        else targetTileSize = 90;
         this.target = e;
         this.pos = this.pos.plus( e.getPos().minus(this.pos).div(4) );
         DessinJeu.TILE_SIZE += (targetTileSize - DessinJeu.TILE_SIZE) / 2.0;
