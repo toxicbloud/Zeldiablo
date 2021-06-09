@@ -74,7 +74,7 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         Graphics2D g2 = (Graphics2D) ath.getGraphics();
         /** Affichage PV */
         g2.setColor(Color.red);
-        g2.fillArc(30, 2, 80, 80, 0, 360);
+        g2.fillArc(30, 4, 80, 80, 0, 360);
         int[] pixels = new int[ath.getWidth()*ath.getHeight()];
         Arrays.fill(pixels, 0); 
         ath.setRGB(0, 0, ath.getWidth(), ath.getHeight()-jeu.getJoueur().getPV(), pixels, 0, ath.getWidth());
