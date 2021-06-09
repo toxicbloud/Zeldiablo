@@ -9,7 +9,7 @@ public  abstract class Arme_COC extends Arme {
      * @param energie energies qui prends pour l'utiliser
      */
     public Arme_COC(int de,int energie){
-        super(de, 5);
+        super(de, Labyrinthe.TILE_SIZE);
         if (energie<=0) {
             this.energie=1;
         } else {
