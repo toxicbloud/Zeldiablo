@@ -14,7 +14,6 @@ public abstract class Entite{
     private Vec2 taille=new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE);
     private int pv;
     private boolean mort;
-    private Labyrinthe laby;
     private Vec2 derniereDir;
     private int vitesse=2;
     private Image texture=Textures.noTexture;
@@ -39,7 +38,6 @@ public abstract class Entite{
             this.pv=pointVie;
             this.mort = false;
         }
-        this.laby=l;
         this.derniereDir = new Vec2(0,1);
     }
 
@@ -55,7 +53,6 @@ public abstract class Entite{
             this.pv=pointVie;
             this.mort = false;
         }
-        this.laby=l;
         this.derniereDir = new Vec2(0,1);
         this.jeu = j;
     }
@@ -78,9 +75,27 @@ public abstract class Entite{
             this.pv=pointVie;
             this.mort = false;
         }
-        this.laby=l;
         this.taille=t;
     }
+    
+    /**
+     * 
+     * @param nom nom de l'entite
+     * @param newPos position de l'entite
+     * @param pointVie point de vie de l'entite
+     * @param l labyrinthe de l'entite
+     * @param t taille de l'entite
+     */
+    public Entite(String nom,Jeu j){
+        this.nom=nom;
+        this.jeu = j;
+        this.pos = j.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE);
+        this.pv = 100;
+        this.taille = new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE);
+        this.mort = false;
+        this.derniereDir = new Vec2(0,1);
+    }
+
     /**
      * 
      * @return Vec2 Position Entite
@@ -194,7 +209,7 @@ public abstract class Entite{
      * @return Labyrinthe
      */
     public Labyrinthe getLabyrinthe(){
-        return this.laby;
+        return this.jeu.getCurrentLabyrinthe();
     }
     /**
      * getter de l'attribut taille
@@ -244,6 +259,7 @@ public abstract class Entite{
      */
     public void deplacer(Commande c){
         this.dernier=c;
+        Labyrinthe laby = this.jeu.getCurrentLabyrinthe();
         Case ul=laby.getCaseAtVec2(this.pos.plus(new Vec2((int)(taille.x*0.2),0)));
         Case ur=laby.getCaseAtVec2(this.pos.plus(new Vec2((int)(taille.x*0.8),0)));
         Case lu=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,(int)(taille.y*0.2))));
@@ -284,10 +300,10 @@ public abstract class Entite{
         this.mort = mort;
     }
     public Labyrinthe getLaby() {
-        return laby;
+        return this.jeu.getCurrentLabyrinthe();
     }
     public void setLaby(Labyrinthe laby) {
-        this.laby = laby;
+        
     }
     public Vec2 getDerniereDir() {
         return derniereDir;

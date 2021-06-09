@@ -48,7 +48,7 @@ public class Aventurier extends Entite{
      * @param j jeu
      */
     public Aventurier(String nom,Jeu j){
-        super(nom,j.getCurrentLabyrinthe().getEntree(),100,j.getCurrentLabyrinthe(),j);
+        super(nom, j);
         this.energie = 100;
         this.arme=new Couteau(5, 1);
         this.setTexture(Textures.guerrier[1]);
@@ -107,8 +107,13 @@ public class Aventurier extends Entite{
             //temporaire
             System.out.println("Le jeu est fini");
             this.getJeu().setFini(true);
-        }else if(proch instanceof Eau){
+        }else if(proch instanceof Eau) {
             setVitesse(1);
+        } else if (proch instanceof EscalierMonter) {
+            if (this.getJeu().nextLabyrinthe()) {
+                this.setPos(this.getJeu().getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE));
+                this.getJeu().genererEnnemis();
+            }
         }
         animer(c);
     }

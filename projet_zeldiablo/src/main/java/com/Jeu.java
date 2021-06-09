@@ -25,11 +25,11 @@ public class Jeu implements moteurJeu.Jeu {
         this.currentLabyrinthe = 0;
         labyrinthes = new Labyrinthe[3];
         for (int i = 0; i < labyrinthes.length; i++)
-            labyrinthes[i] = new Labyrinthe();
+            labyrinthes[i] = new Labyrinthe(i == labyrinthes.length-1);
         
         this.ennemis = new ArrayList<Entite>();
         this.ennemis.add(new Gobelin(1, this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), getCurrentLabyrinthe()));
-        this.joueur = new Aventurier(n, this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this);
+        this.joueur = new Aventurier(n, this);
         this.genererEnnemis();
         this.cam = new Camera(this.joueur);
     }
@@ -71,7 +71,7 @@ public class Jeu implements moteurJeu.Jeu {
         Case[][] cases = getCurrentLabyrinthe().getCases();
         for (int x = 0; x < cases.length; x++) {
             for (int y = 0; y < cases[x].length; y++) {
-                if (cases[x][y].isTraversable() && Math.random() > 0.9) {
+                if (cases[x][y].isTraversable() && Math.random() > 0.93) {
                     this.ennemis.add(new Gobelin(5, new Vec2(x, y).times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe()));
                 }
             }

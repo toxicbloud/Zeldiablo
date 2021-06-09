@@ -17,6 +17,9 @@ public class Labyrinthe {
      */
     private int size;
 
+    /** Le labyrinthe a une amulette ou non */
+    private boolean amulette;
+
     /**
      * tableau de cases
      */
@@ -33,6 +36,7 @@ public class Labyrinthe {
     public Labyrinthe() {
 
         this.size = 20;
+        this.amulette = true;
         this.createLab();
     }
 
@@ -45,6 +49,17 @@ public class Labyrinthe {
             this.size = s;
         }
         else this.size = 20;
+        this.amulette = true;
+        this.createLab();
+    }
+    
+    /**
+     * Constructeur de Labyrinthe
+     * @param s
+     */
+    public Labyrinthe(boolean amulette) {
+        this.size = 20;
+        this.amulette = amulette;
         this.createLab();
     }
 
@@ -91,7 +106,7 @@ public class Labyrinthe {
             }
         }
 
-        cases[placeFin.x][placeFin.y] = new Amulette();
+        cases[placeFin.x][placeFin.y] = (this.amulette)? new Amulette(): new EscalierMonter();
     }
 
     /**
