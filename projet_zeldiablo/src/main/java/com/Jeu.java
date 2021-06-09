@@ -26,6 +26,7 @@ public class Jeu implements moteurJeu.Jeu {
         this.joueur = new Aventurier(n, this.carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte, this);
         this.cam = new Camera(this.joueur);
         this.ennemis.add(new Gobelin(5, new Vec2(2, 2), this.carte));
+        this.ennemis.add(new Gobelin(5, carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte));
     }
 
     /** Methode evoluer utilisee par le moteur de jeu */

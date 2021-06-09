@@ -78,7 +78,7 @@ public class Labyrinthe {
                     Vec2 target = position.plus(direction).plus(direction);
                     boolean outOfBounds = (target.x < 0 || target.y < 0 || target.x >= this.size || target.y >= this.size);
                     if ( outOfBounds || cases[target.x][target.y].isTraversable() ) break;
-                    cases[position.x][position.y] = new Chemin();
+                    cases[position.x][position.y] = (Math.random() > 0.5)? new Chemin(): new Eau();
                     Vec2 newPos = position.plus(direction);
                     deplacement.add(newPos);
                 }

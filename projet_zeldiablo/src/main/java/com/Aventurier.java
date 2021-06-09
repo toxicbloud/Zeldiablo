@@ -75,7 +75,9 @@ public class Aventurier extends Entite{
      * @param c Commande
      */
     public void deplacer(Commande c){
+        Vec2 lastPos = new Vec2(this.getPos().x, this.getPos().y);
         super.deplacer(c);
+        this.getJeu().getCam().doitReculer(!(lastPos.x == this.getPos().x && lastPos.y == this.getPos().y));
 
         if (c.espace) {
             int z = this.zone();

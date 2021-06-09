@@ -14,6 +14,9 @@ public class DessinJeu implements moteurJeu.DessinJeu {
     /** Attribut jeu de DessinJeu, le jeu a dessiner */
     private Jeu jeu;
 
+    /** Decalage de l'image pour centrer le joueur */
+    private Vec2 frameShift;
+
     /** Constructeur vide de DessinJeu */
     DessinJeu() {
         this.jeu = new Jeu("Jeu");
@@ -23,6 +26,7 @@ public class DessinJeu implements moteurJeu.DessinJeu {
     /** Constructeur complet de DessinJeu */
     DessinJeu(Jeu j) {
         this.jeu = j;
+        this.frameShift = new Vec2();
     }
 
     /** Methode dessiner de DessinJeu pour le moteur de jeu */
@@ -31,40 +35,38 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         Graphics2D g = (Graphics2D) image.getGraphics();
         int w = image.getWidth();
         int h = image.getHeight();
+        this.frameShift = new Vec2((w-TILE_SIZE)/2, (h-TILE_SIZE)/2);
         g.setColor(Color.black);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
         Case[][] cases = jeu.getCarte().getCases();
         for (int x = 0; x < cases.length; x++) {
             for (int y = 0; y < cases[x].length; y++) {
-                int posX = (x*TILE_SIZE-(jeu.getCam().getPos().x*TILE_SIZE/Labyrinthe.TILE_SIZE)) + w/2 - TILE_SIZE/2;
-                int posY = (y*TILE_SIZE-(jeu.getCam().getPos().y*TILE_SIZE/Labyrinthe.TILE_SIZE)) + h/2 - TILE_SIZE/2;
-                g.drawImage(cases[x][y].getSprite(), posX, posY, TILE_SIZE, TILE_SIZE, null);
+                Vec2 newPos = this.worldPos2ScreenPos(new Vec2(x*Labyrinthe.TILE_SIZE, y*Labyrinthe.TILE_SIZE));
+                Vec2 newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
+                g.drawImage(cases[x][y].getSprite(), newPos.x, newPos.y, newScale.x, newScale.y, null);
             }
         }
         g.setColor(Color.BLUE);
-        int posX = (jeu.getJoueur().getPos().x-jeu.getCam().getPos().x)*TILE_SIZE + w/2 - TILE_SIZE/2;
-        int posY = (jeu.getJoueur().getPos().y-jeu.getCam().getPos().y)*TILE_SIZE + h/2 - TILE_SIZE/2;
-        //g.fillOval(posX, posY, TILE_SIZE, TILE_SIZE);
-        /**
-         * Affichage du joueur
-         */
-        g.drawImage(Textures.tex_perso, posX, posY, (int) (TILE_SIZE*0.8), TILE_SIZE, null);
-        // TILE_SIZE++;
+        Vec2 newPos = this.worldPos2ScreenPos(new Vec2(jeu.getJoueur().getPos().x, jeu.getJoueur().getPos().y));
+        Vec2 newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
+        g.setColor(new Color(0, 0, 0, 50));
+        g.fillOval(newPos.x+10, newPos.y+newScale.y-10, newScale.x-20, 10);
+        g.drawImage(Textures.tex_perso, newPos.x, newPos.y, newScale.x, newScale.y, null);
 
         for(Entite e: jeu.getEnnemis()) {
-            posX = (e.getPos().x-(jeu.getCam().getPos().x*TILE_SIZE/Labyrinthe.TILE_SIZE)) + w/2 - TILE_SIZE/2;
-            posY = (e.getPos().y-(jeu.getCam().getPos().y*TILE_SIZE/Labyrinthe.TILE_SIZE)) + h/2 - TILE_SIZE/2;
+            newPos = this.worldPos2ScreenPos(new Vec2(e.getPos().x, e.getPos().y));
+            newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
             /** Barre de vie  */
             int pv=e.getPV();
             if(pv>=10){ g.setColor(Color.green);}
             if(pv<=6){g.setColor(Color.orange);}
-            g.fillRect(posX, posY-10, e.getPV()*4, 5);
+            g.fillRect(newPos.x, newPos.y-10, e.getPV()*4, 5);
             g.setColor(Color.black);
             g.setStroke(new BasicStroke((float) 1.5));
-            g.drawRect(posX-1, posY-11, 50, 6);;
+            g.drawRect(newPos.x-1, newPos.y-11, 50, 6);;
             g.setColor(Color.red);
             /** Dessin du monstre */
-            g.fillOval(posX, posY, TILE_SIZE, TILE_SIZE);
+            g.fillOval(newPos.x, newPos.y, TILE_SIZE, TILE_SIZE);
         }
         /** Affichage ATH */
         BufferedImage ath = new BufferedImage(image.getWidth(),100,BufferedImage.TYPE_INT_ARGB);
@@ -83,6 +85,14 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         g2.setColor(Color.orange);
         g2.fillRect(120, 50, jeu.getJoueur().getEnergie(), 10);
         g.drawImage(ath, 0, image.getHeight()-90, ath.getWidth(), ath.getHeight(),null);
+    }
+
+    public Vec2 worldPos2ScreenPos(Vec2 pos) {
+        return pos.minus(this.jeu.getCam().getPos()).times(TILE_SIZE).div(Labyrinthe.TILE_SIZE).plus(frameShift);
+    }
+
+    public Vec2 worldScale2ScreenScale(Vec2 scale) {
+        return scale.div(Labyrinthe.TILE_SIZE).times(TILE_SIZE);
     }
 
     /**

@@ -66,6 +66,15 @@ public class Vec2{
         return r;
     }
     /**
+     * Division de Vec2
+     * @param i int a division
+     * @return un Vec2 correpondant a la division
+     */
+    public Vec2 div(int i) {
+        Vec2 r = new Vec2(this.x / i, this.y / i);
+        return r;
+    }
+    /**
      * Egualite de Vec2
      * @param v Vec2 a tester
      * @return un booleen si les Vec2 sont egaux

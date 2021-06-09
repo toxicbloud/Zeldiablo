@@ -11,14 +11,14 @@ public class Camera {
       * position
       */
     private Vec2 pos;
-    
-    /** Debuggage avec un mouvement de camera */
-    private int i;
 
     /**
      * cible
      */
     private Entite target;
+
+    private boolean reculer = false;
+    private int targetTileSize = DessinJeu.TILE_SIZE;
 
     /**
      * Constructeur Camera
@@ -34,10 +34,11 @@ public class Camera {
      * @param e nouvelle cible
      */
     public void deplacer(Entite e) {
+        if (reculer) targetTileSize = 70;
+        else targetTileSize = 75;
         this.target = e;
-        this.pos = e.getPos();
-
-        //DessinJeu.TILE_SIZE = (int) (Math.cos((i++/10.0)) * 4 + 60);
+        this.pos = this.pos.plus( e.getPos().minus(this.pos).div(4) );
+        DessinJeu.TILE_SIZE += (targetTileSize - DessinJeu.TILE_SIZE) / 2.0;
     }
 
     public Vec2 getPos() {
@@ -54,6 +55,11 @@ public class Camera {
 
     public void setTarget(Entite target) {
         this.target = target;
+    }
+
+    /** Est-ce que la cemra doit agrandir le champ de vision ou non */
+    public void doitReculer(boolean state) {
+        this.reculer = state;
     }
 
 }
