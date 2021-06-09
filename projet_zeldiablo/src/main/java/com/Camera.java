@@ -19,6 +19,7 @@ public class Camera {
 
     private boolean reculer = false;
     private int targetTileSize = DessinJeu.TILE_SIZE;
+    private int shakeAmount;
 
     /**
      * Constructeur Camera
@@ -27,6 +28,7 @@ public class Camera {
     public Camera(Entite cible) {
         this.target = cible;
         this.pos = cible.getPos();
+        this.shakeAmount = 0;
     }
 
     /**
@@ -37,8 +39,15 @@ public class Camera {
         if (reculer) targetTileSize = 75;
         else targetTileSize = 90;
         this.target = e;
-        this.pos = this.pos.plus( e.getPos().minus(this.pos).div(4) );
+        Vec2 newPos = this.pos.plus( e.getPos().minus(this.pos).div(4) );
+        newPos = newPos.plus(new Vec2((int)((Math.random()-0.5)*shakeAmount), (int)((Math.random()-0.5)*shakeAmount)));
+        this.pos = newPos;
+        if (this.shakeAmount > 0) this.shakeAmount--;
         DessinJeu.TILE_SIZE += (targetTileSize - DessinJeu.TILE_SIZE) / 2.0;
+    }
+
+    public void shake() {
+        this.shakeAmount = 5;
     }
 
     public Vec2 getPos() {
