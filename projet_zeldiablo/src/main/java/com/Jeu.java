@@ -9,7 +9,8 @@ import moteurJeu.Commande;
  */
 public class Jeu implements moteurJeu.Jeu {
 
-    private Labyrinthe carte;
+    private Labyrinthe[] labyrinthes;
+    private int currentLabyrinthe;
     private Aventurier joueur;
     private Camera cam;
     private ArrayList<Entite> ennemis;
@@ -20,26 +21,42 @@ public class Jeu implements moteurJeu.Jeu {
      * @param n nom de l aventurier
      */
     public Jeu(String n) {
+        this.currentLabyrinthe = 0;
+        labyrinthes = new Labyrinthe[3];
+        for (int i = 0; i < labyrinthes.length; i++)
+            labyrinthes[i] = new Labyrinthe();
+        
         Textures.chargerTextures();
         this.ennemis = new ArrayList<Entite>();
-        this.carte = new Labyrinthe();
-        this.joueur = new Aventurier(n, this.carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte, this);
+        this.joueur = new Aventurier(n, this);
         this.cam = new Camera(this.joueur);
-        this.ennemis.add(new Gobelin(5, new Vec2(2, 2), this.carte));
-        this.ennemis.add(new Gobelin(5, carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte));
     }
 
     /** 
      * Constructeur vide de Jeu pour les tests
      */
     public Jeu() {
+        labyrinthes = new Labyrinthe[1];
+        for (int i = 0; i < labyrinthes.length; i++)
+            labyrinthes[i] = new Labyrinthe();
         Textures.chargerTextures();
         this.ennemis = new ArrayList<Entite>();
-        this.carte = new Labyrinthe();
         this.joueur = new Aventurier("testeur", this.carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte, this);
         this.cam = new Camera(this.joueur);
         this.ennemis.add(new Gobelin(5, carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte));
         this.ennemis.add(new Gobelin(5, new Vec2(2, 2), this.carte));
+    }
+
+    public Labyrinthe getCurrentLabyrinthe() {
+        return this.labyrinthes[this.currentLabyrinthe];
+    }
+
+    public boolean nextLabyrinthe() {
+        return true;
+    }
+
+    public boolean prevLabyrinthe() {
+        return true;
     }
 
     /** Methode evoluer utilisee par le moteur de jeu */
