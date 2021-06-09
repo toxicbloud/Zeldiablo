@@ -51,7 +51,7 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         Vec2 newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
         g.setColor(new Color(0, 0, 0, 50));
         g.fillOval(newPos.x+10, newPos.y+newScale.y-10, newScale.x-20, 10);
-        g.drawImage(Textures.tex_perso, newPos.x, newPos.y, newScale.x, newScale.y, null);
+        g.drawImage(jeu.getJoueur().getTexture(), newPos.x, newPos.y, newScale.x, newScale.y, null);
 
         for(Entite e: jeu.getEnnemis()) {
             newPos = this.worldPos2ScreenPos(new Vec2(e.getPos().x, e.getPos().y));
@@ -66,7 +66,8 @@ public class DessinJeu implements moteurJeu.DessinJeu {
             g.drawRect(newPos.x-1, newPos.y-11, 50, 6);;
             g.setColor(Color.red);
             /** Dessin du monstre */
-            g.fillOval(newPos.x, newPos.y, TILE_SIZE, TILE_SIZE);
+            g.drawImage(e.getTexture(), newPos.x, newPos.y, newScale.x, newScale.y, null);
+            // g.fillOval(newPos.x, newPos.y, TILE_SIZE, TILE_SIZE);
         }
         /** Affichage ATH */
         BufferedImage ath = new BufferedImage(image.getWidth(),100,BufferedImage.TYPE_INT_ARGB);

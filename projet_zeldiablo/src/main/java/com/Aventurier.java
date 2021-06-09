@@ -2,6 +2,8 @@ package com;
 
 import java.util.ArrayList;
 
+import java.awt.Image;
+
 import moteurJeu.Commande;
 
 /**
@@ -36,6 +38,20 @@ public class Aventurier extends Entite{
         super(nom,v,100,l,j);
         this.energie = 100;
         this.arme=new Couteau(5, 1);
+        this.setTexture(Textures.guerrier[1]);
+    }
+    /**
+     * constructeur aventurier
+     * @param nom
+     * @param v position
+     * @param l labyrinthe
+     * @param j jeu
+     */
+    public Aventurier(String nom,Jeu j){
+        super(nom,j.getCurrentLabyrinthe().getEntree(),100,j.getCurrentLabyrinthe(),j);
+        this.energie = 100;
+        this.arme=new Couteau(5, 1);
+        this.setTexture(Textures.guerrier[1]);
     }
 
     /**
