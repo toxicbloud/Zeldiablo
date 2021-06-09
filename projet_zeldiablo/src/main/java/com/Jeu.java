@@ -28,7 +28,7 @@ public class Jeu implements moteurJeu.Jeu {
         
         Textures.chargerTextures();
         this.ennemis = new ArrayList<Entite>();
-        this.joueur = new Aventurier(n, this);
+        this.joueur = new Aventurier(n, this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this);
         this.cam = new Camera(this.joueur);
     }
 
