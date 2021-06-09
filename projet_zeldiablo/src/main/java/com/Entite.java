@@ -12,7 +12,7 @@ public abstract class Entite{
     private Vec2 pos;
     private Jeu jeu;
     private Vec2 taille=new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE);
-    private int pv;
+    private int pv,maxPV;
     private boolean mort;
     private Vec2 derniereDir;
     private int vitesse=2;
@@ -32,10 +32,12 @@ public abstract class Entite{
         this.pos = newPos;
         if (pointVie<=0) {
             this.pv=0;
+            this.maxPV=0;
             this.mort=true;
         }
         else{
             this.pv=pointVie;
+            this.maxPV=pv;
             this.mort = false;
         }
         this.derniereDir = new Vec2(0,1);
@@ -47,10 +49,12 @@ public abstract class Entite{
         this.pos = newPos;
         if (pointVie<=0) {
             this.pv=0;
+            this.maxPV=0;
             this.mort=true;
         }
         else{
             this.pv=pointVie;
+            this.maxPV=pv;
             this.mort = false;
         }
         this.derniereDir = new Vec2(0,1);
@@ -69,10 +73,12 @@ public abstract class Entite{
         this.pos = newPos;
         if (pointVie<=0) {
             this.pv=0;
+            this.maxPV=0;
             this.mort=true;
         }
         else{
             this.pv=pointVie;
+            this.maxPV=pv;
             this.mort = false;
         }
         this.taille=t;
@@ -91,6 +97,7 @@ public abstract class Entite{
         this.jeu = j;
         this.pos = j.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE);
         this.pv = 100;
+        this.maxPV=pv;
         this.taille = new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE);
         this.mort = false;
         this.derniereDir = new Vec2(0,1);
@@ -252,6 +259,13 @@ public abstract class Entite{
      */
     public int getVitesse(){
         return this.vitesse;
+    }
+    /***
+     * 
+     * @return pv max de l' entite
+     */
+    public int getMaxPV(){
+        return this.maxPV;
     }
     /**
      * deplace l'entite en prenant en compte les collisions

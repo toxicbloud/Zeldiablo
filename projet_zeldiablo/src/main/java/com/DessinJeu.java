@@ -46,16 +46,10 @@ public class DessinJeu implements moteurJeu.DessinJeu {
                 g.drawImage(cases[x][y].getSprite(), newPos.x, newPos.y, newScale.x, newScale.y, null);
             }
         }
-        g.setColor(Color.BLUE);
-        Vec2 newPos = this.worldPos2ScreenPos(new Vec2(jeu.getJoueur().getPos().x, jeu.getJoueur().getPos().y));
-        Vec2 newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
-        g.setColor(new Color(0, 0, 0, 50));
-        g.fillOval(newPos.x+10, newPos.y+newScale.y-10, newScale.x-20, 10);
-        g.drawImage(jeu.getJoueur().getTexture(), newPos.x, newPos.y, newScale.x, newScale.y, null);
 
         for(Entite e: jeu.getEnnemis()) {
-            newPos = this.worldPos2ScreenPos(new Vec2(e.getPos().x, e.getPos().y));
-            newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
+            Vec2 newPos = this.worldPos2ScreenPos(new Vec2(e.getPos().x, e.getPos().y));
+            Vec2 newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
             /** Barre de vie  */
             int pv=e.getPV();
             if(pv>=10){ g.setColor(Color.green);}
@@ -69,6 +63,13 @@ public class DessinJeu implements moteurJeu.DessinJeu {
             g.drawImage(e.getTexture(), newPos.x, newPos.y, newScale.x, newScale.y, null);
             // g.fillOval(newPos.x, newPos.y, TILE_SIZE, TILE_SIZE);
         }
+
+        Vec2 newPos = this.worldPos2ScreenPos(new Vec2(jeu.getJoueur().getPos().x, jeu.getJoueur().getPos().y));
+        Vec2 newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
+        g.setColor(new Color(0, 0, 0, 50));
+        g.fillOval(newPos.x+10, newPos.y+newScale.y-10, newScale.x-20, 10);
+        g.drawImage(jeu.getJoueur().getTexture(), newPos.x, newPos.y, newScale.x, newScale.y, null);
+
         /** Affichage ATH */
         BufferedImage ath = new BufferedImage(image.getWidth(),100,BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = (Graphics2D) ath.getGraphics();
