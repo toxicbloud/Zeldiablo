@@ -137,28 +137,33 @@ public class Aventurier extends Entite{
         for (Entite entite : ar) {
             if (dir.equals(new Vec2(1,0))) {
                 if(entite.getPos().x <= max.x + this.getPos().x && entite.getPos().x >= this.getPos().x){
-                    if (entite.getPos().y <= this.getPos().y + 2 && entite.getPos().y >= this.getPos().y - 2) {
+                    if (entite.getPos().y <= this.getPos().y + 10 && entite.getPos().y >= this.getPos().y - 10) {
                         this.attaquerAutre(entite);
                     }
                 }
             }
             else if(dir.equals(new Vec2(0,1))){
+                System.out.println(entite.getPos().y + " plus petit que " + (max.y + this.getPos().y));
+                System.out.println(entite.getPos().y + " plus grand que " + this.getPos().y);
+                System.out.println(entite.getPos().x + " plus petit que " + (this.getPos().x + 10));
+                System.out.println(entite.getPos().x + " plus grand que " + (this.getPos().x - 10));
+
                 if(entite.getPos().y <= max.y + this.getPos().y && entite.getPos().y >= this.getPos().y){
-                    if (entite.getPos().x <= this.getPos().x + 2 && entite.getPos().x >= this.getPos().x - 2) {
+                    if (entite.getPos().x <= this.getPos().x + 10 && entite.getPos().x >= this.getPos().x - 10) {
                         this.attaquerAutre(entite);
                     }
                 }
             }
             else if(dir.equals(new Vec2(-1,0))){
                 if(entite.getPos().x >= max.x + this.getPos().x && entite.getPos().x <= this.getPos().x){
-                    if (entite.getPos().y <= this.getPos().y + 2 && entite.getPos().y >= this.getPos().y - 2) {
+                    if (entite.getPos().y <= this.getPos().y + 10 && entite.getPos().y >= this.getPos().y - 10) {
                         this.attaquerAutre(entite);
                     }
                 }
             }
             else if(dir.equals(new Vec2(0,-1))){
-                if(entite.getPos().y >= max.y + this.getPos().y && entite.getPos().y >= this.getPos().y){
-                    if (entite.getPos().x <= this.getPos().x + 2 && entite.getPos().x >= this.getPos().x - 2) {
+                if(entite.getPos().y >= max.y + this.getPos().y && entite.getPos().y <= this.getPos().y){
+                    if (entite.getPos().x <= this.getPos().x + 10 && entite.getPos().x >= this.getPos().x - 10) {
                         this.attaquerAutre(entite);
                     }
                 }
