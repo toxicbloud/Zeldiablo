@@ -9,7 +9,8 @@ import moteurJeu.Commande;
  */
 public class Jeu implements moteurJeu.Jeu {
 
-    private Labyrinthe carte;
+    private Labyrinthe[] labyrinthes;
+    private int currentLabyrinthe;
     private Aventurier joueur;
     private Camera cam;
     private ArrayList<Entite> ennemis;
@@ -21,24 +22,51 @@ public class Jeu implements moteurJeu.Jeu {
      */
     public Jeu(String n) {
         Textures.chargerTextures();
+        this.currentLabyrinthe = 0;
+        labyrinthes = new Labyrinthe[3];
+        for (int i = 0; i < labyrinthes.length; i++)
+            labyrinthes[i] = new Labyrinthe();
+        
         this.ennemis = new ArrayList<Entite>();
-        this.carte = new Labyrinthe();
-        this.joueur = new Aventurier(n, this.carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte, this);
+        this.ennemis.add(new Gobelin(1, this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), getCurrentLabyrinthe()));
+        this.joueur = new Aventurier(n, this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this);
         this.cam = new Camera(this.joueur);
-        this.ennemis.add(new Gobelin(5, new Vec2(2, 2), this.carte));
-        this.ennemis.add(new Gobelin(5, carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte));
     }
 
     /** 
      * Constructeur vide de Jeu pour les tests
      */
     public Jeu() {
+        labyrinthes = new Labyrinthe[1];
+        for (int i = 0; i < labyrinthes.length; i++)
+            labyrinthes[i] = new Labyrinthe();
         Textures.chargerTextures();
         this.ennemis = new ArrayList<Entite>();
-        this.carte = new Labyrinthe();
-        this.joueur = new Aventurier("testeur", this.carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte, this);
+        this.joueur = new Aventurier("testeur", this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this);
         this.cam = new Camera(this.joueur);
-        this.ennemis.add(new Gobelin(5, carte.getEntree(), this.carte));
+        this.ennemis.add(new Gobelin(5, this.getCarte().getEntree(), this.getCarte()));
+    }
+
+    public Labyrinthe getCurrentLabyrinthe() {
+        return this.labyrinthes[this.currentLabyrinthe];
+    }
+
+    public boolean nextLabyrinthe() {
+        if (this.currentLabyrinthe > this.labyrinthes.length-1)
+            return false;
+        this.currentLabyrinthe++;
+        return true;
+    }
+
+    public boolean prevLabyrinthe() {
+        if (this.currentLabyrinthe < 1)
+            return false;
+        this.currentLabyrinthe--;
+        return true;
+    }
+
+    public void genererEnnemis() {
+        this.ennemis.clear();
     }
 
     /** Methode evoluer utilisee par le moteur de jeu */
@@ -46,6 +74,14 @@ public class Jeu implements moteurJeu.Jeu {
     public void evoluer(Commande commandeUser) {
         this.joueur.deplacer(commandeUser);
         cam.deplacer(this.joueur);
+        for(Entite e: this.ennemis) {
+            Monstre m = ((Monstre)e);
+            // m.deplacer(new Commande());
+            if (m.etreMort()) {
+                this.ennemis.remove(m);
+                break;
+            }
+        }
     }
 
     /** Methode etreFini utilisee par le moteur de jeu */
@@ -58,7 +94,7 @@ public class Jeu implements moteurJeu.Jeu {
      * Methode getCarte qui return la carte du jeu
      */
     public Labyrinthe getCarte() {
-        return this.carte;
+        return this.getCurrentLabyrinthe();
     }
 
     /** 
@@ -94,6 +130,6 @@ public class Jeu implements moteurJeu.Jeu {
     
     @Override
     public String toString() {
-        return "Jeu [carte=" + carte + ", joueur=" + joueur + "]";
+        return "Jeu [carte=" + getCurrentLabyrinthe() + ", joueur=" + joueur + "]";
     }
 }

@@ -1,6 +1,7 @@
 package com;
 
 import moteurJeu.Commande;
+import java.awt.Image;
 
 /**
  * @author Antonin
@@ -15,7 +16,9 @@ public abstract class Entite{
     private boolean mort;
     private Labyrinthe laby;
     private Vec2 derniereDir;
-
+    private int vitesse=2;
+    private Image texture=Textures.noTexture;
+    private Commande dernier;
 
     /**
      * constructeur d' Entite
@@ -125,6 +128,20 @@ public abstract class Entite{
     }
     /**
      * 
+     * @param t Image de Texture
+     */
+    public void setTexture(Image t){
+        this.texture=t;
+    }
+    /**
+     * 
+     * @return Texture
+     */
+    public Image getTexture(){
+        return this.texture;
+    }
+    /**
+     * 
      * @return boolen a true si il est mort
      */
     public boolean etreMort(){
@@ -194,10 +211,39 @@ public abstract class Entite{
         this.pos=v;
     }
     /**
+     * 
+     * @param c Sens du personnage
+     */
+    public void setDernier(Commande c){
+        this.dernier=c;
+    }
+    /**
+     * 
+     * @return sens du personnage
+     */
+    public Commande getDernier(){
+        return this.dernier;
+    }
+    /**
+     * 
+     * @param v vitesse de l'entite
+     */
+    public void setVitesse(int v){
+        this.vitesse=v;
+    }
+    /**
+     * 
+     * @return vitesse de l'entite
+     */
+    public int getVitesse(){
+        return this.vitesse;
+    }
+    /**
      * deplace l'entite en prenant en compte les collisions
      * @param c commande direction a aller
      */
     public void deplacer(Commande c){
+        this.dernier=c;
         Case ul=laby.getCaseAtVec2(this.pos.plus(new Vec2((int)(taille.x*0.2),0)));
         Case ur=laby.getCaseAtVec2(this.pos.plus(new Vec2((int)(taille.x*0.8),0)));
         Case lu=laby.getCaseAtVec2(this.pos.plus(new Vec2(0,(int)(taille.y*0.2))));
@@ -208,19 +254,19 @@ public abstract class Entite{
         Case rd=laby.getCaseAtVec2(this.pos.plus(new Vec2(taille.x,(int)(taille.y*0.8))));
         if(c.gauche){
             if(lu!=null && ld!=null && lu.isTraversable() && ld.isTraversable()){
-                this.pos.x--;
+                this.pos.x-=vitesse;
             }
         }else if(c.droite){
             if(ru!=null && rd!=null && ru.isTraversable() && rd.isTraversable()){
-                this.pos.x++;
+                this.pos.x+=vitesse;
             }
         }else if(c.haut){
             if(ul!=null && ur!=null && ul.isTraversable()&& ur.isTraversable()){
-                this.pos.y--;
+                this.pos.y-=vitesse;
             }
         }else if(c.bas){
             if(dl!=null && dr!=null && dl.isTraversable() &&  dr.isTraversable()){
-                this.pos.y++;
+                this.pos.y+=vitesse;
             }
         }
     }

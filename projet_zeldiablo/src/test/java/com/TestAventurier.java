@@ -41,15 +41,7 @@ public class TestAventurier {
         assertEquals(12, j.getPos().y);
     }
 
-    @Test
-    public void testAttaquerMemePos(){
-        Aventurier a = jeu.getJoueur();
-        Monstre test = (Monstre)jeu.getEnnemis().get(0);
-        assertEquals("le gobelin n'a pas le bon nombre de pvs initiaux", 10, test.getPv());
-        int r = a.getRange();
-        a.attaqueZone(r);
-        assertEquals("le gobelin n'a pas le bon nombre de points de vie", 5, test.getPV());
-    }
+
 
     @Test
     public void testAttaqueDessus(){

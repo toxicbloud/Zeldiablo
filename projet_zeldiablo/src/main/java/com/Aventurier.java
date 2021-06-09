@@ -2,6 +2,8 @@ package com;
 
 import java.util.ArrayList;
 
+import java.awt.Image;
+
 import moteurJeu.Commande;
 
 /**
@@ -36,6 +38,20 @@ public class Aventurier extends Entite{
         super(nom,v,100,l,j);
         this.energie = 100;
         this.arme=new Couteau(5, 1);
+        this.setTexture(Textures.guerrier[1]);
+    }
+    /**
+     * constructeur aventurier
+     * @param nom
+     * @param v position
+     * @param l labyrinthe
+     * @param j jeu
+     */
+    public Aventurier(String nom,Jeu j){
+        super(nom,j.getCurrentLabyrinthe().getEntree(),100,j.getCurrentLabyrinthe(),j);
+        this.energie = 100;
+        this.arme=new Couteau(5, 1);
+        this.setTexture(Textures.guerrier[1]);
     }
 
     /**
@@ -85,12 +101,14 @@ public class Aventurier extends Entite{
             this.attaqueZone(z);
         }
         Labyrinthe laby=getLabyrinthe();
-        Case proch=laby.getCaseAtVec2(getPos());
-
+        Case proch=laby.getCaseAtVec2(getPos().plus(new Vec2(Labyrinthe.TILE_SIZE/2,Labyrinthe.TILE_SIZE/2)));
+        setVitesse(2);
         if(proch instanceof Amulette){
             //temporaire
             System.out.println("Le jeu est fini");
             this.getJeu().setFini(true);
+        }else if(proch instanceof Eau){
+            setVitesse(1);
         }
     }
 
