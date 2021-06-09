@@ -1,0 +1,9 @@
+@startuml
+class Boss{
+    - range : int
+
+    + Boss()
+    + Deplacable() : Vec2[]
+    + attaquer(Aventurier a1)
+}
+@enduml
