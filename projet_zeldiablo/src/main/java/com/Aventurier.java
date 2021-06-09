@@ -147,6 +147,7 @@ public class Aventurier extends Entite{
      * @param r range de l'arme
      */
     public void attaqueZone(int r) {
+        this.getJeu().getCam().shake();
         Vec2 dir = this.getDerniereDir();
         System.out.println(dir);
         Vec2 max = dir.times(r);
