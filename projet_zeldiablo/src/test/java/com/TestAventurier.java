@@ -40,6 +40,5 @@ public class TestAventurier {
 
     @Test
     public void testAttaquer(){
-        
     }
 }
