@@ -72,10 +72,13 @@ public class Boss extends Monstre {
                             // On va Aller Haute
                             setPos(new Vec2(getPos().x, (getPos().y)-(this.getVitesse())));
                         }
-                    
-                    break;
-        }
+                        break;
+                    }
+                default: 
+                break;
+    }
     } 
+    
 
     @Override
     public void attaquerAutre(Entite e2) {
