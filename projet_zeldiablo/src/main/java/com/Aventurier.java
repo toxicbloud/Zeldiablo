@@ -150,8 +150,6 @@ public class Aventurier extends Entite{
         this.getJeu().getCam().shake();
         Vec2 dir = this.getDerniereDir();
         System.out.println(dir);
-        Vec2 max = dir.times(r);
-
         Jeu j = this.getJeu();
 
         ArrayList<Entite> ar = j.getEnnemis();
@@ -160,34 +158,14 @@ public class Aventurier extends Entite{
             int distance = entite.getPos().dist(this.getPos());
             if (distance > this.arme.getRange()) continue;
 
-            boolean valideEast = dir.equals(new Vec2(1,0)) && entite.getPos().x > this.getPos().x;
-            if (valideEast) {
-                if(entite.getPos().x <= max.x + this.getPos().x && entite.getPos().x >= this.getPos().x){
-                    if (entite.getPos().y <= this.getPos().y + 10 && entite.getPos().y >= this.getPos().y - 10) {
-                        this.attaquerAutre(entite);
-                    }
-                }
-            }
-            else if(dir.equals(new Vec2(0,1))){
-                if(entite.getPos().y <= max.y + this.getPos().y && entite.getPos().y >= this.getPos().y){
-                    if (entite.getPos().x <= this.getPos().x + 10 && entite.getPos().x >= this.getPos().x - 10) {
-                        this.attaquerAutre(entite);
-                    }
-                }
-            }
-            else if(dir.equals(new Vec2(-1,0))){
-                if(entite.getPos().x >= max.x + this.getPos().x && entite.getPos().x <= this.getPos().x){
-                    if (entite.getPos().y <= this.getPos().y + 10 && entite.getPos().y >= this.getPos().y - 10) {
-                        this.attaquerAutre(entite);
-                    }
-                }
-            }
-            else if(dir.equals(new Vec2(0,-1))){
-                if(entite.getPos().y >= max.y + this.getPos().y && entite.getPos().y <= this.getPos().y){
-                    if (entite.getPos().x <= this.getPos().x + 10 && entite.getPos().x >= this.getPos().x - 10) {
-                        this.attaquerAutre(entite);
-                    }
-                }
+            boolean valideEast = dir.equals(new Vec2(1,0)) && entite.getPos().x >= this.getPos().x;
+            boolean valideWest = dir.equals(new Vec2(-1,0)) && entite.getPos().x <= this.getPos().x;
+            boolean valideNorth = dir.equals(new Vec2(0,-1)) && entite.getPos().y <= this.getPos().y;
+            boolean valideSouth = dir.equals(new Vec2(0,1)) && entite.getPos().y >= this.getPos().y;
+
+
+            if (valideEast || valideWest || valideNorth || valideSouth) {
+                this.attaquerAutre(entite);
             }
         }
     }
