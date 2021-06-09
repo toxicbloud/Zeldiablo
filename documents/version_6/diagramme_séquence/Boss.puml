@@ -1,0 +1,17 @@
+@startuml
+title Boss
+participant "m:Main" as main
+participant "b1:Boss" as b1
+participant "a1:Aventurier" as a1
+
+activate main
+activate b1
+    main -> b1 : deplacable()
+        b1 -> a1 : attaquer(a1)
+        activate a1
+            a1 -> a1 : perdrePV(10)
+        deactivate a1
+    deactivate b1
+deactivate main
+
+@enduml

@@ -29,6 +29,21 @@ public class Jeu implements moteurJeu.Jeu {
         this.ennemis.add(new Gobelin(5, carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte));
     }
 
+    /** 
+     * Constructeur vide de Jeu 
+     * @param n nom de l aventurier
+     */
+    public Jeu(String n, Entite ennemi) {
+        Textures.chargerTextures();
+        this.ennemis = new ArrayList<Entite>();
+        this.carte = new Labyrinthe();
+        this.joueur = new Aventurier(n, this.carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte, this);
+        this.cam = new Camera(this.joueur);
+        this.ennemis.add(new Gobelin(5, new Vec2(2, 2), this.carte));
+        this.ennemis.add(new Gobelin(5, carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte));
+        this.ennemis.add(ennemi);
+    }
+
     /** Methode evoluer utilisee par le moteur de jeu */
     @Override
     public void evoluer(Commande commandeUser) {

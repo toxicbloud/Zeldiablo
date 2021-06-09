@@ -80,7 +80,7 @@ public class Aventurier extends Entite{
         this.getJeu().getCam().doitReculer(!(lastPos.x == this.getPos().x && lastPos.y == this.getPos().y));
 
         if (c.espace) {
-            int z = this.zone();
+            int z = this.getRange();
             System.out.println(z);
             this.attaqueZone(z);
         }
@@ -98,7 +98,7 @@ public class Aventurier extends Entite{
      * retourne la range de l'arme
      * @return
      */
-    public int zone() {
+    public int getRange() {
         return this.arme.getRange();
 
     }
