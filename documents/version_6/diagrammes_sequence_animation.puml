@@ -1,0 +1,33 @@
+@startuml
+title implementation animation et textures independentes
+participant "mg: MoteurGraphique" as moteurJeu
+participant "dj: DessinJeu" as dessinJeu
+participant "j: Jeu" as jeu
+participant "joueur: Aventurier" as joueur
+participant "gui:InterfaceGraphique" as gui
+
+
+    loop [non etreFini]
+        moteurJeu -> jeu : etreFini
+        activate jeu
+        moteurJeu <-- jeu
+        deactivate jeu
+        moteurJeu -> gui : getControleur()
+        activate gui
+        moteurJeu <-- gui : controleur
+        deactivate gui
+
+        
+        deactivate joueur
+        deactivate jeu
+        moteurJeu -> dessinJeu : dessiner
+        activate dessinJeu
+        dessinJeu -> joueur : getTexture()
+        activate joueur
+        dessinJeu <-- joueur : Texture
+        deactivate joueur
+        moteurJeu <-- dessinJeu
+        deactivate dessinJeu
+    end
+
+@enduml
