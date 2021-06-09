@@ -94,6 +94,7 @@ public class TestAventurier {
     public void testAttaqueDessous(){
         Aventurier a = jeu.getJoueur();
         Monstre test = (Monstre)jeu.getEnnemis().get(0);
+        test.setPos(new Vec2(0, 0));
         a.setDerniereDir(new Vec2(0,-1));
         // On place l'aventurier une demi-case au dessus du monstre
         a.setPos(jeu.getCarte().getEntree().plus(new Vec2(0,Labyrinthe.TILE_SIZE/2)));

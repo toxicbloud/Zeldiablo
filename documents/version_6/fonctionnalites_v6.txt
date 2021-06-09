@@ -24,12 +24,6 @@ descriptif texte : le labyrinthe a plusieurs étages
 - RESPONSABLE : Tom (claude256u)
 	
 
-- fonctionnalité 4 : ajout de l'attaque pour les monstres
-- descriptif texte : les monstres peuvent attaquer 
-- critères de validation :
-	- critère 1 : le monstre peut attaquer quand un aventurier est proche
-- RESPONSABLE : Tom (claude256u)
-
 - fonctionnalité 5 : BOSS d'étage initialisé
 - descriptif texte : un boss est généré avant la fin de chaque étage
 - critères de validation :
