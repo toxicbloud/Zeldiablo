@@ -53,12 +53,21 @@ public class Jeu implements moteurJeu.Jeu {
     }
 
     public boolean nextLabyrinthe() {
-        
+        if (this.currentLabyrinthe > this.labyrinthes.length-1)
+            return false;
+        this.currentLabyrinthe++;
         return true;
     }
 
     public boolean prevLabyrinthe() {
+        if (this.currentLabyrinthe < 1)
+            return false;
+        this.currentLabyrinthe--;
         return true;
+    }
+
+    public void genererEnnemis() {
+        this.ennemis.clear();
     }
 
     /** Methode evoluer utilisee par le moteur de jeu */
@@ -66,6 +75,12 @@ public class Jeu implements moteurJeu.Jeu {
     public void evoluer(Commande commandeUser) {
         this.joueur.deplacer(commandeUser);
         cam.deplacer(this.joueur);
+        for(Entite e: this.ennemis) {
+            Monstre m = ((Monstre)e);
+            // m.deplacer(new Commande());
+            if (m.etreMort())
+                this.ennemis.remove(e);
+        }
     }
 
     /** Methode etreFini utilisee par le moteur de jeu */
