@@ -78,8 +78,10 @@ public class Jeu implements moteurJeu.Jeu {
         for(Entite e: this.ennemis) {
             Monstre m = ((Monstre)e);
             // m.deplacer(new Commande());
-            if (m.etreMort())
-                this.ennemis.remove(e);
+            if (m.etreMort()) {
+                this.ennemis.remove(m);
+                break;
+            }
         }
     }
 
