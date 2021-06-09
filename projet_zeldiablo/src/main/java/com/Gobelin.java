@@ -16,6 +16,7 @@ public class Gobelin extends Monstre {
      */
     public Gobelin(int d, Vec2 v, Labyrinthe l) {
         super("Gobelin", v, 10, d, "Le Gobelin est un monstre faible mais rapide", l, 25, 2);
+        setTexture(Textures.goblin[1]);
     }
 
     @Override

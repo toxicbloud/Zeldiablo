@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 public class Textures {
     public static String absolutePath;
     public static Image tex_mur, tex_chemin, tex_perso, tex_amulette, tex_uhd, tex_eau, noTexture;
-    public static Image[] guerrier;
+    public static Image[] guerrier,goblin;
 
     public static void chargerTextures() {
         try {
@@ -27,7 +27,13 @@ public class Textures {
                     guerrier[(i * cols) + j] = bigImg.getSubimage(j * width, i * height, width, height);
                 }
             }
-
+            bigImg=ImageIO.read(new File("resources/Goblin/Goblin.png"));
+            goblin = new BufferedImage[4 * 4];
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    goblin[(i * 4) + j] = bigImg.getSubimage(j * width, i * height, width, height);
+                }
+            }
             int index = path.indexOf("projet_zeldiablo", 0);
             absolutePath = path.substring(0, index) + "projet_zeldiablo/";
             noTexture = (Image) ImageIO.read(new File(absolutePath + "resources/textures/no.png"));
