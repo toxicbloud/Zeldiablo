@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 
 public class Textures {
     public static String absolutePath;
-    public static Image tex_mur, tex_chemin, tex_perso, tex_amulette, tex_uhd, tex_eau, noTexture;
+    public static Image tex_mur, tex_chemin, tex_perso, tex_amulette, tex_uhd, tex_eau, noTexture,tex_escalierMonter,tex_escalierDescendre;
     public static Image[] guerrier,goblin;
 
     public static void chargerTextures() {
@@ -43,6 +43,8 @@ public class Textures {
             tex_perso = (Image) ImageIO.read(new File(absolutePath + "resources/textures/Perso.png"));
             tex_amulette = (Image) ImageIO.read(new File(absolutePath + "resources/textures/Amulette.png"));
             tex_uhd = (Image) ImageIO.read(new File(absolutePath + "resources/textures/hpUHD.png"));
+            tex_escalierMonter = (Image) ImageIO.read(new File(absolutePath + "resources/textures/escalierMonter.png"));
+            tex_escalierDescendre = (Image) ImageIO.read(new File(absolutePath + "resources/textures/escalierDescendre.png"));
         } catch (Exception e) {
         }
     }
