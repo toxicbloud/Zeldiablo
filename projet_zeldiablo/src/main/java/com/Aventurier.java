@@ -48,7 +48,7 @@ public class Aventurier extends Entite{
      * @param j jeu
      */
     public Aventurier(String nom,Jeu j){
-        super(nom,j.getCurrentLabyrinthe().getEntree(),100,j.getCurrentLabyrinthe(),j);
+        super(nom, j);
         this.energie = 100;
         this.arme=new Couteau(5, 1);
         this.setTexture(Textures.guerrier[1]);
@@ -107,11 +107,32 @@ public class Aventurier extends Entite{
             //temporaire
             System.out.println("Le jeu est fini");
             this.getJeu().setFini(true);
-        }else if(proch instanceof Eau){
+        }else if(proch instanceof Eau) {
             setVitesse(1);
+        } else if (proch instanceof EscalierMonter) {
+            if (this.getJeu().nextLabyrinthe()) {
+                this.setPos(this.getJeu().getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE));
+                this.getJeu().genererEnnemis();
+            }
+        }
+        animer(c);
+    }
+    /**
+     * 
+     * @param c Direction
+     */
+    public void animer(Commande c){
+        if(c.gauche){
+            setTexture(Textures.guerrier[11]);
+        }else if(c.droite){
+            setTexture(Textures.guerrier[7]);
+        }else if(c.bas){
+            setTexture(Textures.guerrier[2]);
+        }else if(c.haut){
+            setTexture(Textures.guerrier[17]);
         }
     }
-
+    
     /**
      * retourne la range de l'arme
      * @return
@@ -126,6 +147,7 @@ public class Aventurier extends Entite{
      * @param r range de l'arme
      */
     public void attaqueZone(int r) {
+        this.getJeu().getCam().shake();
         Vec2 dir = this.getDerniereDir();
         System.out.println(dir);
         Vec2 max = dir.times(r);
@@ -135,7 +157,11 @@ public class Aventurier extends Entite{
         ArrayList<Entite> ar = j.getEnnemis();
 
         for (Entite entite : ar) {
-            if (dir.equals(new Vec2(1,0))) {
+            int distance = entite.getPos().dist(this.getPos());
+            if (distance > this.arme.getRange()) continue;
+
+            boolean valideEast = dir.equals(new Vec2(1,0)) && entite.getPos().x > this.getPos().x;
+            if (valideEast) {
                 if(entite.getPos().x <= max.x + this.getPos().x && entite.getPos().x >= this.getPos().x){
                     if (entite.getPos().y <= this.getPos().y + 10 && entite.getPos().y >= this.getPos().y - 10) {
                         this.attaquerAutre(entite);
@@ -143,11 +169,6 @@ public class Aventurier extends Entite{
                 }
             }
             else if(dir.equals(new Vec2(0,1))){
-                System.out.println(entite.getPos().y + " plus petit que " + (max.y + this.getPos().y));
-                System.out.println(entite.getPos().y + " plus grand que " + this.getPos().y);
-                System.out.println(entite.getPos().x + " plus petit que " + (this.getPos().x + 10));
-                System.out.println(entite.getPos().x + " plus grand que " + (this.getPos().x - 10));
-
                 if(entite.getPos().y <= max.y + this.getPos().y && entite.getPos().y >= this.getPos().y){
                     if (entite.getPos().x <= this.getPos().x + 10 && entite.getPos().x >= this.getPos().x - 10) {
                         this.attaquerAutre(entite);
