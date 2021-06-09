@@ -1,0 +1,6 @@
+@startuml
+participant "joueur: Aventurier" as joueur
+participant "labyrinthes: Liste<Labyrinthe>" as tabLaby
+participant "jeu: Jeu"
+
+@enduml
