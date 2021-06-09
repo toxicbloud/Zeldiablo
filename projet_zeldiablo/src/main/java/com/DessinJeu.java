@@ -57,7 +57,7 @@ public class DessinJeu implements moteurJeu.DessinJeu {
             g.fillRect(newPos.x, newPos.y-10, e.getPV()*4, 5);
             g.setColor(Color.black);
             g.setStroke(new BasicStroke((float) 1.5));
-            g.drawRect(newPos.x-1, newPos.y-11, 50, 6);;
+            g.drawRect(newPos.x-1, newPos.y-11, e.getMaxPV()*4, 6);;
             g.setColor(Color.red);
             /** Dessin du monstre */
             g.drawImage(e.getTexture(), newPos.x, newPos.y, newScale.x, newScale.y, null);
