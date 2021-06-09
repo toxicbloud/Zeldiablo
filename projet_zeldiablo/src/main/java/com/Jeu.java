@@ -41,10 +41,10 @@ public class Jeu implements moteurJeu.Jeu {
             labyrinthes[i] = new Labyrinthe();
         Textures.chargerTextures();
         this.ennemis = new ArrayList<Entite>();
-        this.joueur = new Aventurier("testeur", this.carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte, this);
+        this.joueur = new Aventurier("testeur", this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this);
         this.cam = new Camera(this.joueur);
-        this.ennemis.add(new Gobelin(5, carte.getEntree().times(Labyrinthe.TILE_SIZE), this.carte));
-        this.ennemis.add(new Gobelin(5, new Vec2(2, 2), this.carte));
+        this.ennemis.add(new Gobelin(5, this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe()));
+        this.ennemis.add(new Gobelin(5, new Vec2(2, 2), this.getCurrentLabyrinthe()));
     }
 
     public Labyrinthe getCurrentLabyrinthe() {
@@ -52,6 +52,7 @@ public class Jeu implements moteurJeu.Jeu {
     }
 
     public boolean nextLabyrinthe() {
+        
         return true;
     }
 
@@ -76,7 +77,7 @@ public class Jeu implements moteurJeu.Jeu {
      * Methode getCarte qui return la carte du jeu
      */
     public Labyrinthe getCarte() {
-        return this.carte;
+        return this.getCurrentLabyrinthe();
     }
 
     /** 
@@ -112,6 +113,6 @@ public class Jeu implements moteurJeu.Jeu {
     
     @Override
     public String toString() {
-        return "Jeu [carte=" + carte + ", joueur=" + joueur + "]";
+        return "Jeu [carte=" + getCurrentLabyrinthe() + ", joueur=" + joueur + "]";
     }
 }
