@@ -11,6 +11,9 @@ class Jeu{
     + getCarte() : Labyrinthe
     + getJoueur() : Aventurier
     + getCam() : Camera
+    + getCurrentLabyrinthe(): Labyrinthe
+    + nextLabyrinthe(): boolean
+    + prevLabyrinthe(): boolean
     + getEnnemis() : ArrayList<Entite>
 }
 
