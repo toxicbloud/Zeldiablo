@@ -1,6 +1,36 @@
 @startuml
 participant "joueur: Aventurier" as joueur
+participant "jeu: Jeu" as jeu
 participant "labyrinthes: Liste<Labyrinthe>" as tabLaby
-participant "jeu: Jeu"
+participant "laby: Labyrinthe" as laby
+
+[-> jeu: evoluer
+activate jeu
+    jeu -> joueur: deplacer(Commande)
+    activate joueur
+        joueur -> jeu: getCurrentLabyrinthe()
+        jeu -> tabLaby: get(currentLabyrinthe)
+        activate tabLaby
+        tabLaby --> jeu: laby
+        deactivate tabLaby
+        jeu --> joueur: - laby
+        joueur -> laby: getCaseAtPos(position)
+        activate laby
+        laby --> joueur: - case
+        deactivate laby
+        alt case instanceOf EscalierMonter
+            joueur -> jeu: nextLabyrinthe()
+            activate jeu
+            jeu --> joueur: boolean
+            deactivate jeu
+        else case instanceOf EscalierDescendre
+            joueur -> jeu: prevLabyrinthe()
+            activate jeu
+            jeu --> joueur: boolean
+            deactivate jeu
+        end
+        joueur --> jeu
+    deactivate joueur
+deactivate jeu
 
 @enduml
