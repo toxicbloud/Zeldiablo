@@ -14,6 +14,7 @@ public class Jeu implements moteurJeu.Jeu {
     private Aventurier joueur;
     private Camera cam;
     private ArrayList<Entite> ennemis;
+    private ArrayList<IAMonstre> ia;
     private boolean fini = false;
 
     private boolean enJeu;
@@ -33,9 +34,11 @@ public class Jeu implements moteurJeu.Jeu {
             labyrinthes[i] = new Labyrinthe(i == labyrinthes.length-1);
         
         this.ennemis = new ArrayList<Entite>();
+        this.ia = new ArrayList<IAMonstre>();
         this.ennemis.add(new Gobelin(1, this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), getCurrentLabyrinthe(), this));
+        this.ia.add(new IAMonstre((Monstre)this.ennemis.get(this.ennemis.size()-1), this.getCurrentLabyrinthe()));
         this.joueur = new Aventurier(n, this);
-        this.genererEnnemis();
+        //this.genererEnnemis();
         this.cam = new Camera(this.joueur);
         enJeu = false;
         ecranFin = false;
@@ -54,6 +57,7 @@ public class Jeu implements moteurJeu.Jeu {
         this.joueur = new Aventurier("testeur", this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this);
         this.cam = new Camera(this.joueur);
         this.ennemis.add(new Gobelin(5, this.getCarte().getEntree(), this.getCarte(), this));
+        this.ia.add(new IAMonstre((Monstre)this.ennemis.get(this.ennemis.size()-1), this.getCurrentLabyrinthe()));
     }
 
     public Labyrinthe getCurrentLabyrinthe() {
@@ -81,6 +85,7 @@ public class Jeu implements moteurJeu.Jeu {
             for (int y = 0; y < cases[x].length; y++) {
                 if (cases[x][y].isTraversable() && Math.random() > 0.93) {
                     this.ennemis.add(new Gobelin(5, new Vec2(x, y).times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this));
+                    this.ia.add(new IAMonstre((Monstre)this.ennemis.get(this.ennemis.size()-1), this.getCurrentLabyrinthe()));
                 }
             }
         }
@@ -101,7 +106,9 @@ public class Jeu implements moteurJeu.Jeu {
             cam.deplacer(this.joueur);
             for(Entite e: this.ennemis) {
                 Monstre m = ((Monstre)e);
-                // m.deplacer(new Commande());
+                System.out.println(ennemis.size());
+                System.out.println(ia.size());
+                ia.get(ennemis.indexOf(m)).deplacement();
                 if (m.etreMort()) {
                     this.ennemis.remove(m);
                     break;
