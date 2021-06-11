@@ -14,6 +14,8 @@ public class Aventurier extends Entite{
 
     private int energie;
     private Arme arme;
+    private int timer;
+
 
     /**
      * constructeur aventurier
@@ -25,6 +27,8 @@ public class Aventurier extends Entite{
         super(nom,v,100,l);
         this.energie = 100;
         this.arme=new Couteau(5, 1);
+        this.timer = 40;
+
     }
 
     /**
@@ -39,6 +43,7 @@ public class Aventurier extends Entite{
         this.energie = 100;
         this.arme=new Couteau(5, 1);
         this.setTexture(Textures.guerrier[1]);
+        this.timer = 40;
     }
     /**
      * constructeur aventurier
@@ -69,6 +74,22 @@ public class Aventurier extends Entite{
         this.arme = null;
     }
     
+    @Override
+    public void perdrePV(int perdrePv) {
+        if (this.timer < 40) {
+            this.timer++;
+            return;
+        }
+        if (this.etreMort() == false) {
+            this.setPv(this.getPV()- perdrePv);        
+        }
+        if (this.getPv() <= 0) {
+            this.setMort(true);
+            this.setPv(0);
+        }
+        this.timer = 0;
+    }
+
     /**
      * donne l'arme de l'aventurier
      * @return arme
@@ -115,6 +136,8 @@ public class Aventurier extends Entite{
                 this.getJeu().genererEnnemis();
             }
         }
+        // System.out.println("ca passe");
+        detectEnnemis();
         animer(c);
     }
     /**
@@ -140,6 +163,20 @@ public class Aventurier extends Entite{
     public int getRange() {
         return this.arme.getRange();
 
+    }
+
+    /**
+     * méthode qui fait subir des dégats à l'aventurier quand des ennemis sont autour
+     */
+    public void detectEnnemis() {
+        Jeu j = this.getJeu();
+        ArrayList<Entite> ar = j.getEnnemis();
+        for (Entite entite : ar) {
+            int distance = entite.getPos().dist(this.getPos());
+            if (distance > Labyrinthe.TILE_SIZE*1.5) continue;
+            this.perdrePV(((Monstre)entite).getDegat());
+            if (this.etreMort()) j.setFini(true);
+        }
     }
 
     /**
