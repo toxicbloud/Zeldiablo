@@ -1,0 +1,19 @@
+@startuml
+
+participant "MoteurGraphique" as mg
+participant "gui: InterfaceGraphique" as gui
+participant "dj: DessinJeu" as dj
+participant "j: Jeu" as j
+
+activate mg
+    mg -> jeu: shouldQuit()
+    activate jeu
+        mg <-- jeu: quit
+        alt quit
+            
+        end
+        
+    deactivate
+deactivate mg
+
+@enduml

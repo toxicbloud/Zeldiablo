@@ -9,4 +9,10 @@ public class Amulette extends Case{
     Amulette(){
         super(true,Textures.tex_amulette);
     }
+
+    @Override
+    public void action(Jeu j) {
+        j.setFini(true);
+        
+    }
 }

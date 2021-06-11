@@ -18,6 +18,8 @@ public abstract class Entite{
     private int vitesse=2;
     private Image texture=Textures.noTexture;
     private Commande dernier;
+    private int timer;
+
 
     /**
      * constructeur d' Entite
@@ -41,6 +43,8 @@ public abstract class Entite{
             this.mort = false;
         }
         this.derniereDir = new Vec2(0,1);
+        this.timer = 40;
+
     }
 
 
@@ -59,6 +63,8 @@ public abstract class Entite{
         }
         this.derniereDir = new Vec2(0,1);
         this.jeu = j;
+        this.timer = 40;
+
     }
     /**
      * 
@@ -82,6 +88,8 @@ public abstract class Entite{
             this.mort = false;
         }
         this.taille=t;
+        this.timer = 40;
+
     }
     
     /**
@@ -101,7 +109,10 @@ public abstract class Entite{
         this.taille = new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE);
         this.mort = false;
         this.derniereDir = new Vec2(0,1);
+        this.timer = 40;
+
     }
+
 
     /**
      * 
@@ -331,5 +342,14 @@ public abstract class Entite{
     }
     public void setJeu(Jeu jeu) {
         this.jeu = jeu;
+    }
+    public void setMaxPV(int maxPV) {
+        this.maxPV = maxPV;
+    }
+    public int getTimer() {
+        return timer;
+    }
+    public void setTimer(int timer) {
+        this.timer = timer;
     }
 }

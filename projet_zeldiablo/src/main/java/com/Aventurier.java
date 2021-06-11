@@ -15,6 +15,7 @@ public class Aventurier extends Entite{
     private int energie;
     private Arme arme;
 
+
     /**
      * constructeur aventurier
      * @param nom
@@ -69,6 +70,22 @@ public class Aventurier extends Entite{
         this.arme = null;
     }
     
+    @Override
+    public void perdrePV(int perdrePv) {
+        if (this.getTimer() < 40) {
+            this.setTimer(this.getTimer()+1);
+            return;
+        }
+        if (this.etreMort() == false) {
+            this.setPv(this.getPV()- perdrePv);        
+        }
+        if (this.getPv() <= 0) {
+            this.setMort(true);
+            this.setPv(0);
+        }
+        this.setTimer(0);
+    }
+
     /**
      * donne l'arme de l'aventurier
      * @return arme
@@ -103,18 +120,9 @@ public class Aventurier extends Entite{
         Labyrinthe laby=getLabyrinthe();
         Case proch=laby.getCaseAtVec2(getPos().plus(new Vec2(Labyrinthe.TILE_SIZE/2,Labyrinthe.TILE_SIZE/2)));
         setVitesse(2);
-        if(proch instanceof Amulette){
-            //temporaire
-            System.out.println("Le jeu est fini");
-            this.getJeu().setFini(true);
-        }else if(proch instanceof Eau) {
-            setVitesse(1);
-        } else if (proch instanceof EscalierMonter) {
-            if (this.getJeu().nextLabyrinthe()) {
-                this.setPos(this.getJeu().getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE));
-                this.getJeu().genererEnnemis();
-            }
-        }
+        proch.action(getJeu());
+        // System.out.println("ca passe");
+        detectEnnemis();
         animer(c);
     }
     /**
@@ -140,6 +148,20 @@ public class Aventurier extends Entite{
     public int getRange() {
         return this.arme.getRange();
 
+    }
+
+    /**
+     * méthode qui fait subir des dégats à l'aventurier quand des ennemis sont autour
+     */
+    public void detectEnnemis() {
+        Jeu j = this.getJeu();
+        ArrayList<Entite> ar = j.getEnnemis();
+        for (Entite entite : ar) {
+            int distance = entite.getPos().dist(this.getPos());
+            if (distance > Labyrinthe.TILE_SIZE*1.5) continue;
+            this.perdrePV(((Monstre)entite).getDegat());
+            if (this.etreMort()) j.setFini(true);
+        }
     }
 
     /**
