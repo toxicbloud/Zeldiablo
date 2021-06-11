@@ -9,31 +9,16 @@ import moteurJeu.Commande;
  */
 public class Jeu implements moteurJeu.Jeu {
 
-    /** Labyrinthes de la partie */
     private Labyrinthe[] labyrinthes;
-
-    /** Index du labyrinthe courrant */
     private int currentLabyrinthe;
-
-    /** Joueur de la partie */
     private Aventurier joueur;
-
-    /** Camera du jeu */
     private Camera cam;
-
-    /** Ennemis dans le labyrinthe */
     private ArrayList<Entite> ennemis;
-
-    /** Le jeu est fini ou non */
     private boolean fini = false;
 
-    /** La partie est lancee ou non */
     private boolean enJeu;
-
-    /** L'ecran affiche est lecran de fin ou non */
     private boolean ecranFin;
-
-    /** La fenetre devrait se fermer */
+    /** La fenetre devrais se fermer */
     private boolean quit;
 
     /** 
@@ -71,18 +56,10 @@ public class Jeu implements moteurJeu.Jeu {
         this.ennemis.add(new Gobelin(5, this.getCarte().getEntree(), this.getCarte(), this));
     }
 
-    /**
-     * getter de l'attribut currentLabyrinthe
-     * @return le labyrinthe courrant
-     */
     public Labyrinthe getCurrentLabyrinthe() {
         return this.labyrinthes[this.currentLabyrinthe];
     }
 
-    /**
-     * Passe au prochain labyrinthe
-     * @return
-     */
     public boolean nextLabyrinthe() {
         if (this.currentLabyrinthe > this.labyrinthes.length-1)
             return false;
@@ -90,10 +67,6 @@ public class Jeu implements moteurJeu.Jeu {
         return true;
     }
 
-    /**
-     * Passe au labyrinthe precedent
-     * @return
-     */
     public boolean prevLabyrinthe() {
         if (this.currentLabyrinthe < 1)
             return false;
@@ -101,9 +74,6 @@ public class Jeu implements moteurJeu.Jeu {
         return true;
     }
 
-    /**
-     * genere les ennemis dans le labyrinthe
-     */
     public void genererEnnemis() {
         this.ennemis.clear();
         Case[][] cases = getCurrentLabyrinthe().getCases();
@@ -235,9 +205,6 @@ public class Jeu implements moteurJeu.Jeu {
         this.ecranFin = ecranFin;
     }
     
-    /**
-     * Methode toString du jeu
-     */
     @Override
     public String toString() {
         return "Jeu [carte=" + getCurrentLabyrinthe() + ", joueur=" + joueur + "]";
