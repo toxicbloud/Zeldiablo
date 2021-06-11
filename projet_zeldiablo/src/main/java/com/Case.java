@@ -1,5 +1,7 @@
 package com;
 import java.awt.Image;
+
+import javax.imageio.ImageIO;
 /**
  * Classe Case, represente une case du labyrinthe
  */
@@ -48,5 +50,8 @@ public abstract class Case {
      */
     public Image getSprite() {
         return sprite;
+    }
+    public void setSprite(Image a){
+        this.sprite=a;
     }
 }
