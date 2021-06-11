@@ -47,6 +47,7 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         g.setColor(Color.black);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
         if (jeu.isEnJeu()) {
+            // dessin des cases du labyrinthe
             Case[][] cases = jeu.getCarte().getCases();
             for (int x = 0; x < cases.length; x++) {
                 for (int y = 0; y < cases[x].length; y++) {
@@ -56,10 +57,12 @@ public class DessinJeu implements moteurJeu.DessinJeu {
                 }
             }
 
+            // dessin des entités du labyrinthe
             for(Entite e: jeu.getEnnemis()) {
                 Vec2 newPos = this.worldPos2ScreenPos(new Vec2(e.getPos().x, e.getPos().y));
                 Vec2 newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
-                /** Barre de vie  */
+                
+                // barre de vie du monstre
                 int pv=e.getPV();
                 if(pv>=10){ g.setColor(Color.green);}
                 if(pv<=6){g.setColor(Color.orange);}
@@ -68,9 +71,9 @@ public class DessinJeu implements moteurJeu.DessinJeu {
                 g.setStroke(new BasicStroke((float) 1.5));
                 g.drawRect(newPos.x-1, newPos.y-11, 50, 6);
                 g.setColor(Color.red);
-                /** Dessin du monstre */
+
+                // texture du monstre
                 g.drawImage(e.getTexture(), newPos.x, newPos.y, newScale.x, newScale.y, null);
-                // g.fillOval(newPos.x, newPos.y, TILE_SIZE, TILE_SIZE);
             }
 
             Vec2 newPos = this.worldPos2ScreenPos(new Vec2(jeu.getJoueur().getPos().x, jeu.getJoueur().getPos().y));
@@ -79,9 +82,10 @@ public class DessinJeu implements moteurJeu.DessinJeu {
             g.fillOval(newPos.x+10, newPos.y+newScale.y-5, newScale.x-20, 10);
             g.drawImage(jeu.getJoueur().getTexture(), newPos.x, newPos.y, newScale.x, newScale.y, null);
 
-            /** Affichage ATH */
+            /** Affichage interface */
             BufferedImage ath = new BufferedImage(image.getWidth(),100,BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2 = (Graphics2D) ath.getGraphics();
+
             /** Affichage PV */
             g2.setColor(Color.red);
             g2.fillArc(30, 4, 80, 80, 0, 360);
@@ -89,7 +93,8 @@ public class DessinJeu implements moteurJeu.DessinJeu {
             Arrays.fill(pixels, 0); 
             ath.setRGB(0, 0, ath.getWidth(), ath.getHeight()-jeu.getJoueur().getPV(), pixels, 0, ath.getWidth());
             g2.drawImage(Textures.tex_uhd,0,0, Textures.tex_uhd.getWidth(null),Textures.tex_uhd.getHeight(null),null);
-            /** Affichage energie */
+            
+            /** Affichage barre energie */
             g2.setColor(Color.gray);
             g2.drawRect(120, 50, 100, 10);
 
@@ -97,7 +102,8 @@ public class DessinJeu implements moteurJeu.DessinJeu {
             g2.fillRect(120, 50, jeu.getJoueur().getEnergie(), 10);
             g.drawImage(ath, 0, image.getHeight()-90, ath.getWidth(), ath.getHeight(),null);
         } else {
-            if (jeu.isEcranFin()) { // dessine l'ecran de fin
+            if (jeu.isEcranFin()) {
+                // dessine l'ecran de fin
                 g.drawImage(Textures.tex_gameover, 
                     w/2-Textures.tex_gameover.getWidth(null)/2, h/2-Textures.tex_gameover.getHeight(null)/2, 
                     Textures.tex_gameover.getWidth(null), Textures.tex_gameover.getHeight(null), null
@@ -107,7 +113,8 @@ public class DessinJeu implements moteurJeu.DessinJeu {
                 g.setColor(new Color(176,44,36));
                 g.fillRect(w/2-width/2-15, (int)(h*0.8)-55, width+30, 60);
                 g1D.drawString("Menu Principal", w/2-width/2, (int)(h*0.8)-15);
-            } else { // dessine l'ecran de debut
+            } else {
+                // dessine l'ecran de debut
                 g.drawImage(Textures.tex_mur, 0, 0, w, h, null);
                 g1D.setColor(Color.RED);
                 g1D.setFont(new FontUIResource("Helvetica", FontUIResource.BOLD, 60));
@@ -127,6 +134,9 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         }
     }
 
+    /**
+     * Methode appelee quand la souris est cliquee
+     */
     public void onclick(int x, int y) {
         if (!jeu.isEnJeu()) {
             if (jeu.isEcranFin()) {
@@ -141,10 +151,20 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         }
     }
 
+    /**
+     * Converti la position du monde en position sur l"ecran
+     * @param pos position dans le monde
+     * @return position sur l'ecran
+     */
     public Vec2 worldPos2ScreenPos(Vec2 pos) {
         return pos.minus(this.jeu.getCam().getPos()).times(TILE_SIZE).div(Labyrinthe.TILE_SIZE).plus(frameShift);
     }
 
+    /**
+     * Converti une taille du monde en taille sur l'ecran
+     * @param scale taille dans le monde
+     * @return taille sur l'ecran
+     */
     public Vec2 worldScale2ScreenScale(Vec2 scale) {
         return scale.div(Labyrinthe.TILE_SIZE).times(TILE_SIZE);
     }

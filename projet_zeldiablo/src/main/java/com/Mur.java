@@ -15,9 +15,9 @@ public class Mur extends Case {
         super(false, Textures.tex_mur);
     }
 
+    /** Action declenchee lors du passage sur la case */
     @Override
     public void action(Jeu j) {
-        // TODO Auto-generated method stub
         
     }
 }

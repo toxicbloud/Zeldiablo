@@ -1,0 +1,34 @@
+@startuml
+
+participant "gui: InterfaceGraphique" as gui
+participant "dj: DessinJeu" as dj
+participant "j: Jeu" as j
+
+activate gui
+    gui -> dj: onclick()
+    activate dj
+        dj -> j: isEnJeu()
+        activate j
+            j --> dj: enJeu
+        deactivate j
+        alt non enJeu
+            dj -> j: isEcranFin()
+            activate j
+                j --> dj: ecranFin
+            deactivate j
+            alt ecranFin
+                alt y > boutonQuitter
+                    dj -> dj: setEcranFin(false)
+                else y < boutonQuitter
+                    dj -> dj: quit()
+                end
+                
+            else non ecranFin
+                dj -> dj: setEnJeu(true)
+            end
+        end
+        gui <-- dj
+    deactivate dj
+deactivate gui
+
+@enduml
