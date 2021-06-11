@@ -38,7 +38,7 @@ public class Jeu implements moteurJeu.Jeu {
         this.genererEnnemis();
         this.cam = new Camera(this.joueur);
         enJeu = false;
-        ecranFin = false;
+        ecranFin = true;
         quit = false;
     }
 
@@ -94,7 +94,7 @@ public class Jeu implements moteurJeu.Jeu {
             if (!ecranFin) {
                 enJeu = commandeUser.espace;
             } else {
-                this.fini = true;
+                
             }
         } else {
             this.joueur.deplacer(commandeUser);
