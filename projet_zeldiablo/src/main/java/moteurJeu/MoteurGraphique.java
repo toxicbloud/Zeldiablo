@@ -49,7 +49,7 @@ public class MoteurGraphique {
 
 		// boucle de jeu
 		while (!this.jeu.etreFini()) {
-			if (((Jeu) this.jeu).shouldQuit()) this.gui.quit();
+			if (((Jeu) this.jeu).shouldQuit()) this.gui.quit();	
 			// demande controle utilisateur
 			Commande c = controle.getCommande();
 			// fait evoluer le jeu
