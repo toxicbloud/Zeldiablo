@@ -32,7 +32,7 @@ public class testBoss {
     int d = 10;
     String desc = "I'm John";
     int a = 10;
-    int vit=2;
+    int vit=1;
     int range=3;
     Jeu j = new Jeu("Hello");
 
@@ -45,6 +45,27 @@ public class testBoss {
     b1.setPos( new Vec2(0, 0));
     assertEquals(true, b1.deplacer("Gauche"));
 
+    }
+
+    @Test
+    public void testPVBoss(){
+        String n = "John";
+    int vie = 100;
+    Vec2 v= new Vec2(0, 0);
+    int d = 10;
+    String desc = "I'm John";
+    int a = 10;
+    int vit=1;
+    int range=3;
+    Jeu j = new Jeu("Hello");
+
+    Labyrinthe l =  j.getCarte();
+        Case [][] c = l.getCases();
+        c[0][0] = new Chemin();
+                
+    
+    Boss b1= new Boss(n, v, vie, d, desc, l, a, vit, range,j);
+    assertEquals(200, b1.getPV());
     }
     
 }

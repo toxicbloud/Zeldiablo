@@ -30,8 +30,13 @@ public abstract class Arme {
      * @param r range
      */
     public Arme(int de, int r) {
-        this.degats = de;
-        this.range = r;
+        if (de <0) {
+            this.degats=1;
+        }
+        else{
+            this.degats = de;
+        }
+        this.range=r;
     }
 
     /**
