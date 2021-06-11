@@ -115,6 +115,8 @@ public class Aventurier extends Entite{
                 this.getJeu().genererEnnemis();
             }
         }
+        // System.out.println("ca passe");
+        detectEnnemis();
         animer(c);
     }
     /**
@@ -140,6 +142,25 @@ public class Aventurier extends Entite{
     public int getRange() {
         return this.arme.getRange();
 
+    }
+
+    /**
+     * méthode qui fait subir des dégats à l'aventurier quand des ennemis sont autour
+     */
+    public void detectEnnemis() {
+        System.out.println(this.getPV());
+        Jeu j = this.getJeu();
+        ArrayList<Entite> ar = j.getEnnemis();
+        // System.out.println(ar.size());
+        for (Entite entite : ar) {
+            // System.out.println(entite.toString());
+            int distance = entite.getPos().dist(this.getPos());
+            // System.out.println(distance);
+            if (distance > Labyrinthe.TILE_SIZE*1.5) continue;
+            System.out.println("le monstre attaque");
+            this.perdrePV(((Monstre)entite).getDegat());
+            if (this.etreMort()) j.setFini(true);
+        }
     }
 
     /**
