@@ -18,11 +18,11 @@ descriptif texte : les cases ont des textures
 
 
 - fonctionnalité 3 : gestion hitbox des entités (
-- descriptif texte : Les entites ne doivent pas traverser les murs
+- descriptif texte : Les entités ont une hitbox, pour gérer les collisions
 - critères de validation :
-    - critère 1 : le personnage se deplace
-    - critère 2 : le personnage ne traverse pas un mur
-- RESPONSABLE : Antonin Rousseau (roussea97u)
+    - critère 1 : Les murs empêchent les déplacements de chaque sens
+- RESPONSABLE : Antonin
+
 
 
 - fonctionnalité 4 : mise à jour des monstres

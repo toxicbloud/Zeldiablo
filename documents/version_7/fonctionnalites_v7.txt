@@ -23,7 +23,7 @@ descriptif texte : Les cases interagissent avec leur environnement proprement
 -fonctionnalité 4 : Attaque des monstres
 - descriptif texte : Les monstres peuvent attaquer le joueur
 - critères de validation :
-	- critère 1 : Les monstres attaquent le joueur quand ils sont proche de lui
+	- critère 1 : Les monstres attaquent le joueur quand ils sont proches de lui
 - RESPONSABLE : Tom (claude256u)	
 
 - fonctionnalité 5 : BOSS d'étage initialisé
@@ -45,7 +45,8 @@ Celian :
 Monstre 
 
 Tom :
-Aventurier
+
+Aventurier / Camera
 
 Antonin :
 Labyrinthe / Cases

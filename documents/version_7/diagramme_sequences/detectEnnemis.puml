@@ -1,0 +1,25 @@
+@startuml
+
+
+participant "jeu : Jeu" as j
+participant "a : Aventurier" as a
+participant "m : Monstre" as m
+
+
+activate j
+    j -> a : deplacer()
+    activate a
+        a -> a : detectEnnemis()
+        a -> m : getPos()
+        activate m
+        a <-- m : posEnnemi
+        deactivate m
+        a -> a : this.pos.dist(posEnnemi)
+        alt distance < range
+            a -> a : perdrePv()
+        end
+    a --> j
+    deactivate a
+deactivate j
+
+@enduml
