@@ -1,5 +1,5 @@
 @startuml
-title zeldiablo version 6
+title zeldiablo version 7
 
 class Jeu{
     - carte : Labyrinthe
@@ -133,7 +133,7 @@ abstract Monstre{
     - description : String
     - attente : int
 
-    + Monstre(String, Vec2, int, int, String, Labyrinthe, int, int)
+    + Monstre(String, Vec2, int, int, String, Labyrinthe, int, int, Jeu)
     + soigner(int, Entite) : void
     + getDegat() : int
     + setDegat(int)
@@ -142,27 +142,27 @@ abstract Monstre{
 }
 
 class Gobelin{
-    + Gobelin(int, Vec2, Labyrinthe)
+    + Gobelin(int, Vec2, Labyrinthe, Jeu)
     + attaquerAutre(Entite e)
 }
 
 class Fantome{
-    + Fantome(int, Vec2, Labyrinthe)
+    + Fantome(int, Vec2, Labyrinthe, Jeu)
     + attaquerAutre(Entite e)
 }
 
 class Orc{
-    + Orc(int, Vec2, Labyrinthe)
+    + Orc(int, Vec2, Labyrinthe, Jeu)
     + attaquerAutre(Entite e)
 }
 
 class Murloc{
-    + Murloc(int, Vec2, Labyrinthe)
+    + Murloc(int, Vec2, Labyrinthe, Jeu)
     + attaquerAutre(Entite e)
 }
 
 class PlanteC{
-    + PlanteC(int, Vec2, Labyrinthe)
+    + PlanteC(int, Vec2, Labyrinthe, Jeu)
     + attaquerAutre(Entite e)
 }
 
