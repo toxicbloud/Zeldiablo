@@ -14,7 +14,6 @@ public class Aventurier extends Entite{
 
     private int energie;
     private Arme arme;
-    private int timer;
 
 
     /**
@@ -27,8 +26,6 @@ public class Aventurier extends Entite{
         super(nom,v,100,l);
         this.energie = 100;
         this.arme=new Couteau(5, 1);
-        this.timer = 40;
-
     }
 
     /**
@@ -43,7 +40,6 @@ public class Aventurier extends Entite{
         this.energie = 100;
         this.arme=new Couteau(5, 1);
         this.setTexture(Textures.guerrier[1]);
-        this.timer = 40;
     }
     /**
      * constructeur aventurier
@@ -76,8 +72,8 @@ public class Aventurier extends Entite{
     
     @Override
     public void perdrePV(int perdrePv) {
-        if (this.timer < 40) {
-            this.timer++;
+        if (this.getTimer() < 40) {
+            this.setTimer(this.getTimer()+1);
             return;
         }
         if (this.etreMort() == false) {
@@ -87,7 +83,7 @@ public class Aventurier extends Entite{
             this.setMort(true);
             this.setPv(0);
         }
-        this.timer = 0;
+        this.setTimer(0);
     }
 
     /**
