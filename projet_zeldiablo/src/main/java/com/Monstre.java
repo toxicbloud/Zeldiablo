@@ -77,22 +77,22 @@ public abstract class Monstre extends Entite {
         Case rd=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(getTaille().x,(int)(getTaille().y*0.8))));
         ///if (att >= this.attente) {
             switch(Mouvement) {
-                case "Haut":
+                case "Gauche":
                     if(lu!=null && ld!=null && lu.isTraversable() && ld.isTraversable()) {
                         setPos(new Vec2((getPos().x)-(this.vitesse), getPos().y));
                     }
                     break;
-                case "Bas":
+                case "Droite":
                     if(ru!=null && rd!=null && ru.isTraversable() && rd.isTraversable()) {
                         setPos(new Vec2((getPos().x)+(this.vitesse), getPos().y));
                     }
                     break;
-                case "Gauche":
+                case "Haute":
                     if(ul!=null && ur!=null && ul.isTraversable()&& ur.isTraversable()) {
                         setPos(new Vec2(getPos().x, (getPos().y)-(this.vitesse)));
                     }
                     break;
-                case "Droite": 
+                case "Bas": 
                     if(dl!=null && dr!=null && dl.isTraversable() &&  dr.isTraversable()){
                         setPos(new Vec2(getPos().x, (getPos().y)+(this.vitesse)));
                     }
