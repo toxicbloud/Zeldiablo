@@ -124,18 +124,7 @@ public class Aventurier extends Entite{
         Labyrinthe laby=getLabyrinthe();
         Case proch=laby.getCaseAtVec2(getPos().plus(new Vec2(Labyrinthe.TILE_SIZE/2,Labyrinthe.TILE_SIZE/2)));
         setVitesse(2);
-        if(proch instanceof Amulette){
-            //temporaire
-            System.out.println("Le jeu est fini");
-            this.getJeu().setFini(true);
-        }else if(proch instanceof Eau) {
-            setVitesse(1);
-        } else if (proch instanceof EscalierMonter) {
-            if (this.getJeu().nextLabyrinthe()) {
-                this.setPos(this.getJeu().getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE));
-                this.getJeu().genererEnnemis();
-            }
-        }
+        proch.action(getJeu());
         // System.out.println("ca passe");
         detectEnnemis();
         animer(c);
