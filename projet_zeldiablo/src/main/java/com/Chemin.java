@@ -13,6 +13,7 @@ public class Chemin extends Case {
         super(true, Textures.tex_chemin);
     }
 
+    /** Action declenchee lors du passage sur la case */
     @Override
     public void action(Jeu j) {
     }
