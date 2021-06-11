@@ -4,7 +4,7 @@ public  abstract class Arme_COC extends Arme {
     private int energie;
 
     /**
-     * 
+     * Constructor Arme Corps à Corps
      * @param de dégats
      * @param energie energies qui prends pour l'utiliser
      */
@@ -19,7 +19,7 @@ public  abstract class Arme_COC extends Arme {
 
     /**
      * donne l'énergie que coute cette arme
-     * @return
+     * @return Energie de Couteau
      */
     public int getEnergie() {
 		return this.energie;
