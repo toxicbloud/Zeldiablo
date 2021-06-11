@@ -38,55 +38,64 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         this.frameShift = new Vec2((w-TILE_SIZE)/2, (h-TILE_SIZE)/2);
         g.setColor(Color.black);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
-        Case[][] cases = jeu.getCarte().getCases();
-        for (int x = 0; x < cases.length; x++) {
-            for (int y = 0; y < cases[x].length; y++) {
-                Vec2 newPos = this.worldPos2ScreenPos(new Vec2(x*Labyrinthe.TILE_SIZE, y*Labyrinthe.TILE_SIZE));
+        if (jeu.isEnJeu()) {
+            Case[][] cases = jeu.getCarte().getCases();
+            for (int x = 0; x < cases.length; x++) {
+                for (int y = 0; y < cases[x].length; y++) {
+                    Vec2 newPos = this.worldPos2ScreenPos(new Vec2(x*Labyrinthe.TILE_SIZE, y*Labyrinthe.TILE_SIZE));
+                    Vec2 newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
+                    g.drawImage(cases[x][y].getSprite(), newPos.x, newPos.y, newScale.x, newScale.y, null);
+                }
+            }
+
+            for(Entite e: jeu.getEnnemis()) {
+                Vec2 newPos = this.worldPos2ScreenPos(new Vec2(e.getPos().x, e.getPos().y));
                 Vec2 newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
-                g.drawImage(cases[x][y].getSprite(), newPos.x, newPos.y, newScale.x, newScale.y, null);
+                /** Barre de vie  */
+                int pv=e.getPV();
+                if(pv>=10){ g.setColor(Color.green);}
+                if(pv<=6){g.setColor(Color.orange);}
+                g.fillRect(newPos.x, newPos.y-10, e.getPV()*4, 5);
+                g.setColor(Color.black);
+                g.setStroke(new BasicStroke((float) 1.5));
+                g.drawRect(newPos.x-1, newPos.y-11, 50, 6);
+                g.setColor(Color.red);
+                /** Dessin du monstre */
+                g.drawImage(e.getTexture(), newPos.x, newPos.y, newScale.x, newScale.y, null);
+                // g.fillOval(newPos.x, newPos.y, TILE_SIZE, TILE_SIZE);
+            }
+
+            Vec2 newPos = this.worldPos2ScreenPos(new Vec2(jeu.getJoueur().getPos().x, jeu.getJoueur().getPos().y));
+            Vec2 newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
+            g.setColor(new Color(0, 0, 0, 100));
+            g.fillOval(newPos.x+10, newPos.y+newScale.y-5, newScale.x-20, 10);
+            g.drawImage(jeu.getJoueur().getTexture(), newPos.x, newPos.y, newScale.x, newScale.y, null);
+
+            /** Affichage ATH */
+            BufferedImage ath = new BufferedImage(image.getWidth(),100,BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g2 = (Graphics2D) ath.getGraphics();
+            /** Affichage PV */
+            g2.setColor(Color.red);
+            g2.fillArc(30, 4, 80, 80, 0, 360);
+            int[] pixels = new int[ath.getWidth()*ath.getHeight()];
+            Arrays.fill(pixels, 0); 
+            ath.setRGB(0, 0, ath.getWidth(), ath.getHeight()-jeu.getJoueur().getPV(), pixels, 0, ath.getWidth());
+            g2.drawImage(Textures.tex_uhd,0,0, Textures.tex_uhd.getWidth(null),Textures.tex_uhd.getHeight(null),null);
+            /** Affichage energie */
+            g2.setColor(Color.gray);
+            g2.drawRect(120, 50, 100, 10);
+
+            g2.setColor(Color.orange);
+            g2.fillRect(120, 50, jeu.getJoueur().getEnergie(), 10);
+            g.drawImage(ath, 0, image.getHeight()-90, ath.getWidth(), ath.getHeight(),null);
+        } else {
+            if (jeu.isEcranFin()) { // dessine l'ecran de fin
+                g.drawImage(Textures.tex_gameover, 0, 0, Textures.tex_gameover.getWidth(null), Textures.tex_gameover.getHeight(null), null);
+            } else { // dessine l'ecran de debut
+                g.setColor(Color.RED);
+                g.fillRect(0, 0, 100, 100);
             }
         }
-
-        for(Entite e: jeu.getEnnemis()) {
-            Vec2 newPos = this.worldPos2ScreenPos(new Vec2(e.getPos().x, e.getPos().y));
-            Vec2 newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
-            /** Barre de vie  */
-            int pv=e.getPV();
-            if(pv>=10){ g.setColor(Color.green);}
-            if(pv<=6){g.setColor(Color.orange);}
-            g.fillRect(newPos.x, newPos.y-10, e.getPV()*4, 5);
-            g.setColor(Color.black);
-            g.setStroke(new BasicStroke((float) 1.5));
-            g.drawRect(newPos.x-1, newPos.y-11, e.getMaxPV()*4, 6);;
-            g.setColor(Color.red);
-            /** Dessin du monstre */
-            g.drawImage(e.getTexture(), newPos.x, newPos.y, newScale.x, newScale.y, null);
-            // g.fillOval(newPos.x, newPos.y, TILE_SIZE, TILE_SIZE);
-        }
-
-        Vec2 newPos = this.worldPos2ScreenPos(new Vec2(jeu.getJoueur().getPos().x, jeu.getJoueur().getPos().y));
-        Vec2 newScale = this.worldScale2ScreenScale(new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE));
-        g.setColor(new Color(0, 0, 0, 50));
-        g.fillOval(newPos.x+10, newPos.y+newScale.y-10, newScale.x-20, 10);
-        g.drawImage(jeu.getJoueur().getTexture(), newPos.x, newPos.y, newScale.x, newScale.y, null);
-
-        /** Affichage ATH */
-        BufferedImage ath = new BufferedImage(image.getWidth(),100,BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2 = (Graphics2D) ath.getGraphics();
-        /** Affichage PV */
-        g2.setColor(Color.red);
-        g2.fillArc(30, 4, 80, 80, 0, 360);
-        int[] pixels = new int[ath.getWidth()*ath.getHeight()];
-        Arrays.fill(pixels, 0); 
-        ath.setRGB(0, 0, ath.getWidth(), ath.getHeight()-jeu.getJoueur().getPV(), pixels, 0, ath.getWidth());
-        g2.drawImage(Textures.tex_uhd,0,0, Textures.tex_uhd.getWidth(null),Textures.tex_uhd.getHeight(null),null);
-        /** Affichage energie */
-        g2.setColor(Color.gray);
-        g2.drawRect(120, 50, 100, 10);
-
-        g2.setColor(Color.orange);
-        g2.fillRect(120, 50, jeu.getJoueur().getEnergie(), 10);
-        g.drawImage(ath, 0, image.getHeight()-90, ath.getWidth(), ath.getHeight(),null);
     }
 
     public Vec2 worldPos2ScreenPos(Vec2 pos) {
