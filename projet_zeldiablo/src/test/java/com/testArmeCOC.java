@@ -11,7 +11,7 @@ public class testArmeCOC {
     public void TestEquiper(){
         Labyrinthe l= new Labyrinthe();
         Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
-        Arme_COC knife = new Arme_COC(10, 1);
+        Arme_COC knife = new Couteau(10, 1);
 
         a1.equiper_Arme(knife);
         assertEquals("Paul must have a knife", knife, a1.getArme());
@@ -24,7 +24,7 @@ public class testArmeCOC {
     public void TestEquiper_v1(){
         Labyrinthe l= new Labyrinthe();
         Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
-        Arme_COC knife = new Arme_COC(10, -100);
+        Arme_COC knife = new Couteau(10, -100);
 
         a1.equiper_Arme(knife);
         assertEquals("Knife must have min 1 energie", 1, knife.getEnergie());
@@ -38,7 +38,7 @@ public class testArmeCOC {
     public void TestEquiper_v2(){
         Labyrinthe l= new Labyrinthe();
         Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
-        Arme_COC knife = new Arme_COC(-100, 10);
+        Arme_COC knife = new Couteau(-100, 10);
 
         a1.equiper_Arme(knife);
         assertEquals("Knife must have min 1 dégats", 1, knife.getDegats());
@@ -52,7 +52,7 @@ public class testArmeCOC {
     public void TestEquiper_v3(){
         Labyrinthe l= new Labyrinthe();
         Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
-        Arme_COC knife = new Arme_COC(-100, -100);
+        Arme_COC knife = new Couteau(-100, -100);
 
         a1.equiper_Arme(knife);
         assertEquals("Knife must have min 1 dégats", 1, knife.getDegats());
@@ -70,7 +70,7 @@ public class testArmeCOC {
         Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
         Aventurier a2=new Aventurier("Paul",new Vec2(0,0),l);
 
-        Arme_COC knife = new Arme_COC(2, 1);
+        Arme_COC knife = new Couteau(2, 1);
         a1.equiper_Arme(knife);
         a1.attaquerAutre(a2);
 
@@ -86,7 +86,7 @@ public class testArmeCOC {
         Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
         Aventurier a2=new Aventurier("Paul",new Vec2(0,0),l);
 
-        Arme_COC knife = new Arme_COC(-100, 1);
+        Arme_COC knife = new Couteau(-100, 1);
         a1.equiper_Arme(knife);
         a1.attaquerAutre(a2);
 
@@ -100,7 +100,7 @@ public class testArmeCOC {
     public void TestJeter(){
         Labyrinthe l= new Labyrinthe();
         Aventurier a1=new Aventurier("Paul",new Vec2(0,0),l);
-        Arme_COC knife = new Arme_COC(10, 1);
+        Arme_COC knife = new Couteau(10, 1);
 
         a1.equiper_Arme(knife);
         assertEquals("Paul must have a knife", knife, a1.getArme());

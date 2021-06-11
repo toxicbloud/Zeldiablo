@@ -17,24 +17,39 @@ public class TestAventurier {
         j=new Aventurier("Tom",new Vec2(0,0),l);
         jeu=new Jeu();
     }
+    /**
+     * Test constructor Nom 
+     */
     @Test
     public void constructeurNom(){
         Aventurier joueur=new Aventurier("Paul",new Vec2(0,0),l);
         assertEquals("Paul", joueur.getNom());
     }
+    /**
+     * Test la position de X à base
+     */
     @Test
     public void testPositionXDeBase(){
         assertEquals(0, j.getPos().x);
     }
+    /**
+     * Test Position de Y à base
+     */
     @Test
     public void testPositionYDeBase(){
         assertEquals(0, j.getPos().y);
     }
+    /**
+     * Test Position X avec cas normal
+     */
     @Test
     public void testPositionX(){
         j.setPos(new Vec2(10, j.getPos().y));
         assertEquals(10, j.getPos().x);
     }
+    /**
+     * Test Position Y cas normal
+     */
     @Test
     public void testPositionY(){
         j.setPos(new Vec2(0,12));
@@ -42,7 +57,10 @@ public class TestAventurier {
     }
 
 
-
+    /**
+     * Test Attaque monstre 
+     * 
+     */
     @Test
     public void testAttaqueDessus(){
         Aventurier a = jeu.getJoueur();
@@ -59,6 +77,9 @@ public class TestAventurier {
 
     }
 
+    /**
+     * Test range de attaque à Droite
+     */
     @Test
     public void testAttaqueDroite(){
         Aventurier a = jeu.getJoueur();
@@ -75,6 +96,9 @@ public class TestAventurier {
 
     }
 
+    /**
+     * Test range de attaque à Gauche
+     */
     @Test
     public void testAttaqueGauche(){
         Aventurier a = jeu.getJoueur();
@@ -90,6 +114,9 @@ public class TestAventurier {
         assertEquals("le gobelin n'a pas le bon nombre de points de vie", 5, test.getPV());
     }
 
+    /**
+     * Test range de attaque à Haute
+     */
     @Test
     public void testAttaqueDessous(){
         Aventurier a = jeu.getJoueur();

@@ -43,7 +43,9 @@ public class TestEntite {
         assertEquals("PV est 100",true, e1.etreMort());
     }
 
-    
+    /**
+     * test Soigner autre Entite
+     */
     @Test
     public void TestSoignerEntite(){
         Labyrinthe l = new Labyrinthe();
@@ -56,7 +58,9 @@ public class TestEntite {
         e1.soigner(e2, 1000);
         assertEquals(1050, e2.getPV());
     }
-
+/**
+ * tEST soigner quand ENtite e2 perds trop de PV
+ */
     @Test
     public void TestSoignerEntite_v2(){
         Labyrinthe l = new Labyrinthe();
@@ -69,6 +73,9 @@ public class TestEntite {
         assertEquals(0, e2.getPV());
     }
 
+    /**
+     * Test soiger entite quand e1 est mort
+     */
     @Test
     public void TestSoignerEntite_v3(){
         Labyrinthe l = new Labyrinthe();
@@ -81,6 +88,9 @@ public class TestEntite {
         assertEquals(100, e2.getPV());
     }
 
+    /**
+     * test soigner négative
+     */
     @Test
     public void TestSoignerEntite_v4(){
         Labyrinthe l = new Labyrinthe();
@@ -93,6 +103,9 @@ public class TestEntite {
         assertEquals(100, e2.getPV());
     }
 
+    /**
+     * test soinger 0
+     */
     @Test
     public void TestSoignerEntite_v5(){
         Labyrinthe l = new Labyrinthe();
@@ -105,6 +118,9 @@ public class TestEntite {
         assertEquals(100, e2.getPV());
     }
 
+    /**
+     * test quand e1 mort et soinge e2 négative
+     */
     @Test
     public void TestSoignerEntite_v6(){
         Labyrinthe l = new Labyrinthe();
@@ -118,6 +134,9 @@ public class TestEntite {
         assertEquals(100, e2.getPV());
     }
 
+    /**
+     * test quand e1 mort et soinger e2 0
+     */
     @Test
     public void TestSoignerEntite_v7(){
         Labyrinthe l = new Labyrinthe();
@@ -131,6 +150,9 @@ public class TestEntite {
         assertEquals(100, e2.getPV());
     }
 
+    /**
+     * test quand e2 mort et e1 soinge e1 négative
+     */
     @Test
     public void TestSoignerEntite_v8(){
         Labyrinthe l = new Labyrinthe();
@@ -143,6 +165,9 @@ public class TestEntite {
         assertEquals(0, e2.getPV());
     }
 
+    /**
+     * test e2 mort soigne e1 0
+     */
     @Test
     public void TestSoignerEntite_v9(){
         Labyrinthe l = new Labyrinthe();
