@@ -104,6 +104,7 @@ public class Jeu implements moteurJeu.Jeu {
         } else {
             this.joueur.deplacer(commandeUser);
             cam.deplacer(this.joueur);
+            if(joueur.etreMort()){setFini(true);}
             for(Entite e: this.ennemis) {
                 Monstre m = ((Monstre)e);
                 System.out.println(ennemis.size());
