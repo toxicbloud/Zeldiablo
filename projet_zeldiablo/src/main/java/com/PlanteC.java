@@ -16,7 +16,7 @@ public class PlanteC extends Monstre{
 
     @Override
     public void attaquerAutre(Entite e2) {
-        // TODO Auto-generated method stub
+        
         
     }
 }
