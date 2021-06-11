@@ -160,7 +160,6 @@ public class Aventurier extends Entite{
             int distance = entite.getPos().dist(this.getPos());
             if (distance > Labyrinthe.TILE_SIZE*1.5) continue;
             this.perdrePV(((Monstre)entite).getDegat());
-            if (this.etreMort()) j.setFini(true);
         }
     }
 
