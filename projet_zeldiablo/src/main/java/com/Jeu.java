@@ -109,8 +109,6 @@ public class Jeu implements moteurJeu.Jeu {
             if(joueur.etreMort()){setFini(true);}
             for(Entite e: this.ennemis) {
                 Monstre m = ((Monstre)e);
-                System.out.println(ennemis.size());
-                System.out.println(ia.size());
                 ia.get(ennemis.indexOf(m)).deplacement();
                 if (m.etreMort()) {
                     this.ennemis.remove(m);
