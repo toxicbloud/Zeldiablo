@@ -2,6 +2,9 @@ package com;
 
 import java.util.*;
 
+/**
+ * CLASSE IAMONSTRE NON FINIE: Code trop complexe a debugger (et manque de temps)
+ */
 public class IAMonstre {
     
     private int[][] laby, soluc;
@@ -57,11 +60,11 @@ public class IAMonstre {
         ArrayList<Vec2> mouvement;
         if (!emplacementValide(x1, y1)) {
             System.out.println("emplacement monstre pas valide");
-            return false;
+            
         }
         if (!emplacementValide(x2, y2)) {
             System.out.println("destination pas valide");
-            return false;
+            
         }
         currentx = y1;
         currenty = x1;
@@ -131,57 +134,47 @@ public class IAMonstre {
         mouvement.add(new Vec2(x2, y2));
         this.path = mouvement;
         this.occupee = true;
+        System.out.println("position de fin: "+this.path.get(this.path.size()-1));
         return true;
     }
 
     public boolean deplacementAB(int x, int y) {
             Vec2 c = path.get(i);
-            boolean fini = false;
+            System.out.println("position actuelle: "+c);
             if (deLabALaby(m.getPos().x) > c.x) {
-                while (!fini) {
-                    if (deLabALaby(m.getPos().x) == c.x) {
-                        fini = true;
-                    }
-                    if (!bloquee) {
-                        this.occupee = false;
-                        return false;
-                    }
+                if (deLabALaby(m.getPos().x) == c.x) {
+                    i++;
+                }
+                if (!bloquee) {
+                    return false;
                 }
             }else if (deLabALaby(m.getPos().x) < c.x) {
-                while (!fini) {
-                    bloquee = m.deplacer("Droite");
-                    if (deLabALaby(m.getPos().x) == c.x) {
-                        fini = true;
-                    }
-                    if (!bloquee) {
-                        this.occupee = false;
-                        return false;
-                    }
+                bloquee = m.deplacer("Droite");
+                if (deLabALaby(m.getPos().x) == c.x) {
+                    i++;
+                }
+                if (!bloquee) {
+                    return false;
                 }
             }else if (deLabALaby(m.getPos().y) > c.y) {
-                while (!fini) {
-                    bloquee = m.deplacer("Haut");
-                    if (deLabALaby(m.getPos().y) == c.y) {
-                        fini = true;
-                    }
-                    if (!bloquee) {
-                        this.occupee = false;
-                        return false;
-                    }
+                bloquee = m.deplacer("Haut");
+                if (deLabALaby(m.getPos().y) == c.y) {
+                    i++;
+                }
+                if (!bloquee) {
+                    return false;
                 }
             }else{
-                while (!fini) {
-                    bloquee = m.deplacer("Bas");
-                    if (deLabALaby(m.getPos().y) == c.y) {
-                        fini = true;
-                    }
-                    if (!bloquee) {
-                        this.occupee = false;
-                        return false;
-                    }
+                bloquee = m.deplacer("Bas");
+                if (deLabALaby(m.getPos().y) == c.y) {
+                    i++;
+                }
+                if (!bloquee) {
+                    return false;
                 }
             }
-        this.occupee = false;
+        this.occupee = this.path.get(this.path.size()-1).x == deLabALaby(m.getPos().x) && 
+                       this.path.get(this.path.size()-1).y == deLabALaby(m.getPos().y);
         return true;
     }
 

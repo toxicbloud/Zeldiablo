@@ -15,7 +15,7 @@ public class Gobelin extends Monstre {
      * @param desc description du gobelin
      */
     public Gobelin(int d, Vec2 v, Labyrinthe l, Jeu j) {
-        super("Gobelin", v, 10, d, "Le Gobelin est un monstre faible mais rapide", l, 25, 3, j);
+        super("Gobelin", v, 10, d, "Le Gobelin est un monstre faible mais rapide", l, 25, 1, j);
         setTexture(Textures.goblin[1]);
     }
 

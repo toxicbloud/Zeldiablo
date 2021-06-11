@@ -114,7 +114,7 @@ public class Aventurier extends Entite{
 
         if (c.espace) {
             int z = this.getRange();
-            System.out.println(z);
+            //System.out.println(z);
             this.attaqueZone(z);
         }
         Labyrinthe laby=getLabyrinthe();
@@ -170,7 +170,7 @@ public class Aventurier extends Entite{
     public void attaqueZone(int r) {
         this.getJeu().getCam().shake();
         Vec2 dir = this.getDerniereDir();
-        System.out.println(dir);
+        //System.out.println(dir);
         Jeu j = this.getJeu();
 
         ArrayList<Entite> ar = j.getEnnemis();
