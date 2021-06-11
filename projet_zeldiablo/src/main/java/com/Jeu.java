@@ -56,6 +56,8 @@ public class Jeu implements moteurJeu.Jeu {
         this.ennemis = new ArrayList<Entite>();
         this.joueur = new Aventurier("testeur", this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this);
         this.cam = new Camera(this.joueur);
+        this.ia = new ArrayList<IAMonstre>();
+
         this.ennemis.add(new Gobelin(5, this.getCarte().getEntree(), this.getCarte(), this));
         this.ia.add(new IAMonstre((Monstre)this.ennemis.get(this.ennemis.size()-1), this.getCurrentLabyrinthe()));
     }
