@@ -3,13 +3,14 @@ package com;
 public class Boss extends Monstre {
     int range;
     Vec2 posOrigine; // pour tester si posAct est dehors de range de posOrigine
-    public Boss(String n, Vec2 v, int vie, int d, String desc, Labyrinthe l, int a, int vit, int range) {
-        super(n, v, vie, d, desc, l, a, vit);
+    public Boss(String n, Vec2 v, int vie, int d, String desc, Labyrinthe l, int a, int vit, int range, Jeu j) {
+        super(n, v, vie, d, desc, l, a, vit, j);
         //TODO Auto-generated constructor stub
         this.range=range;
         this.posOrigine=super.getPos();
     }
 
+<<<<<<< HEAD
     public void deplacer(String Mouvement){
         super.deplacer(Mouvement);
         int testOx = this.getPos().x - this.posOrigine.x;
@@ -36,6 +37,11 @@ public class Boss extends Monstre {
             }
         }
     }
+=======
+    public void deplacer(String mouvement) {
+        super.deplacer(mouvement);
+    } 
+>>>>>>> 3513aba099115aadc2f57632a9c19230b757a0af
     
 
     @Override

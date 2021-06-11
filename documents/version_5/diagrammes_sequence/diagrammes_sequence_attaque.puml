@@ -13,8 +13,10 @@ activate main
     entite <-- arme : r
     entite -> entite : attaqueZone(r)
 
-    entite ->  entite2 : attaqueAutre(e2)
-    entite <-- entite2
+    loop entites.size()
+        entite ->  entite2 : attaqueAutre(e2)
+        entite <-- entite2 
+    end
     main <-- entite
     deactivate entite
 deactivate main
