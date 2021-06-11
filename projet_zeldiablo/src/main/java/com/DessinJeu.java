@@ -104,9 +104,9 @@ public class DessinJeu implements moteurJeu.DessinJeu {
         } else {
             if (jeu.isEcranFin()) {
                 // dessine l'ecran de fin
-                g.drawImage(Textures.tex_gameover, 
-                    w/2-Textures.tex_gameover.getWidth(null)/2, h/2-Textures.tex_gameover.getHeight(null)/2, 
-                    Textures.tex_gameover.getWidth(null), Textures.tex_gameover.getHeight(null), null
+                g.drawImage(Textures.tex_gameoverWin, 
+                    w/2-Textures.tex_gameoverWin.getWidth(null)/2, h/2-Textures.tex_gameoverWin.getHeight(null)/2, 
+                    Textures.tex_gameoverWin.getWidth(null), Textures.tex_gameoverWin.getHeight(null), null
                 );
                 g1D.setFont(new FontUIResource("Helvetica", FontUIResource.BOLD, 30));
                 int width = g1D.getFontMetrics().stringWidth("Menu Principal");
