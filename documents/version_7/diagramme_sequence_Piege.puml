@@ -1,0 +1,58 @@
+@startuml
+title implementation Piege
+participant "j: Jeu" as jeu
+participant "joueur: Aventurier" as joueur
+participant "carte: Labyrinthe" as carte
+participant "proch: Piege" as proch
+participant "cam : Camera" as cam
+    loop [non etreFini]
+        activate jeu
+        jeu -> joueur : deplacer(commande)
+        activate joueur
+        joueur -> carte : getCaseAtVec2(position)
+        activate carte
+        joueur <-- carte : case
+        deactivate carte
+        alt case.isTraversable()
+            alt commande.gauche
+                joueur -> joueur : x-1
+            end
+            alt commande.Droite 
+                joueur -> joueur : x+1
+            end
+            alt commande.haut
+                joueur -> joueur : y-1
+            end
+            alt commande.bas
+                joueur -> joueur : y+1
+            end
+        end
+        joueur -> carte : getCaseAtVec2(position)
+        activate carte
+        joueur <-- carte : proch
+        deactivate carte
+        joueur -> proch : action(jeu)
+        activate proch
+        joueur <-- proch
+        alt non decouvert
+        proch -> proch : decouvrir()
+        proch -> jeu : getCam()
+        jeu -> cam : shake()
+        activate cam
+        jeu <-- cam
+        deactivate cam
+        else now.getTime() > dernier+3000
+            proch -> jeu : getJoueur()
+            proch <-- jeu : joueur
+            proch-> joueur : perdrePV(5)
+            proch <-- joueur
+        end
+        deactivate proch
+        
+        jeu <-- joueur
+        deactivate joueur
+        moteurJeu <-- jeu
+        deactivate jeu
+    end
+
+@enduml
