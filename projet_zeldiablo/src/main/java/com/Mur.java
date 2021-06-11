@@ -14,4 +14,10 @@ public class Mur extends Case {
     Mur() {
         super(false, Textures.tex_mur);
     }
+
+    @Override
+    public void action(Jeu j) {
+        // TODO Auto-generated method stub
+        
+    }
 }

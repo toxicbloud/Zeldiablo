@@ -9,4 +9,9 @@ public class Piege extends Case {
         this.decouvert = true;
         setSprite(Textures.tex_piege);
     }
+    @Override
+    public void action(Jeu j) {
+        this.decouvrir();
+        j.getJoueur().perdrePV(1);
+    }
 }

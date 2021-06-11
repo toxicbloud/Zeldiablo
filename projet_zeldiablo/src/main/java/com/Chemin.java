@@ -12,4 +12,8 @@ public class Chemin extends Case {
     Chemin() {
         super(true, Textures.tex_chemin);
     }
+
+    @Override
+    public void action(Jeu j) {
+    }
 }

@@ -12,4 +12,8 @@ public class EscalierDescendre extends Case {
     EscalierDescendre() {
         super(true, Textures.tex_escalierDescendre);
     }
+
+    @Override
+    public void action(Jeu j) {
+    }
 }
