@@ -14,7 +14,10 @@ public class Piege extends Case {
     }
     @Override
     public void action(Jeu j) {
-        this.decouvrir();
+        if(!decouvert){
+            this.decouvrir();
+            j.getCam().shake();
+        }
         Date now = new Date();
         if(now.getTime()>dernier+3000){
             j.getJoueur().perdrePV(5);
