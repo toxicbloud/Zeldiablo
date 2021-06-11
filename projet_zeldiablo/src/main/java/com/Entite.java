@@ -218,6 +218,7 @@ public abstract class Entite{
     public Labyrinthe getLabyrinthe(){
         return this.jeu.getCurrentLabyrinthe();
     }
+
     /**
      * getter de l'attribut taille
      * @return taille de l entite

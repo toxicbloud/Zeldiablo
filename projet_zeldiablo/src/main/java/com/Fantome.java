@@ -11,8 +11,8 @@ public class Fantome extends Monstre {
      * @param d dégât du Fantome
      * @param desc description du Fantome
      */
-    public Fantome(int d, Vec2 v, Labyrinthe l) {
-        super("Fantome", v, 20, d, "Le Fantome est un monstre plutot lent mais qui traverse les murs", l, 75, 1);
+    public Fantome(int d, Vec2 v, Labyrinthe l, Jeu j) {
+        super("Fantome", v, 20, d, "Le Fantome est un monstre plutot lent mais qui traverse les murs", l, 75, 1, j);
     }
 
     @Override

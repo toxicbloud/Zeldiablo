@@ -6,7 +6,7 @@ public abstract class Monstre extends Entite {
     
     private int degat, vitesse;
     private String description;
-    private int attente; //Ce parametre permet de savoir le laps de temps entre chaque deplacement du monstre, plus le nombre ce rapproche de 100, plus il est lent et plus il se rapproche de 0, plus il ets rapide
+    //private int attente; Ce parametre permet de savoir le laps de temps entre chaque deplacement du monstre, plus le nombre ce rapproche de 100, plus il est lent et plus il se rapproche de 0, plus il ets rapide
     /**
      * constructeur de monstre
      * @param n nom de l'entite
@@ -17,12 +17,13 @@ public abstract class Monstre extends Entite {
      * @param desc description du monstre
      * @param a délai entre chaque déplacement du monstre
      * @param v vitesse de déplacement du monstre
+     * @param j Jeu du monstre
      */
-    public Monstre(String n, Vec2 v, int vie, int d, String desc, Labyrinthe l, int a, int vit) {
-        super(n, v, vie, l);
+    public Monstre(String n, Vec2 v, int vie, int d, String desc, Labyrinthe l, int a, int vit, Jeu j) {
+        super(n, v, vie, l, j);
         this.degat = d;
         this.description = desc;
-        this.attente = a;
+        ///this.attente = a;
         this.vitesse = vit;
 
     }
@@ -65,8 +66,9 @@ public abstract class Monstre extends Entite {
     /**
      * methode qui permet à un monstre de se déplacer de manière aléatoire
      */
-    public void deplacer(String Mouvement) {
+    public boolean deplacer(String Mouvement) {
         ///int att = (int)(Math.random() * 101);
+        boolean res = false;
         Case ul=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2((int)(getTaille().x*0.2),0)));
         Case ur=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2((int)(getTaille().x*0.8),0)));
         Case lu=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(0,(int)(getTaille().y*0.2))));
@@ -75,29 +77,40 @@ public abstract class Monstre extends Entite {
         Case dr=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2((int)(getTaille().x*0.8),getTaille().y)));
         Case ru=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(getTaille().x,(int)(getTaille().y*0.2))));
         Case rd=getLabyrinthe().getCaseAtVec2(this.getPos().plus(new Vec2(getTaille().x,(int)(getTaille().y*0.8))));
-        ///if (att >= this.attente) {
             switch(Mouvement) {
-                case "Haut":
+                case "Gauche":
                     if(lu!=null && ld!=null && lu.isTraversable() && ld.isTraversable()) {
                         setPos(new Vec2((getPos().x)-(this.vitesse), getPos().y));
+                        res = true;
+                    }else{
+                        return false;
                     }
                     break;
-                case "Bas":
+                case "Droite":
                     if(ru!=null && rd!=null && ru.isTraversable() && rd.isTraversable()) {
                         setPos(new Vec2((getPos().x)+(this.vitesse), getPos().y));
+                        res = true;
+                    }else{
+                        return false;
                     }
                     break;
-                case "Gauche":
+                case "Haut":
                     if(ul!=null && ur!=null && ul.isTraversable()&& ur.isTraversable()) {
                         setPos(new Vec2(getPos().x, (getPos().y)-(this.vitesse)));
+                        res = true;
+                    }else{
+                        return false;
                     }
                     break;
-                case "Droite": 
+                case "Bas": 
                     if(dl!=null && dr!=null && dl.isTraversable() &&  dr.isTraversable()){
                         setPos(new Vec2(getPos().x, (getPos().y)+(this.vitesse)));
+                        res = true;
+                    }else{
+                        return false;
                     }
                     break;
-           //}
         }
+    return res;    
     } 
 }
