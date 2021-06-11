@@ -15,7 +15,9 @@ public class Jeu implements moteurJeu.Jeu {
     private Camera cam;
     private ArrayList<Entite> ennemis;
     private boolean fini = false;
-    private ArrayList<IAMonstre> ia;
+
+    private boolean enJeu;
+    private boolean ecranFin;
 
     /** 
      * Constructeur vide de Jeu 
@@ -29,11 +31,12 @@ public class Jeu implements moteurJeu.Jeu {
             labyrinthes[i] = new Labyrinthe(i == labyrinthes.length-1);
         
         this.ennemis = new ArrayList<Entite>();
-        this.ia = new ArrayList<IAMonstre>();
         this.ennemis.add(new Gobelin(1, this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), getCurrentLabyrinthe(), this));
         this.joueur = new Aventurier(n, this);
         this.genererEnnemis();
         this.cam = new Camera(this.joueur);
+        enJeu = false;
+        ecranFin = false;
     }
 
     /** 
@@ -48,7 +51,6 @@ public class Jeu implements moteurJeu.Jeu {
         this.joueur = new Aventurier("testeur", this.getCurrentLabyrinthe().getEntree().times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this);
         this.cam = new Camera(this.joueur);
         this.ennemis.add(new Gobelin(5, this.getCarte().getEntree(), this.getCarte(), this));
-        this.ia.add(new IAMonstre((Monstre)ennemis.get(ennemis.indexOf(new Gobelin(5, this.getCarte().getEntree(), this.getCarte(), this))), this.getCarte()));
     }
 
     public Labyrinthe getCurrentLabyrinthe() {
@@ -76,7 +78,6 @@ public class Jeu implements moteurJeu.Jeu {
             for (int y = 0; y < cases[x].length; y++) {
                 if (cases[x][y].isTraversable() && Math.random() > 0.93) {
                     this.ennemis.add(new Gobelin(5, new Vec2(x, y).times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this));
-                    this.ia.add(new IAMonstre(new Gobelin(5, new Vec2(x, y).times(Labyrinthe.TILE_SIZE), this.getCurrentLabyrinthe(), this), this.getCurrentLabyrinthe()));
                 }
             }
         }
@@ -85,16 +86,23 @@ public class Jeu implements moteurJeu.Jeu {
     /** Methode evoluer utilisee par le moteur de jeu */
     @Override
     public void evoluer(Commande commandeUser) {
-        int i = 0;
-        this.joueur.deplacer(commandeUser);
-        cam.deplacer(this.joueur);
-        for(Entite e: this.ennemis) {
-            Monstre m = ((Monstre)e);
-            i = ennemis.indexOf(m);
-            ia.get(i).deplacement();
-            if (m.etreMort()) {
-                this.ennemis.remove(m);
-                break;
+        // lance le jeu
+        if (!enJeu) {
+            if (!ecranFin) {
+                enJeu = commandeUser.espace;
+            } else {
+                this.fini = true;
+            }
+        } else {
+            this.joueur.deplacer(commandeUser);
+            cam.deplacer(this.joueur);
+            for(Entite e: this.ennemis) {
+                Monstre m = ((Monstre)e);
+                // m.deplacer(new Commande());
+                if (m.etreMort()) {
+                    this.ennemis.remove(m);
+                    break;
+                }
             }
         }
     }
@@ -140,7 +148,25 @@ public class Jeu implements moteurJeu.Jeu {
      * @param fini nouvelle valeur de fini
      */
     public void setFini(boolean fini) {
-        this.fini = fini;
+        this.enJeu = false;
+        this.ecranFin = true;
+        evoluer(null);
+    }
+
+    /**
+     * Getter de l'attribut enJeu de Jeu
+     * @return la valeur de l'attribut
+     */
+    public boolean isEnJeu() {
+        return enJeu;
+    }
+
+    /**
+     * Getter de l'attribut ecranFin de Jeu
+     * @return la valeur de l'attribut
+     */
+    public boolean isEcranFin() {
+        return ecranFin;
     }
     
     @Override
