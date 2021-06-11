@@ -97,6 +97,8 @@ public class Labyrinthe {
                     if (r < 0.2) {
                         cases[position.x][position.y] = new Eau();
                     } else if (r < 0.3) {
+                        cases[position.x][position.y] = new Potion();
+                    } else if (r < 0.4) {
                         cases[position.x][position.y] = new Piege();
                     } else {
                         cases[position.x][position.y] = new Chemin();
