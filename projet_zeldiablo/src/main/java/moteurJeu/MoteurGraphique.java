@@ -1,5 +1,6 @@
 package moteurJeu;
 
+import com.Jeu;
 
 /**
  * classe MoteurGraphique represente un moteur de jeu generique.
@@ -11,7 +12,7 @@ public class MoteurGraphique {
 	/**
 	 * le jeu a executer
 	 */
-	private Jeu jeu;
+	private moteurJeu.Jeu jeu;
 
 	/**
 	 * l'interface graphique
@@ -31,7 +32,7 @@ public class MoteurGraphique {
 	 * @param pAffiche
 	 *            afficheur a utiliser
 	 */
-	public MoteurGraphique(Jeu pJeu, DessinJeu pAffiche) {
+	public MoteurGraphique(moteurJeu.Jeu pJeu, DessinJeu pAffiche) {
 		// creation du jeu
 		this.jeu = pJeu;
 		this.dessin = pAffiche;
@@ -48,6 +49,7 @@ public class MoteurGraphique {
 
 		// boucle de jeu
 		while (!this.jeu.etreFini()) {
+			if (((Jeu) this.jeu).shouldQuit()) this.gui.quit();
 			// demande controle utilisateur
 			Commande c = controle.getCommande();
 			// fait evoluer le jeu
