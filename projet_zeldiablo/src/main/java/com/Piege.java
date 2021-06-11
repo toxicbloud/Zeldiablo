@@ -1,6 +1,9 @@
 package com;
 
+import java.util.Date;
+
 public class Piege extends Case {
+    private long dernier=new Date().getTime();
     private boolean decouvert=false;
     public Piege(){
         super(true,Textures.tex_chemin);
@@ -12,6 +15,9 @@ public class Piege extends Case {
     @Override
     public void action(Jeu j) {
         this.decouvrir();
-        j.getJoueur().perdrePV(1);
+        Date now = new Date();
+        if(now.getTime()>dernier+3000){
+            j.getJoueur().perdrePV(5);
+        }
     }
 }
