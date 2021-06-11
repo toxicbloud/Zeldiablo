@@ -4,7 +4,10 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 public class TestJeu {
-    
+    /**
+     * Test Jeu Constructor 
+     * Labyrinthe et jouer a été crée
+     */
     @Test
     public void TestJeuConstructeur() {
         Jeu j = new Jeu("Talluan");

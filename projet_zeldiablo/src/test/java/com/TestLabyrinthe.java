@@ -6,6 +6,10 @@ import org.junit.Test;
 
 public class TestLabyrinthe {
 
+    /**
+     * test Get Case at Vec 2 
+     * cas Normal
+     */
     @Test
     public void TestGetCaseAtVec2_Normal() {
         Labyrinthe l = new Labyrinthe();
@@ -25,7 +29,10 @@ public class TestLabyrinthe {
             true, l.getCaseAtVec2(new Vec2(Labyrinthe.TILE_SIZE+1, Labyrinthe.TILE_SIZE*2+1)) instanceof Mur
         );
     }
-
+    /**
+     * test Get Case at Vec 2 
+     * cas hors de Carte
+     */
     @Test
     public void TestGetCaseAtVec2_HorsCarte() {
         Labyrinthe l = new Labyrinthe();

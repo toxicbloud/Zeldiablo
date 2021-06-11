@@ -5,7 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class TestCamera {
-    
+    /**
+     * test Camera cas normal
+     */
     @Test
     public void testCamera() {
         Labyrinthe l = new Labyrinthe();
@@ -15,6 +17,9 @@ public class TestCamera {
         assertEquals("Camera pas à la bonne position", true, c.getPos().equals(new Vec2(10, 10)));
     }
 
+    /**
+     * test fonction deplacement de Camera
+     */
     @Test
     public void deplacerCamera() {
         Labyrinthe l = new Labyrinthe();
