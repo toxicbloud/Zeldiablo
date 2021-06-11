@@ -177,6 +177,13 @@ public class Jeu implements moteurJeu.Jeu {
      * @param enJeu valeur
      */
     public void setEnJeu(boolean enJeu) {
+        if (enJeu) {
+            labyrinthes = new Labyrinthe[3];
+            for (int i = 0; i < labyrinthes.length; i++)
+                labyrinthes[i] = new Labyrinthe(i == labyrinthes.length-1);
+            this.joueur = new Aventurier("Aventurier", this);
+            genererEnnemis();
+        }
         this.enJeu = enJeu;
     }
 

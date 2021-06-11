@@ -1,0 +1,47 @@
+@startuml
+
+participant "MoteurGraphique" as mg
+participant "gui: InterfaceGraphique" as gui
+participant "dj: DessinJeu" as dj
+participant "j: Jeu" as j
+
+activate mg
+    mg -> j: shouldQuit()
+    activate j
+        mg <-- j: quit
+    deactivate j
+        alt quit
+            mg -> mg: System.exit(0)
+        end
+    mg -> j: evoluer()
+    activate j
+        mg <-- j
+    deactivate j
+    mg -> gui: dessiner()
+    activate gui
+        gui -> dj: dessiner()
+        activate dj
+            dj -> j: isEnJeu()
+            activate j
+                j --> dj: enJeu
+            deactivate j
+            alt enJeu
+                dj -> dj: dessinerjeu()
+            else non enJeu
+                dj -> j: isEcranFin()
+                activate j
+                    j --> dj: ecranFin
+                deactivate j
+                alt ecranFin
+                    dj -> dj: dessinerEcranFin()
+                else non ecranFin
+                    dj -> dj: dessinerEcranDebut()
+                end
+            end
+            gui <-- dj
+        deactivate dj
+        mg <-- gui
+    deactivate gui
+deactivate mg
+
+@enduml

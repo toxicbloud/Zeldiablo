@@ -9,39 +9,43 @@ public class Boss extends Monstre {
         this.range=range;
         this.posOrigine=super.getPos();
     }
-
-<<<<<<< HEAD
-    public void deplacer(String Mouvement){
+    /**
+     * Fonction pour tester le deplacement de Boss
+     * Tout d'abord, on fais deplacement
+     * si c'est dehors de Range 
+     * on va le refaire et return False
+     * Sinon, return True
+     */
+    public boolean deplacer(String Mouvement){
         super.deplacer(Mouvement);
         int testOx = this.getPos().x - this.posOrigine.x;
         int testOy = this.getPos().y - this.posOrigine.y;
-        
+
         if (Math.abs(testOx)>this.range || Math.abs(testOy)>this.range ) {
+            
             switch (Mouvement) {
                 case "Gauche":
-                setPos(new Vec2((getPos().x)+(this.getVitesse()), getPos().y));
-                    break;
-                case "Droite":
                 setPos(new Vec2((getPos().x)-(this.getVitesse()), getPos().y));
-                    break;
+                return false;
+                    
+                case "Droite":
+                setPos(new Vec2((getPos().x)+(this.getVitesse()), getPos().y));
+                return false;   
                 
                 case "Haute":
-                setPos(new Vec2(  getPos().x, getPos().y -(this.getVitesse()))) ;
-                    break;
+                setPos(new Vec2(  getPos().x, getPos().y +(this.getVitesse()))) ;
+                return false;    
 
                 case "Bas":
-                setPos(new Vec2(  getPos().x, getPos().y +(this.getVitesse()))) ;
-                    break;
+                setPos(new Vec2(  getPos().x, getPos().y -(this.getVitesse()))) ;
+                return false;    
                 default:
                     break;
             }
         }
+        return true;
+
     }
-=======
-    public void deplacer(String mouvement) {
-        super.deplacer(mouvement);
-    } 
->>>>>>> 3513aba099115aadc2f57632a9c19230b757a0af
     
 
     @Override

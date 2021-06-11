@@ -3,6 +3,15 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 public class testBoss {
+    /**
+     * Test Deplacement de Boss
+     * On va tester dans un environnement chemin ou il n'y a pas de chemin 
+     * Ici, la position est 0,0 avec aucune de mûr 
+     * Tout d'abord, on fait de constructor 
+     * Ensuite, on essaie de run à gauche une fois
+     * C'est bon car ca passe pas le range
+     * 
+     */
     @Test
     public void testDeplacement(){
         /**
@@ -19,20 +28,23 @@ public class testBoss {
      */
     String n = "John";
     int vie = 100;
-    Vec2 v= new Vec2(4, 4);
-    Labyrinthe l = new Labyrinthe();
+    Vec2 v= new Vec2(0, 0);
     int d = 10;
     String desc = "I'm John";
     int a = 10;
-    int vit=3;
-    int range=2;
+    int vit=2;
+    int range=3;
+    Jeu j = new Jeu("Hello");
 
-    Boss b1= new Boss(n, v, vie, d, desc, l, a, vit, range);
-    b1.deplacer("Gauche");
-    b1.deplacer("Haute");
+    Labyrinthe l =  j.getCarte();
+        Case [][] c = l.getCases();
+        c[0][0] = new Chemin();
+                
+    
+    Boss b1= new Boss(n, v, vie, d, desc, l, a, vit, range,j);
+    b1.setPos( new Vec2(0, 0));
+    assertEquals(true, b1.deplacer("Gauche"));
 
-    Vec2 real = new Vec2(3, 4);
-    assertEquals("Vec must not be 4,4", real,b1.getPos());
     }
     
 }
