@@ -2,6 +2,9 @@ package com;
 
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
+
+import javax.swing.plaf.FontUIResource;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.*;
@@ -14,12 +17,16 @@ public class DessinJeu implements moteurJeu.DessinJeu {
     /** Attribut jeu de DessinJeu, le jeu a dessiner */
     private Jeu jeu;
 
-    /** Decalage de l'image pour centrer le joueur */
+    /** Decalage d'ecran pour centrer */
     private Vec2 frameShift;
+
+    /** Hauteur de l'ecran */
+    private int h;
 
     /** Constructeur vide de DessinJeu */
     DessinJeu() {
         this.jeu = new Jeu("Jeu");
+        this.frameShift = new Vec2();
     }
 
     
@@ -33,8 +40,9 @@ public class DessinJeu implements moteurJeu.DessinJeu {
     @Override
     public void dessiner(BufferedImage image) {
         Graphics2D g = (Graphics2D) image.getGraphics();
+        Graphics g1D = image.getGraphics();
         int w = image.getWidth();
-        int h = image.getHeight();
+        h = image.getHeight();
         this.frameShift = new Vec2((w-TILE_SIZE)/2, (h-TILE_SIZE)/2);
         g.setColor(Color.black);
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
@@ -90,10 +98,45 @@ public class DessinJeu implements moteurJeu.DessinJeu {
             g.drawImage(ath, 0, image.getHeight()-90, ath.getWidth(), ath.getHeight(),null);
         } else {
             if (jeu.isEcranFin()) { // dessine l'ecran de fin
-                g.drawImage(Textures.tex_gameover, 0, 0, Textures.tex_gameover.getWidth(null), Textures.tex_gameover.getHeight(null), null);
+                g.drawImage(Textures.tex_gameover, 
+                    w/2-Textures.tex_gameover.getWidth(null)/2, h/2-Textures.tex_gameover.getHeight(null)/2, 
+                    Textures.tex_gameover.getWidth(null), Textures.tex_gameover.getHeight(null), null
+                );
+                g1D.setFont(new FontUIResource("Helvetica", FontUIResource.BOLD, 30));
+                int width = g1D.getFontMetrics().stringWidth("Menu Principal");
+                g.setColor(new Color(176,44,36));
+                g.fillRect(w/2-width/2-15, (int)(h*0.8)-55, width+30, 60);
+                g1D.drawString("Menu Principal", w/2-width/2, (int)(h*0.8)-15);
             } else { // dessine l'ecran de debut
-                g.setColor(Color.RED);
-                g.fillRect(0, 0, 100, 100);
+                g.drawImage(Textures.tex_mur, 0, 0, w, h, null);
+                g1D.setColor(Color.RED);
+                g1D.setFont(new FontUIResource("Helvetica", FontUIResource.BOLD, 60));
+                int width = g1D.getFontMetrics().stringWidth("Zeldiablo");
+                g1D.drawString("Zeldiablo", w/2-width/2, (int)(h*0.2)-30);
+                g.drawImage(Textures.guerrier[1], (int)(w/2-h*0.15), (int)(h*0.2), (int)(h*0.3), (int)(h*0.3), null);
+                g1D.setFont(new FontUIResource("Helvetica", FontUIResource.BOLD, 40));
+                g1D.setColor(Color.BLACK);
+                g.setColor(Color.WHITE);
+                width = g1D.getFontMetrics().stringWidth("Jouer");
+                g.fillRect(w/2-width/2-10, (int)(h*0.75)-65, width+20, 60);
+                g1D.drawString("Jouer", w/2-width/2, (int)(h*0.75)-20);
+                width = g1D.getFontMetrics().stringWidth("Quitter");
+                g.fillRect(w/2-width/2-10, (int)(h*0.9)-65, width+20, 60);
+                g1D.drawString("Quitter", w/2-width/2, (int)(h*0.9)-20);
+            }
+        }
+    }
+
+    public void onclick(int x, int y) {
+        if (!jeu.isEnJeu()) {
+            if (jeu.isEcranFin()) {
+                jeu.setEcranFin(false);
+            } else {
+                if (y <= h*0.9-65) {
+                    jeu.setEnJeu(true);
+                } else {
+                    jeu.quit();
+                }
             }
         }
     }

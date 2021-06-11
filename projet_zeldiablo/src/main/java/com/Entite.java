@@ -18,7 +18,6 @@ public abstract class Entite{
     private int vitesse=2;
     private Image texture=Textures.noTexture;
     private Commande dernier;
-    private int timer;
 
     /**
      * constructeur d' Entite
@@ -83,7 +82,6 @@ public abstract class Entite{
             this.mort = false;
         }
         this.taille=t;
-        this.timer = 40;
     }
     
     /**
@@ -103,7 +101,6 @@ public abstract class Entite{
         this.taille = new Vec2(Labyrinthe.TILE_SIZE, Labyrinthe.TILE_SIZE);
         this.mort = false;
         this.derniereDir = new Vec2(0,1);
-        this.timer = 40;
     }
 
     /**
@@ -190,10 +187,6 @@ public abstract class Entite{
      * @param perdrePv pv a enlever
      */
     public void perdrePV(int perdrePv){
-        if (this.timer < 40) {
-            this.timer++;
-            return;
-        }
         if (this.etreMort() == false) {
             this.pv -= perdrePv;        
         }
@@ -201,7 +194,6 @@ public abstract class Entite{
             this.mort = true;
             this.pv=0;
         }
-        this.timer = 0;
     }
     /**
      * 

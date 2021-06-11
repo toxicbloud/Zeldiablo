@@ -18,6 +18,8 @@ public class Jeu implements moteurJeu.Jeu {
 
     private boolean enJeu;
     private boolean ecranFin;
+    /** La fenetre devrais se fermer */
+    private boolean quit;
 
     /** 
      * Constructeur vide de Jeu 
@@ -37,6 +39,7 @@ public class Jeu implements moteurJeu.Jeu {
         this.cam = new Camera(this.joueur);
         enJeu = false;
         ecranFin = false;
+        quit = false;
     }
 
     /** 
@@ -167,6 +170,32 @@ public class Jeu implements moteurJeu.Jeu {
      */
     public boolean isEcranFin() {
         return ecranFin;
+    }
+
+    /**
+     * setter de enJeu
+     * @param enJeu valeur
+     */
+    public void setEnJeu(boolean enJeu) {
+        this.enJeu = enJeu;
+    }
+
+    /** Quitte le jeu */
+    public void quit() {
+        this.quit = true;
+    }
+
+    /** Getter de quit */
+    public boolean shouldQuit() {
+        return this.quit;
+    }
+
+    /**
+     * Setter de EcranFin
+     * @param ecranFin valeur
+     */
+    public void setEcranFin(boolean ecranFin) {
+        this.ecranFin = ecranFin;
     }
     
     @Override
