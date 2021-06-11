@@ -12,4 +12,10 @@ public class Eau extends Case {
     Eau() {
         super(true, Textures.tex_eau);
     }
+
+    @Override
+    public void action(Jeu j) {
+        j.getJoueur().setVitesse(1);
+    }
+    
 }

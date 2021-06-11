@@ -54,4 +54,5 @@ public abstract class Case {
     public void setSprite(Image a){
         this.sprite=a;
     }
+    public abstract void action(Jeu j);
 }
