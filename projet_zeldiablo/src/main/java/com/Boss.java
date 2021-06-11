@@ -8,6 +8,7 @@ public class Boss extends Monstre {
         //TODO Auto-generated constructor stub
         this.range=range;
         this.posOrigine=super.getPos();
+        this.setPV(this.getPv()+100);
     }
     /**
      * Fonction pour tester le deplacement de Boss
@@ -16,6 +17,7 @@ public class Boss extends Monstre {
      * on va le refaire et return False
      * Sinon, return True
      */
+    /*
     public boolean deplacer(String Mouvement){
         super.deplacer(Mouvement);
         int testOx = this.getPos().x - this.posOrigine.x;
@@ -46,7 +48,7 @@ public class Boss extends Monstre {
         return true;
 
     }
-    
+    */
 
     @Override
     public void attaquerAutre(Entite e2) {
