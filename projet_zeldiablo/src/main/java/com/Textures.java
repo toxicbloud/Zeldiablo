@@ -47,6 +47,7 @@ public class Textures {
             tex_escalierDescendre = (Image) ImageIO.read(new File(absolutePath + "resources/textures/escalierDescendre.png"));
             tex_gameover = (Image) ImageIO.read(new File(absolutePath + "resources/textures/game_over.png"));
             tex_piege= (Image) ImageIO.read(new File(absolutePath + "resources/textures/piege.png"));
+            tex_piege= (Image) ImageIO.read(new File(absolutePath + "resources/textures/hpPotion.png"));
         } catch (Exception e) {
         }
     }
