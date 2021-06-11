@@ -38,7 +38,7 @@ public class Jeu implements moteurJeu.Jeu {
         this.genererEnnemis();
         this.cam = new Camera(this.joueur);
         enJeu = false;
-        ecranFin = true;
+        ecranFin = false;
         quit = false;
     }
 
