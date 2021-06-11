@@ -9,6 +9,7 @@ public class IAMonstre {
     private Monstre m;
     private ArrayList<Vec2> path;
     private boolean occupee = false, bloquee = false;
+    private int i;
 
     public IAMonstre(Monstre monstre, Labyrinthe l) {
         this.lab = l;
@@ -36,7 +37,7 @@ public class IAMonstre {
     }
 
     public boolean resolutionTrajet(int x2, int y2) {
-        System.out.println("resolution du trajet");
+        i = 0;
         int x1 = deLabALaby(m.getPos().x);
         int y1 = deLabALaby(m.getPos().y);
         Case[][] c = this.lab.getCases();
@@ -134,90 +135,52 @@ public class IAMonstre {
     }
 
     public boolean deplacementAB(int x, int y) {
-        System.out.println("deplacement AB");
-        for (int i = 1; i < path.size(); i++) {
             Vec2 c = path.get(i);
-            System.out.println(path.size());
             boolean fini = false;
-            System.out.println(m + " a pour position :" + deLabALaby(m.getPos().y) + " " + deLabALaby(m.getPos().x));
             if (deLabALaby(m.getPos().x) > c.x) {
-                System.out.println("Deplacement à gauche");
                 while (!fini) {
-                    System.out.println("yo");
-                    bloquee = m.deplacer("Gauche");
-                    System.out.println("yo1");
                     if (deLabALaby(m.getPos().x) == c.x) {
-                        System.out.println("yo2");
                         fini = true;
-                        System.out.println("yo3");
                     }
-                    System.out.println("yo4");
                     if (!bloquee) {
-                        System.out.println("y5");
                         this.occupee = false;
-                        System.out.println("yo6");
                         return false;
                     }
                 }
             }else if (deLabALaby(m.getPos().x) < c.x) {
-                System.out.println("Deplacement à droite");
                 while (!fini) {
-                    System.out.println("yo");
                     bloquee = m.deplacer("Droite");
-                    System.out.println("yo1");
                     if (deLabALaby(m.getPos().x) == c.x) {
-                        System.out.println("yo2");
                         fini = true;
-                        System.out.println("yo3");
                     }
-                    System.out.println("yo4");
                     if (!bloquee) {
-                        System.out.println("yo5");
                         this.occupee = false;
-                        System.out.println("yo6");
                         return false;
                     }
                 }
             }else if (deLabALaby(m.getPos().y) > c.y) {
-                System.out.println("Deplacement en haut");
                 while (!fini) {
-                    System.out.println("yo");
                     bloquee = m.deplacer("Haut");
-                    System.out.println("y1");
                     if (deLabALaby(m.getPos().y) == c.y) {
-                        System.out.println("yo2");
                         fini = true;
-                        System.out.println("yo3");
                     }
-                    System.out.println("yo4");
                     if (!bloquee) {
-                        System.out.println("yo5");
                         this.occupee = false;
-                        System.out.println("yo6");
                         return false;
                     }
                 }
             }else{
-                System.out.println("Deplacement en bas");
                 while (!fini) {
-                    System.out.println("yo");
                     bloquee = m.deplacer("Bas");
-                    System.out.println("yo1");
                     if (deLabALaby(m.getPos().y) == c.y) {
-                        System.out.println("yo2");
                         fini = true;
-                        System.out.println("yo3");
                     }
-                    System.out.println("yo4");
                     if (!bloquee) {
-                        System.out.println("yo5");
                         this.occupee = false;
-                        System.out.println("yo6");
                         return false;
                     }
                 }
             }
-        }
         this.occupee = false;
         return true;
     }
@@ -234,17 +197,8 @@ public class IAMonstre {
                 }
             }
             boolean b = resolutionTrajet(x, y);
-            if (b) {
-                boolean booboo = deplacementAB(x, y);
-                System.out.println("ah");
-                if (booboo) {
-                    System.out.println("oh");
-                    m.setPos(new Vec2(m.getPos().x, m.getPos().y));
-                    System.out.println("ouh");
-                }
-                System.out.println("oh oui");
-            }
         }
+        boolean booboo = deplacementAB(this.path.get(this.path.size()-1).x, this.path.get(this.path.size()-1).y);
     }
 
     public int deLabALaby(int x) {
