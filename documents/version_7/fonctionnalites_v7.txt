@@ -1,0 +1,52 @@
+* Fonctionnalités version 7
+
+- fonctionnalité 1 : écran de fin et écran de debut
+descriptif texte : Le jeu a un écran d'acceuil et un écran de fin
+- critères de valiation :
+	- critère 1 : L'écran a plusieurs boutons
+	- critère 2 : L'écran s'affiche au bon moment
+- RESPONSABLE : Paul (loisil2u) 
+
+- fonctionnalité 2 : Corriger le systeme des cases
+descriptif texte : Les cases interagissent avec leur environnement proprement
+- critères de valiation :
+	- critère 1 : Les case réagissent au joueur
+- RESPONSABLE : Antonin (roussea97u) 
+
+- fonctionnalité 3 : IA des monstres (suite)
+- descriptif texte : permet à un monstre de sa ballader d'un point A à un point B 
+- critères de validation :
+    - critère 1 : le monstre choisit le chemin le plus cours
+    - critère 2 : le monstre se déplace bien du point A au point B
+- RESPONSABLE : Celian (bauer129u)
+
+-fonctionnalité 4 : Attaque des monstres
+- descriptif texte : Les monstres peuvent attaquer le joueur
+- critères de validation :
+	- critère 1 : Les monstres attaquent le joueur quand ils sont proche de lui
+- RESPONSABLE : Tom (claude256u)	
+
+- fonctionnalité 5 : BOSS d'étage initialisé
+- descriptif texte : un boss est généré avant la fin de chaque étage
+- critères de validation :
+	- critère 1 : Le boss a 100 * (number étage + 1) points de vie
+	- critère 2 : le boss pourra attaquer le joueur (vers la fin de l'heure j'espère)
+- RESPONSABLE : Duong (duongk99)
+
+RESPONSABLES DE CLASSES :
+
+Tuong Duong :
+Arme / Munitions / Projectiles
+
+Paul :
+DessinJeu / Jeu / Moteur de jeu
+
+Celian : 
+Monstre 
+
+Tom :
+Aventurier
+
+Antonin :
+Labyrinthe / Cases
+
