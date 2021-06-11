@@ -25,9 +25,10 @@ public class TestCamera {
         Labyrinthe l = new Labyrinthe();
         Entite e = new Aventurier("Tallu", new Vec2(10, 10), l);
         Camera c = new Camera(e);
-        c.deplacer(new Aventurier("Traitre", new Vec2(15, 50), l));
-
-        assertEquals("Camera pas à la bonne position", true, c.getPos().equals(new Vec2(15, 50)));
+        c.deplacer(new Aventurier("Traitre", new Vec2(14, 14), l));
+        
+        System.out.println(c.getPos());
+        assertEquals("Camera pas à la bonne position", true, c.getPos().equals(new Vec2(11, 11)));
 
     }
 }
