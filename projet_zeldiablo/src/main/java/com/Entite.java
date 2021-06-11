@@ -47,7 +47,14 @@ public abstract class Entite{
 
     }
 
-
+    /**
+     * Constructor d'Entité
+     * @param nom nom de l'entite
+     * @param newPos Position ENtite
+     * @param pointVie point de Vie de l'entité
+     * @param l Labyrinthe de l Entite
+     * @param j Jeu
+     */
     public Entite(String nom,Vec2 newPos, int pointVie,Labyrinthe l, Jeu j){
         this.nom=nom;
         this.pos = newPos;
@@ -67,7 +74,7 @@ public abstract class Entite{
 
     }
     /**
-     * 
+     * Constructor
      * @param nom nom de l'entite
      * @param newPos position de l'entite
      * @param pointVie point de vie de l'entite

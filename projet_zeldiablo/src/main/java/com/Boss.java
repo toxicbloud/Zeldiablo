@@ -9,7 +9,13 @@ public class Boss extends Monstre {
         this.range=range;
         this.posOrigine=super.getPos();
     }
-    @Override
+    /**
+     * Fonction pour tester le deplacement de Boss
+     * Tout d'abord, on fais deplacement
+     * si c'est dehors de Range 
+     * on va le refaire et return False
+     * Sinon, return True
+     */
     public boolean deplacer(String Mouvement){
         super.deplacer(Mouvement);
         int testOx = this.getPos().x - this.posOrigine.x;
