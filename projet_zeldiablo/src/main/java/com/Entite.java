@@ -113,30 +113,6 @@ public abstract class Entite{
 
     }
 
-        /**
-     * constructeur d' Entite
-     * @param nom nom de l'entite
-     * @param pointVie point de Vie de l'entité
-     * @param newPos position
-     * @param pointVie point ed vie
-     * @param l Labyrinthe de l Entite
-     */
-    public Entite(String nom,Vec2 newPos, int pointVie,Labyrinthe l){
-        this.nom=nom;
-        this.pos = newPos;
-        if (pointVie<=0) {
-            this.pv=0;
-            this.maxPV=0;
-            this.mort=true;
-        }
-        else{
-            this.pv=pointVie;
-            this.maxPV=pv;
-            this.mort = false;
-        }
-        this.derniereDir = new Vec2(0,1);
-        this.timer = 40;
-    }
 
     /**
      * 
